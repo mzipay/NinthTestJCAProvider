@@ -1,0 +1,95 @@
+~~ Copyright (c) 2011 Matthew Zipay <mattz@ninthtest.net>
+~~
+~~ This file is part of the NinthTest JCA Provider.
+~~
+~~ The NinthTest JCA Provider is free software: you can redistribute it and/or
+~~ modify it under the terms of the GNU General Public License as published by
+~~ the Free Software Foundation, either version 3 of the License, or (at your
+~~ option) any later version.
+~~
+~~ The NinthTest JCA Provider is distributed in the hope that it will be
+~~ useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+~~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+~~ Public License for more details.
+~~
+~~ You should have received a copy of the GNU General Public License along with
+~~ the NinthTest JCA Provider. If not, see <http://www.gnu.org/licenses/>.
+
+ ---
+ Introduction to the NinthTest JCA Provider
+ ---
+ Matthew Zipay
+ ---
+
+About the NinthTest JCA Provider
+
+ The NinthTest JCA Provider is a security provider for the
+ {{{http://download.oracle.com/javase/6/docs/technotes/guides/security/crypto/CryptoSpec.html}
+ Java\u2122 Cryptography Architecture}}, focused on supporting candidate,
+ reference, academic, and experimental cryptographic algorithms and security
+ services.
+
+ <<Because the services provided by the NinthTest JCA Provider are
+ exploratory/provisional in nature, the NinthTest JCA Provider is not
+ recommended for use in security-critical applications or environments.>>
+
+ The NinthTest JCA Provider is licensed under the
+ {{{http://www.opensource.org/licenses/LGPL-3.0}GNU Lesser General Public
+ License, version 3.0 (LGPL-3.0)}}.
+
+ The table below shows the algorithms and services that are currently
+ supported. Please refer to {{{./services.html}Security services provided by
+ the NinthTest JCA provider}} for more information.
+
+*------------+---------------------+
+|| Algorithm || Service            |
+*------------+---------------------+
+| <<Helix>>  | Cipher              |
+*------------+---------------------+
+|            | Mac                 |
+*------------+---------------------+
+|            | KeyGenerator        |
+*------------+---------------------+
+|            | SecretKeyFactory    |
+*------------+---------------------+
+|            | AlgorithmParameters |
+*------------+---------------------+
+<Algorithms and services supported by the NinthTest JCA Provider>
+
+ Many services are also available independent of the JCA API. Please refer to
+ {{{./usage.html}Using the NinthTest JCA Provider}} for examples.
+
+* Download
+
+ The current version is <<1.0>>.
+
+ The NinthTest JCA Provider is available for download in binary (JAR) and
+ source form. Due to a JCA code-signing requirement, the binary form is
+ recommended unless you intend to contribute or create a derivative work.
+
+ Please refer to {{{./download.html}Downloading and installing the NinthTest
+ JCA Provider}}.
+
+* Roadmap
+
+ This section is a summary of planned changes for upcoming releases. This
+ roadmap is subject to change at any time, and without notice.
+
+** Planned for version 1.1
+
+    * a Helix PRNG service
+
+    * support for the {{{http://www.skein-hash.info/}Skein hash function}}
+      (including the {{{http://www.schneier.com/threefish.html}Threefish block
+      cipher}})
+
+** Under consideration
+
+    * support for {{{http://www.schneier.com/paper-phelix.html}Phelix}}
+      (the successor to Helix)
+
+    * support for the HC-128, HC-256, and Rabbit stream ciphers from the
+      {{{http://www.ecrypt.eu.org/stream/}eSTREAM}} project 
+
+    * support for a TRNG service based on the {{{http://www.random.org/}
+      RANDOM.ORG True Random Number Service}}.

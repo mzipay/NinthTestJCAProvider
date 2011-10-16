@@ -1,0 +1,57 @@
+~~ Copyright (c) 2011 Matthew Zipay <mattz@ninthtest.net>
+~~
+~~ This file is part of the NinthTest JCA Provider.
+~~
+~~ The NinthTest JCA Provider is free software: you can redistribute it and/or
+~~ modify it under the terms of the GNU General Public License as published by
+~~ the Free Software Foundation, either version 3 of the License, or (at your
+~~ option) any later version.
+~~
+~~ The NinthTest JCA Provider is distributed in the hope that it will be
+~~ useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+~~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+~~ Public License for more details.
+~~
+~~ You should have received a copy of the GNU General Public License along with
+~~ the NinthTest JCA Provider. If not, see <http://www.gnu.org/licenses/>.
+
+ ---
+ Security services provided by the NinthTest JCA Provider
+ ---
+ Matthew Zipay
+ ---
+
+Security services provided by the NinthTest JCA Provider
+
+ The following sections list the algorithms and associated services that are
+ supported by the NinthTest JCA Provider.
+
+ For usage scenarios and code examples that exercise these algorithms and
+ services, please refer to {{{./usage.html}Using the NinthTest JCA Provider}}.
+
+* Helix
+
+ {{{http://www.macfergus.com/helix/index.html}Helix}} is a
+ {{{http://en.wikipedia.org/wiki/Stream_cipher}stream cipher}} with a built-in
+ {{{http://en.wikipedia.org/wiki/Message_authentication_code}MAC}} function.
+
+*--+--+--+
+||Service||JCA engine class||Description|
+*--+--+--+
+|Cipher|<<<{{{http://download.oracle.com/javase/6/docs/api/javax/crypto/Cipher.html}javax.crypto.Cipher}}>>>| Supports encryption, decryption, and key wrapping/unwrapping operation modes.\ |
+| | | Supports the Helix built-in MAC function for all operation modes.\ |
+| | | Generated MACs can be retrieved from algorithm parameters following an encryption or key-wrapping operation.\ |
+| | | Expected MACs for decryption or key-unwrapping operations can be provided as algorithm parameters when initializing the cipher.\ |
+| | | Supports the use of Helix as a pure stream cipher (i.e. without MAC function).|
+*--+--+--+
+|Mac|<<<{{{http://download.oracle.com/javase/6/docs/api/javax/crypto/Mac.html}javax.crypto.Mac}}>>>| Supports the use of Helix as a pure MAC function.|
+*--+--+--+
+|KeyGenerator|<<<{{{http://download.oracle.com/javase/6/docs/api/javax/crypto/KeyGenerator.html}javax.crypto.KeyGenerator}}>>>| Generates random Helix keys.\ |
+| | | Allows key sizes up to a maximum of 256 bits, in multiples of eight (256 bits is recommended, and is the default).|
+*--+--+--+
+|SecretKeyFactory|<<<{{{http://download.oracle.com/javase/6/docs/api/javax/crypto/SecretKeyFactory.html}javax.crypto.SecretKeyFactory}}>>>| Creates Helix secret keys from Helix key specifications (i.e. representations of raw key bytes), and vice-versa.|
+*--+--+--+
+|AlgorithmParameters|<<<{{{http://download.oracle.com/javase/6/docs/api/java/security/AlgorithmParameters.html}java.security.AlgorithmParameters}}>>>| Manages Helix parameters (nonce and MAC).\ |
+| | | Following an encryption or key-wrapping operation, the generated MAC can be retrieved from the <<<AlgorithmParameters>>> returned by the <<<Cipher>>>.|
+*--+--+--+
+<Helix services provided by the NinthTest JCA Provider>
