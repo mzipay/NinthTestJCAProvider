@@ -1,0 +1,263 @@
+~~ Copyright (c) 2011 Matthew Zipay <mattz@ninthtest.net>
+~~
+~~ This file is part of the NinthTest JCA Provider.
+~~
+~~ The NinthTest JCA Provider is free software: you can redistribute it and/or
+~~ modify it under the terms of the GNU General Public License as published by
+~~ the Free Software Foundation, either version 3 of the License, or (at your
+~~ option) any later version.
+~~
+~~ The NinthTest JCA Provider is distributed in the hope that it will be
+~~ useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+~~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+~~ Public License for more details.
+~~
+~~ You should have received a copy of the GNU General Public License along with
+~~ the NinthTest JCA Provider. If not, see <http://www.gnu.org/licenses/>.
+
+ ---
+ Using the NinthTest JCA Provider
+ ---
+ Matthew Zipay
+ ---
+
+Using the NinthTest JCA Provider
+
+ The following sections show code examples of common/recommended usage
+ scenarios by algorithm.
+
+ These examples are not exhaustive; please refer to the
+ {{{http://download.oracle.com/javase/6/docs/technotes/guides/security/crypto/CryptoSpec.html#CoreClasses}
+ Java\u2122 Cryptography Architecture Core Classes and Interfaces}} and the
+ {{{./apidocs/index.html}NinthTest JCA Provider API documentation}} for more
+ information.
+
+ Please refer to {{{./services.html}Security services provided by the NinthTest
+ JCA provider}} for more detailed information about the supported algorithms
+ and services.
+
+* Helix
+
+** Creating Helix secret keys
+
+*** Generate a 256-bit random secret key
+
+ The recommended Helix key size is 256 bits (which is also the <maximum> key
+ size). The NinthTest JCA Provider uses a 256-bit key size as the default when
+ generating a random secret key.
+
++--
+KeyGenerator keyGenerator = KeyGenerator.getInstance("Helix", "NinthTest");
+SecretKey secretKey = keyGenerator.generateKey();
++--
+
+*** Generate a random secret key of a specified size
+
+ Initialize the key generator with a size in bits (must be less than 256 and a
+ multiple of eight) to create a secret key with a specified size.
+
+ <<Key sizes less than 128 bits are not recommended.>>
+
++--
+KeyGenerator keyGenerator = KeyGenerator.getInstance("Helix", "NinthTest");
+keyGenerator.init(192);
+SecretKey secretKey = keyGenerator.generateKey();
++--
+
+*** Generate a secret key from key material
+
+ Store the raw bytes in a Helix key specification, then use a secret key
+ factory to create the secret key.
+
++--
+HelixKeySpec keySpec = new HelixKeySpec("KeepMeSecret".getBytes("UTF-8"));
+SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("Helix", "NinthTest");
+SecretKey secretKey = keyFactory.generateSecret(keySpec);
++--
+
+ See:
+
+    * <<<{{{http://download.oracle.com/javase/6/docs/api/javax/crypto/KeyGenerator.html}javax.crypto.KeyGenerator}}>>>
+
+    * <<<{{{http://download.oracle.com/javase/6/docs/api/javax/crypto/SecretKey.html}javax.crypto.SecretKey}}>>>
+
+    * <<<{{{http://download.oracle.com/javase/6/docs/api/javax/crypto/SecretKeyFactory.html}javax.crypto.SecretKeyFactory}}>>>
+
+    * <<<{{{./apidocs/net/ninthtest/crypto/provider/helix/HelixKeyGenerator.html}net.ninthtest.crypto.provider.helix.HelixKeyGenerator}}>>>
+
+    * <<<{{{./apidocs/net/ninthtest/crypto/provider/helix/HelixKeySpec.html}net.ninthtest.crypto.provider.helix.HelixKeySpec}}>>>
+
+** Helix encryption
+
+*** Initialize the Helix cipher with a randomly-generated nonce
+
+ Initializing the cipher for encryption <<without>> specifying a nonce causes
+ the NinthTest JCA Provider to generate a random nonce. Be sure to save this
+ generated nonce, as it will be required for decryption!
+
++--
+Cipher cipher = Cipher.getInstance("Helix", "NinthTest");
+cipher.init(Cipher.ENCRYPT_MODE, secretKey);
+byte[] randomNonce = cipher.getIV();
++--
+
+*** Initialize the Helix cipher with an explicit nonce
+
+ Store the nonce bytes in a Helix parameter specification, then initialize the
+ cipher for encryption. The nonce <must> be 16 bytes in length.
+
++--
+byte[] nonce = "MustBe16Bytes!!!".getBytes("US-ASCII");
+HelixParameterSpec paramSpec = new HelixParameterSpec(nonce);
+Cipher cipher = Cipher.getInstance("Helix", "NinthTest");
+cipher.init(Cipher.ENCRYPT_MODE, secretKey, paramSpec);
++--
+
+*** Retrieve the generated MAC after encryption
+
+ Use the algorithm parameters returned by the cipher <after> a successful
+ encryption operation (but <before> calling <<<Cipher#init()>>> again) to
+ obtain the generated MAC bytes.
+
++--
+...
+byte[] cipherText = cipher.doFinal(plainText);
+AlgorithmParameters params = cipher.getParameters();
+HelixParameterSpec paramSpec = params.getParameterSpec(HelixParameterSpec.class);
+byte[] generatedMac = paramSpec.getMac();
++--
+
+ See:
+
+    * <<<{{{http://download.oracle.com/javase/6/docs/api/java/security/AlgorithmParameters.html}java.security.AlgorithmParameters}}>>>
+
+    * <<<{{{http://download.oracle.com/javase/6/docs/api/javax/crypto/Cipher.html}javax.crypto.Cipher}}>>>
+
+    * <<<{{{./apidocs/net/ninthtest/crypto/provider/helix/HelixAlgorithmParameters.html}net.ninthtest.crypto.provider.helix.HelixAlgorithmParameters}}>>>
+
+    * <<<{{{./apidocs/net/ninthtest/crypto/provider/helix/HelixCipher.html}net.ninthtest.crypto.provider.helix.HelixCipher}}>>>
+
+    * <<<{{{./apidocs/net/ninthtest/crypto/provider/helix/HelixParameterSpec.html}net.ninthtest.crypto.provider.helix.HelixParameterSpec}}>>>
+
+** Helix message authentication
+
+ <<Note:>> It is not possible to initialize a Helix <<<Mac>>> <without> a
+ Helix parameter specification, because Helix requires a nonce.
+
+*** Generate a Helix MAC using a random nonce
+
+ Use a secure random number generator to generate the random nonce. Be sure to
+ save this generated nonce; you must use the <same> nonce for
+ encryption/decryption in order for the generated MAC to be useful.
+
++--
+SecureRandom rng = new SecureRandom();
+byte[] randomNonce = new byte[16];
+rng.nextBytes(randomNonce);
+HelixParameterSpec paramSpec = new HelixParameterSpec(randomNonce);
+Mac macFunction = Mac.getInstance("Helix", "NinthTest");
+macFunction.init(secretKey, paramSpec);
+byte[] mac = macFunction.doFinal(plainText);
++--
+
+*** Generate a Helix MAC using a specified nonce
+
++--
+byte[] nonce = "MustBe16Bytes!!!".getBytes("US-ASCII");
+HelixParameterSpec paramSpec = new HelixParameterSpec(nonce);
+Mac macFunction = Mac.getInstance("Helix", "NinthTest");
+macFunction.init(secretKey, paramSpec);
+byte[] mac = macFunction.doFinal(plainText);
++--
+
+ See:
+
+    * <<<{{{http://download.oracle.com/javase/6/docs/api/java/security/SecureRandom.html}java.security.SecureRandom}}>>>
+
+    * <<<{{{http://download.oracle.com/javase/6/docs/api/javax/crypto/Mac.html}javax.crypto.Mac}}>>>
+
+    * <<<{{{./apidocs/net/ninthtest/crypto/provider/helix/HelixParameterSpec.html}net.ninthtest.crypto.provider.helix.HelixParameterSpec}}>>>
+
+** Helix decryption
+
+*** Decrypt <and> authenticate a message
+
+ Specify the expected MAC as part of the Helix parameter specification. If
+ message authentication fails, an exception is thrown.
+
++--
+HelixParameterSpec paramSpec = new HelixParameterSpec(nonce, expectedMac);
+Cipher cipher = Cipher.getInstance("Helix", "NinthTest");
+cipher.init(Cipher.DECRYPT_MODE, secretKey, paramSpec);
+// throws MessageAuthenticationException if message authentication fails
+byte[] plainText = cipher.doFinal(cipherText);
++--
+
+*** Decrypt <only>
+
+ Do not include the expected MAC as part of the Helix parameter specification.
+ Message authentication will be bypassed (i.e. Helix will be used as a pure
+ stream cipher).
+
++--
+HelixParameterSpec paramSpec = new HelixParameterSpec(nonce);
+Cipher cipher = Cipher.getInstance("Helix", "NinthTest");
+cipher.init(Cipher.DECRYPT_MODE, secretKey, paramSpec);
+// message authentication is not attempted
+byte[] plainText = cipher.doFinal(cipherText);
++--
+
+ See:
+
+    * <<<{{{http://download.oracle.com/javase/6/docs/api/javax/crypto/Cipher.html}javax.crypto.Cipher}}>>>
+
+    * <<<{{{./apidocs/net/ninthtest/crypto/MessageAuthenticationException.html}net.ninthtest.crypto.MessageAuthenticationException}}>>>
+
+    * <<<{{{./apidocs/net/ninthtest/crypto/provider/helix/HelixCipher.html}net.ninthtest.crypto.provider.helix.HelixCipher}}>>>
+
+    * <<<{{{./apidocs/net/ninthtest/crypto/provider/helix/HelixParameterSpec.html}net.ninthtest.crypto.provider.helix.HelixParameterSpec}}>>>
+
+** Non-provider usage of Helix
+
+ The Helix cryptographic primitive may also be used independently of the JCA by
+ using the <<<HelixPrimitive>>>, <<<HelixEncryption>>>, and
+ <<<HelixDecryption>>> classes directly.
+
+*** Non-provider Helix encryption
+
++--
+HelixPrimitive helixEncryption = new HelixEncryption(key, nonce);
+byte[] cipherText = helixEncryption.finish(plainText);
+byte[] generatedMac = helixEncryption.getGeneratedMac();
++--
+
+*** Non-provider Helix decryption <with> MAC verification
+
+ Specify the expected MAC when constructing <<<HelixDecryption>>>. If message
+ authentication fails, an exception is thrown.
+
++--
+HelixPrimitive helixDecryption = new HelixDecryption(key, nonce, expectedMac);
+// throws MessageAuthenticationException if expected MAC != generated MAC
+byte[] plaintText = helixEncryption.finish(cipherText);
++--
+
+*** Non-provider Helix decryption <only>
+
+ Do not include the expected MAC when constructing <<<HelixDecryption>>>.
+ Message authentication will be bypassed (i.e. Helix will be used as a pure
+ stream cipher).
+
++--
+HelixPrimitive helixDecryption = new HelixDecryption(key, nonce);
+// message authentication is not attempted
+byte[] plaintText = helixEncryption.finish(cipherText);
++--
+
+ See:
+
+    * <<<{{{./apidocs/net/ninthtest/crypto/helix/HelixDecryption.html}net.ninthtest.crypto.helix.HelixDecryption}}>>>
+
+    * <<<{{{./apidocs/net/ninthtest/crypto/helix/HelixEncryption.html}net.ninthtest.crypto.helix.HelixEncryption}}>>>
+
+    * <<<{{{./apidocs/net/ninthtest/crypto/helix/HelixPrimitive.html}net.ninthtest.crypto.helix.HelixPrimitive}}>>>

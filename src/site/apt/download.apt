@@ -1,0 +1,195 @@
+~~ Copyright (c) 2011 Matthew Zipay <mattz@ninthtest.net>
+~~
+~~ This file is part of the NinthTest JCA Provider.
+~~
+~~ The NinthTest JCA Provider is free software: you can redistribute it and/or
+~~ modify it under the terms of the GNU General Public License as published by
+~~ the Free Software Foundation, either version 3 of the License, or (at your
+~~ option) any later version.
+~~
+~~ The NinthTest JCA Provider is distributed in the hope that it will be
+~~ useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+~~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+~~ Public License for more details.
+~~
+~~ You should have received a copy of the GNU General Public License along with
+~~ the NinthTest JCA Provider. If not, see <http://www.gnu.org/licenses/>.
+
+ ---
+ Downloading and installing the NinthTest JCA Provider
+ ---
+ Matthew Zipay
+ ---
+
+Downloading and installing the NinthTest JCA Provider
+
+ The NinthTest JCA Provider is available in both binary (JAR) and source forms.
+ Please note that Java SE version 6 is required.
+
+ The
+ {{{http://download.oracle.com/javase/6/docs/technotes/guides/security/crypto/CryptoSpec.html}
+ Java\u2122 Cryptography Architecture}} requires that Java security providers
+ be code-signed (using a code-signing certificate issued by Oracle Corporation).
+ As a consequence of this requirement, a JAR that is compiled directly from
+ source <<will not>> permit the use of the JCA engine classes implemented by
+ the NinthTest JCA Provider. If you wish to use the NinthTest JCA Provider,
+ you <must> download the signed JAR.
+
+ The non-JCA classes (see the
+ {{{./apidocs/index.html}NinthTest JCA Provider API documentation}} and the
+ examples in {{{./usage.html}Using the NinthTest JCA Provider}}) are not subject
+ to the code-signing requirement, and can be used without restriction whether
+ you download the signed JAR or compile from source.
+
+* Download the signed NinthTest JCA Provider JAR
+
+ This download is recommended for general use of the NinthTest JCA Provider.
+
+** Version 1.0
+
+ This release adds support for the
+ {{{http://www.macfergus.com/helix/index.html}Helix combined stream cipher and
+ MAC function}} (<Cipher>, <Mac>, <SecretKeyFactory>, <AlgorithmParameters>,
+ and <KeyGenerator> services).
+
+*--+--+--+
+|| Filename || Description || MD5 |
+*--+--+--+
+| {{{./releases/ninthtest_provider-1.0.jar}ninthtest_provider-1.0}} | The signed NinthTest JCA Provider 1.0 JAR. | <<<062d4e4e903ae10d543dd170bfa8cd78>>> |
+*--+--+--+
+Version 1.0
+
+* Download the NinthTest JCA Provider source code
+
+ This download is recommended if you wish to create a derivative work, or are
+ interested in examining the NinthTest JCA Provider source code for any other
+ reason.
+
+ Source code is available by cloning the
+ {{{https://bitbucket.org/mzipay/ninthtest-jca-provider}NinthTest JCA Provider
+ Mercurial repository}} from BitBucket. The source code is licensed under the
+ {{{http://www.opensource.org/licenses/LGPL-3.0}GNU Lesser General Public
+ License, version 3.0 (LGPL-3.0)}}.
+
+ <<Note:>> If you wish to create a derivative work, <even for personal
+ (non-distribution) use>, you must obtain your own code-signing certificate
+ from Oracle Corporation to sign the JAR. Please refer to
+ {{{http://download.oracle.com/javase/6/docs/technotes/guides/security/crypto/HowToImplAProvider.html}
+ How to Implement a Provider in the Java\u2122 Cryptography Architecture}}
+ (step 6) for details.
+
+* Install the NinthTest JCA Provider
+
+ Once you have acquired the binary (JAR) of the NinthTest JCA Provider, you
+ must take additional steps to <<install>> or <<register>> the provider before
+ using it; <it is not sufficient to simply place the JAR on your CLASSPATH!>
+ This is a security provision of the
+ {{{http://download.oracle.com/javase/6/docs/technotes/guides/security/crypto/CryptoSpec.html}
+ Java\u2122 Cryptography Architecture}}.
+
+ The sections below describe the differences between "installing" and
+ "registering" the NinthTest JCA Provider, and include the requisite steps
+ for each approach.
+
+ Choose the option that best suits your needs. Please note that installing or
+ registering the provider is not necessary if you only wish to use the non-JCA
+ classes (see the
+ {{{./apidocs/index.html}NinthTest JCA Provider API documentation}} and the
+ examples in {{{./usage.html}Using the NinthTest JCA Provider}}).
+
+** Use the NinthTest JCA Provider as an 
+   {{{http://download.oracle.com/javase/6/docs/technotes/guides/extensions/spec.html#installed}
+   installed extension}}
+
+ This form of installation is persistent; the steps only need to be followed
+ once for any given release.
+
+    [[1]] Copy the downloaded <ninthtest-provider.jar> file into your
+          <<<JAVA_HOME/lib/ext>>> directory.
+
+    [[2]] Add the <<<NinthTestProvider>>> class to the list of approved
+          providers in the Java security properties file (see below).
+
+ Approved providers are identified in the Java security properties file,
+ <<<JAVA_HOME/lib/security/java.security>>>. The comments in that file explain
+ how to add an approved provider:
+
++--
+# To register a provider in this master security properties file,
+# specify the Provider subclass name and priority in the format
+#
+#    security.provider.<n>=<className>
+#
+# This declares a provider, and specifies its preference
+# order n. The preference order is the order in which providers are 
+# searched for requested algorithms (when no specific provider is
+# requested). The order is 1-based; 1 is the most preferred, followed
+# by 2, and so on.
++--
+
+ For example, if the last approved provider has the property name
+ <<<security.provider.10>>>, add the following line:
+
++--
+security.provider.11=net.ninthtest.security.provider.NinthTestProvider
++--
+
+** Use the NinthTest JCA Provider as a dynamically-registered provider
+
+ Please note that dynamic registration of a provider is not persistent.
+
+    [[1]] Reference the downloaded <ninthtest_provider.jar> on your
+          application's <<<CLASSPATH>>>.
+
+    [[2]] Grant permissions to the NinthTest JCA Provider (see below).
+
+ When registered dynamically, the NinthTest JCA Provider requires permission
+ from the security manager for <<<getProtectionDomain>>>, <<<insertProvider>>>,
+ and <<<putProviderProperty>>> operations.
+
+ These permissions can be granted to the NinthTest JCA Provider by placing the
+ following <grant> entry into your <<<HOME/.java.policy>>> file. Change the
+ location of the <ninthtest_provider.jar> file to match the location on your
+ system. For example:
+
++--
+grant codeBase "file:/path/to/ninthtest_provider.jar" {
+    permission java.lang.RuntimePermission "getProtectionDomain";
+    permission java.security.SecurityPermission "insertProvider.NinthTestProvider";
+    permission java.security.SecurityPermission "putProviderProperty.NinthTestProvider";
+};
++--
+
+* Versioning
+
+ Support for new algorithms will increment the major version, while support for
+ new services for an existing algorithm will increment the minor version.
+ Defect fixes will be accumulated, and will introduce or increment a micro
+ version.
+
+ For example, given a base version of <<<M.N>>> the following table illustrates
+ the effect of changes on the version increment:
+
+*----------------------------------+-------------*
+New algorithm                      | <<<(M+1).N>>>
+*----------------------------------+-------------*
+New service for existing algorithm | <<<M.(N+1)>>>
+*----------------------------------+-------------*
+Defect fix(es)                     | <<<M.N.1>>>
+*----------------------------------+-------------*
+
+ Version increments are treated cumulatively. For example, a changeset
+ introducing a new algorithm, <and> a new service for an existing algorithm,
+ <and> one or more defect fixes will increment just the major version.
+
+* Redistributing
+
+ Because the NinthTest JCA Provider deals with encryption, it is subject to
+ U.S. Export Regulations. The source code provided by
+ {{http://www.ninthtest.net/}} is classified as <<ECCN 5D002>>, and takes
+ advantage of <<License Exception TSU under section 740.13(e)>> of the Export
+ Administration Regulations (EAR).
+
+ Derivative works and/or redistribution may be subject to additional or
+ alternate restrictions. Please visit {{http://www.bis.doc.gov/}} for more
+ information.
