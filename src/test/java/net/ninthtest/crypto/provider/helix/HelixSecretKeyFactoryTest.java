@@ -1,18 +1,18 @@
 /*
- * Copyright (c) 2011 Matthew Zipay <mattz@ninthtest.net>
+ * Copyright (c) 2011-2014 Matthew Zipay <mattz@ninthtest.net>
  * 
  * This file is part of the NinthTest JCA Provider.
- *
+ * 
  * The NinthTest JCA Provider is free software: you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or (at your
  * option) any later version.
- *
- * The NinthTest JCA Provider is distributed in the hope that it will be
- * useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * 
+ * The NinthTest JCA Provider is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
  * Public License for more details.
- *
+ * 
  * You should have received a copy of the GNU General Public License along with
  * the NinthTest JCA Provider. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -21,6 +21,7 @@ package net.ninthtest.crypto.provider.helix;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
@@ -40,10 +41,10 @@ import org.junit.Test;
  * The unit test case for {@link HelixSecretKeyFactory}.
  * 
  * @author Matthew Zipay (mattz@ninthtest.net)
- * @version 1.0
+ * @version 1.1.0
  */
 public class HelixSecretKeyFactoryTest {
-    /* the instance used by test fixtures */
+    /* The instance used by unit tests. */
     private HelixSecretKeyFactory factory;
 
     /**
@@ -60,7 +61,8 @@ public class HelixSecretKeyFactoryTest {
      * Asserts that {@link HelixSecretKeyFactory#engineGenerateSecret(KeySpec)}
      * rejects a <tt>null</tt> {@link KeySpec} argument.
      * 
-     * @throws InvalidKeySpecException if the test succeeds
+     * @throws InvalidKeySpecException
+     *             if the test succeeds
      */
     @Test(expected = InvalidKeySpecException.class)
     public void engineGenerateSecretRejectsNullKeySpec() throws InvalidKeySpecException {
@@ -71,8 +73,10 @@ public class HelixSecretKeyFactoryTest {
      * Asserts that {@link HelixSecretKeyFactory#engineGenerateSecret(KeySpec)}
      * rejects a non-{@link HelixKeySpec} argument.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidKeySpecException if the test succeeds
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidKeySpecException
+     *             if the test succeeds
      */
     @Test(expected = InvalidKeySpecException.class)
     public void engineGenerateSecretRejectsNonHelixKeySpec() throws InvalidKeyException, InvalidKeySpecException {
@@ -85,7 +89,8 @@ public class HelixSecretKeyFactoryTest {
      * Asserts that {@link HelixSecretKeyFactory#engineGenerateSecret(KeySpec)}
      * accepts a {@link HelixKeySpec} argument.
      * 
-     * @throws InvalidKeySpecException if the test fails
+     * @throws InvalidKeySpecException
+     *             if the test fails
      */
     @Test
     public void engineGenerateSecretAcceptsHelixKeySpec() throws InvalidKeySpecException {
@@ -97,7 +102,8 @@ public class HelixSecretKeyFactoryTest {
      * Asserts that {@link HelixSecretKeyFactory#engineGenerateSecret(KeySpec)}
      * generates a Helix secret key.
      * 
-     * @throws InvalidKeySpecException if the test fails
+     * @throws InvalidKeySpecException
+     *             if the test fails
      */
     @Test
     public void engineGenerateSecretHelixKey() throws InvalidKeySpecException {
@@ -111,7 +117,8 @@ public class HelixSecretKeyFactoryTest {
      * Asserts that {@link HelixSecretKeyFactory#engineGenerateSecret(KeySpec)}
      * generates <i>RAW</i>-format secret keys.
      * 
-     * @throws InvalidKeySpecException if the test fails
+     * @throws InvalidKeySpecException
+     *             if the test fails
      */
     @Test
     public void engineGenerateSecretRAWFormat() throws InvalidKeySpecException {
@@ -125,7 +132,8 @@ public class HelixSecretKeyFactoryTest {
      * Asserts that {@link HelixSecretKeyFactory#engineGenerateSecret(KeySpec)}
      * generates the expected secret key bytes.
      * 
-     * @throws InvalidKeySpecException if the test fails
+     * @throws InvalidKeySpecException
+     *             if the test fails
      */
     @Test
     public void engineGenerateSecretExpectedKeyBytes() throws InvalidKeySpecException {
@@ -147,7 +155,8 @@ public class HelixSecretKeyFactoryTest {
      * {@link HelixSecretKeyFactory#engineGetKeySpec(SecretKey, Class)} rejects
      * a <tt>null</tt> {@link SecretKey} argument.
      * 
-     * @throws InvalidKeySpecException if the test succeeds
+     * @throws InvalidKeySpecException
+     *             if the test succeeds
      */
     @Test(expected = InvalidKeySpecException.class)
     public void engineGetKeySpecRejectsNullSecretKey() throws InvalidKeySpecException {
@@ -159,7 +168,8 @@ public class HelixSecretKeyFactoryTest {
      * {@link HelixSecretKeyFactory#engineGetKeySpec(SecretKey, Class)} rejects
      * a non-Helix {@link SecretKey} argument.
      * 
-     * @throws InvalidKeySpecException if the test succeeds
+     * @throws InvalidKeySpecException
+     *             if the test succeeds
      */
     @Test(expected = InvalidKeySpecException.class)
     public void engineGetKeySpecRejectsNonHelixSecretKey() throws InvalidKeySpecException {
@@ -173,11 +183,13 @@ public class HelixSecretKeyFactoryTest {
      * {@link HelixSecretKeyFactory#engineGetKeySpec(SecretKey, Class)} rejects
      * a non-<i>RAW</i>-format {@link SecretKey} argument.
      * 
-     * @throws InvalidKeySpecException if the test succeeds
+     * @throws InvalidKeySpecException
+     *             if the test succeeds
      */
     @Test(expected = InvalidKeySpecException.class)
     public void engineGetKeySpecRejectsNonRAWSecretKey() throws InvalidKeySpecException {
-        @SuppressWarnings("serial") SecretKey secret = new SecretKeySpec(new byte[32], NinthTestProvider.HELIX) {
+        @SuppressWarnings("serial")
+        SecretKey secret = new SecretKeySpec(new byte[32], NinthTestProvider.HELIX) {
             @Override
             public String getFormat() {
                 return "NotRAW";
@@ -192,7 +204,8 @@ public class HelixSecretKeyFactoryTest {
      * {@link HelixSecretKeyFactory#engineGetKeySpec(SecretKey, Class)} rejects
      * a <tt>null</tt> class argument}.
      * 
-     * @throws InvalidKeySpecException if the test succeeds
+     * @throws InvalidKeySpecException
+     *             if the test succeeds
      */
     @Test(expected = InvalidKeySpecException.class)
     public void engineGetKeySpecRejectsNullClass() throws InvalidKeySpecException {
@@ -206,12 +219,12 @@ public class HelixSecretKeyFactoryTest {
      * {@link HelixSecretKeyFactory#engineGetKeySpec(SecretKey, Class)} rejects
      * a non-{@link HelixKeySpec} class argument.
      * 
-     * @throws InvalidKeySpecException if the test succeeds
+     * @throws InvalidKeySpecException
+     *             if the test succeeds
      */
     @Test(expected = InvalidKeySpecException.class)
     public void engineGetKeySpecRejectsNonHelixClass() throws InvalidKeySpecException {
         SecretKey secret = new SecretKeySpec(new byte[32], NinthTestProvider.HELIX);
-
         factory.engineGetKeySpec(secret, DESKeySpec.class);
     }
 
@@ -220,12 +233,14 @@ public class HelixSecretKeyFactoryTest {
      * {@link HelixSecretKeyFactory#engineGetKeySpec(SecretKey, Class)} accepts
      * a {@link HelixKeySpec} class argument.
      * 
-     * @throws InvalidKeySpecException if the test fails
+     * @throws InvalidKeySpecException
+     *             if the test fails
      */
     @Test
     public void engineGetKeySpecAcceptsHelixClass() throws InvalidKeySpecException {
         SecretKey secret = new SecretKeySpec(new byte[32], NinthTestProvider.HELIX);
-        factory.engineGetKeySpec(secret, HelixKeySpec.class);
+        KeySpec actualKeySpec = factory.engineGetKeySpec(secret, HelixKeySpec.class);
+        assertTrue(actualKeySpec instanceof HelixKeySpec);
     }
 
     /**
@@ -233,7 +248,8 @@ public class HelixSecretKeyFactoryTest {
      * {@link HelixSecretKeyFactory#engineGetKeySpec(SecretKey, Class)} produces
      * the expected {@link HelixKeySpec} object.
      * 
-     * @throws InvalidKeySpecException if the test fails
+     * @throws InvalidKeySpecException
+     *             if the test fails
      */
     @Test
     public void engineGetKeySpecExpectedHelixObject() throws InvalidKeySpecException {
@@ -254,7 +270,8 @@ public class HelixSecretKeyFactoryTest {
      * Asserts that {@link HelixSecretKeyFactory#engineTranslateKey(SecretKey)}
      * rejects a <tt>null</tt> {@link SecretKey} argument.
      * 
-     * @throws InvalidKeyException if the test succeeds
+     * @throws InvalidKeyException
+     *             if the test succeeds
      */
     @Test(expected = InvalidKeyException.class)
     public void engineTranslateKeyRejectsNullSecretKey() throws InvalidKeyException {
@@ -265,7 +282,8 @@ public class HelixSecretKeyFactoryTest {
      * Asserts that {@link HelixSecretKeyFactory#engineTranslateKey(SecretKey)}
      * successfully translates a secret key of less than 32 bytes.
      * 
-     * @throws InvalidKeyException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
      */
     @Test
     public void engineTranslateKeyLT32Bytes() throws InvalidKeyException {
@@ -279,8 +297,10 @@ public class HelixSecretKeyFactoryTest {
      * Asserts that {@link HelixSecretKeyFactory#engineTranslateKey(SecretKey)}
      * successfully translates a secret key of greater than 32 bytes.
      * 
-     * @throws NoSuchAlgorithmException if the test fails
-     * @throws InvalidKeyException if the test fails
+     * @throws NoSuchAlgorithmException
+     *             if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
      */
     @Test
     public void engineTranslateKeyGT32Bytes() throws NoSuchAlgorithmException, InvalidKeyException {

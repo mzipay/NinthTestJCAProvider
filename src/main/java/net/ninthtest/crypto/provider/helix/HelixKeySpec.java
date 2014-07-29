@@ -1,18 +1,18 @@
 /*
- * Copyright (c) 2011 Matthew Zipay <mattz@ninthtest.net>
+ * Copyright (c) 2011-2014 Matthew Zipay <mattz@ninthtest.net>
  * 
  * This file is part of the NinthTest JCA Provider.
- *
+ * 
  * The NinthTest JCA Provider is free software: you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or (at your
  * option) any later version.
- *
- * The NinthTest JCA Provider is distributed in the hope that it will be
- * useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * 
+ * The NinthTest JCA Provider is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
  * Public License for more details.
- *
+ * 
  * You should have received a copy of the GNU General Public License along with
  * the NinthTest JCA Provider. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -46,7 +46,8 @@ public class HelixKeySpec implements KeySpec {
      * of key material will be used.
      * </p>
      * 
-     * @param key the buffer containing Helix key material (bytes are copied to
+     * @param key
+     *            the buffer containing Helix key material (bytes are copied to
      *            protect against subsequent modification)
      */
     public HelixKeySpec(byte[] key) {
@@ -64,10 +65,11 @@ public class HelixKeySpec implements KeySpec {
      * <tt>(key.length - offset)</tt> and <tt>32</tt>.
      * </p>
      * 
-     * @param key the buffer containing Helix key material (bytes are copied to
+     * @param key
+     *            the buffer containing Helix key material (bytes are copied to
      *            protect against subsequent modification)
-     * @param offset the index into <i>key</i> where the Helix key material
-     *            begins
+     * @param offset
+     *            the index into <i>key</i> where the Helix key material begins
      */
     public HelixKeySpec(byte[] key, int offset) {
         if (key == null) {

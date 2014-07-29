@@ -1,18 +1,18 @@
 /*
- * Copyright (c) 2011 Matthew Zipay <mattz@ninthtest.net>
+ * Copyright (c) 2011-2014 Matthew Zipay <mattz@ninthtest.net>
  * 
  * This file is part of the NinthTest JCA Provider.
- *
+ * 
  * The NinthTest JCA Provider is free software: you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or (at your
  * option) any later version.
- *
- * The NinthTest JCA Provider is distributed in the hope that it will be
- * useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * 
+ * The NinthTest JCA Provider is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
  * Public License for more details.
- *
+ * 
  * You should have received a copy of the GNU General Public License along with
  * the NinthTest JCA Provider. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -49,11 +49,13 @@ public final class HelixSecretKeyFactory extends SecretKeyFactorySpi {
      * Generates a {@link SecretKey} object from the provided key specification
      * (key material).
      * 
-     * @param keySpec the Helix secret key material (must be a
-     *            {@link HelixKeySpec})
+     * @param keySpec
+     *            the Helix secret key material (must be a {@link HelixKeySpec}
+     *            )
      * @return a Helix secret key
-     * @throws InvalidKeySpecException if <i>keySpec</i> is <tt>null</tt> or
-     *             not a {@link HelixKeySpec}
+     * @throws InvalidKeySpecException
+     *             if <i>keySpec</i> is <tt>null</tt> or not a
+     *             {@link HelixKeySpec}
      * @see javax.crypto.SecretKeyFactorySpi#engineGenerateSecret(java.security.spec.KeySpec)
      */
     @Override
@@ -69,14 +71,16 @@ public final class HelixSecretKeyFactory extends SecretKeyFactorySpi {
      * Returns a specification (key material) of the given key object in the
      * requested format.
      * 
-     * @param key a Helix secret key
-     * @param keySpec specifies the format for the secret key material
+     * @param key
+     *            a Helix secret key
+     * @param keySpec
+     *            specifies the format for the secret key material
      * @return the key material for the Helix secret key
-     * @throws InvalidKeySpecException if <i>key</i> is <tt>null</tt> or not
-     *             a &quot;Helix&quot; secret key in &quot;RAW&quot; format; or
-     *             if <i>keySpec</i> is <tt>null</tt> or not the class of
-     *             {@link HelixKeySpec}); or if an error occurs while creating
-     *             the {@link HelixKeySpec} from the secret key
+     * @throws InvalidKeySpecException
+     *             if <i>key</i> is <tt>null</tt> or not a Helix secret key in
+     *             "RAW" format; or if <i>keySpec</i> is <tt>null</tt> or not
+     *             the class of {@link HelixKeySpec}); or if an error occurs
+     *             while creating the {@link HelixKeySpec} from the secret key
      * @see javax.crypto.SecretKeyFactorySpi#engineGetKeySpec(javax.crypto.SecretKey,
      *      java.lang.Class)
      */
@@ -106,10 +110,12 @@ public final class HelixSecretKeyFactory extends SecretKeyFactorySpi {
      * Only the first 32 bytes from <tt>key</tt> are used in the translation.
      * </p>
      * 
-     * @param key a secret key (presumably <b>not</b> a Helix secret key)
+     * @param key
+     *            a secret key (presumably <b>not</b> a Helix secret key)
      * @return a Helix secret key
-     * @throws InvalidKeyException if <i>key</i> is <tt>null</tt>; or if
-     *             <i>key</i> cannot be used to create a Helix secret key
+     * @throws InvalidKeyException
+     *             if <i>key</i> is <tt>null</tt>; or if <i>key</i> cannot be
+     *             used to create a Helix secret key
      * @see javax.crypto.SecretKeyFactorySpi#engineTranslateKey(javax.crypto.SecretKey)
      */
     @Override

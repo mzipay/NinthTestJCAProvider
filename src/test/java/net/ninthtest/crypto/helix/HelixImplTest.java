@@ -1,18 +1,18 @@
 /*
- * Copyright (c) 2011 Matthew Zipay <mattz@ninthtest.net>
+ * Copyright (c) 2011-2014 Matthew Zipay <mattz@ninthtest.net>
  * 
  * This file is part of the NinthTest JCA Provider.
- *
+ * 
  * The NinthTest JCA Provider is free software: you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or (at your
  * option) any later version.
- *
- * The NinthTest JCA Provider is distributed in the hope that it will be
- * useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * 
+ * The NinthTest JCA Provider is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
  * Public License for more details.
- *
+ * 
  * You should have received a copy of the GNU General Public License along with
  * the NinthTest JCA Provider. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -35,10 +35,10 @@ public class HelixImplTest implements HelixTestVectors {
      * Creates a generic HelixImpl instance for testing.
      * 
      * The instance returned by this method can only be used for testing general
-     * behavior, as the implementation of the
-     * HelixImpl#transformWords(int[], int) method is intentionally "dumb."
-     * Any tests that require a working primitive for encryption or decryption
-     * belong in HelixEncryptionTest or HelixDecryptionTest, respectively.
+     * behavior, as the implementation of the HelixImpl#transformWords(int[],
+     * int) method is intentionally "dumb." Any tests that require a working
+     * primitive for encryption or decryption belong in HelixEncryptionTest or
+     * HelixDecryptionTest, respectively.
      */
     private static HelixImpl createPrimitive(final byte[] key, final byte[] nonce) {
         return new HelixImpl(key, nonce) {
@@ -61,8 +61,8 @@ public class HelixImplTest implements HelixTestVectors {
     }
 
     /**
-     * Asserts that <tt>HelixImpl</tt> cannot be instantiated with a key
-     * longer than 32 bytes.
+     * Asserts that <tt>HelixImpl</tt> cannot be instantiated with a key longer
+     * than 32 bytes.
      */
     @Test(expected = IllegalArgumentException.class)
     public void initRejectsKeyLongerThan32Bytes() {
@@ -70,8 +70,8 @@ public class HelixImplTest implements HelixTestVectors {
     }
 
     /**
-     * Asserts that <tt>HelixImpl</tt> can be instantiated with a key
-     * shorter than 32 bytes.
+     * Asserts that <tt>HelixImpl</tt> can be instantiated with a key shorter
+     * than 32 bytes.
      */
     @Test
     public void initAcceptsKeyShorterThan32Bytes() {
@@ -79,8 +79,8 @@ public class HelixImplTest implements HelixTestVectors {
     }
 
     /**
-     * Asserts that <tt>HelixImpl</tt> can be instantiated with a key of
-     * exactly 32 bytes.
+     * Asserts that <tt>HelixImpl</tt> can be instantiated with a key of exactly
+     * 32 bytes.
      */
     @Test
     public void initAcceptsKeyOfExactly32Bytes() {
@@ -115,8 +115,8 @@ public class HelixImplTest implements HelixTestVectors {
     }
 
     /**
-     * Asserts that <tt>HelixImpl</tt> initializes the expected
-     * &quot;working key&quot; using Helix test vector #1.
+     * Asserts that <tt>HelixImpl</tt> initializes the expected "working key"
+     * using Helix test vector #1.
      */
     @Test
     public void initProducesExpectedWorkingKey1() {
@@ -125,8 +125,8 @@ public class HelixImplTest implements HelixTestVectors {
     }
 
     /**
-     * Asserts that <tt>HelixImpl</tt> initializes the expected
-     * &quot;working key&quot; using Helix test vector #2.
+     * Asserts that <tt>HelixImpl</tt> initializes the expected "working key"
+     * using Helix test vector #2.
      */
     @Test
     public void initProducesExpectedWorkingKey2() {
@@ -135,8 +135,8 @@ public class HelixImplTest implements HelixTestVectors {
     }
 
     /**
-     * Asserts that <tt>HelixImpl</tt> initializes the expected
-     * &quot;working key&quot; using Helix test vector #3.
+     * Asserts that <tt>HelixImpl</tt> initializes the expected "working key"
+     * using Helix test vector #3.
      */
     @Test
     public void initProducesExpectedWorkingKey3() {
@@ -157,8 +157,8 @@ public class HelixImplTest implements HelixTestVectors {
     }
 
     /**
-     * Asserts that <tt>HelixImpl#feed(byte[])</tt> fails if the primitive
-     * has already been used to complete an encryption operation.
+     * Asserts that <tt>HelixImpl#feed(byte[])</tt> fails if the primitive has
+     * already been used to complete an encryption operation.
      */
     @Test(expected = IllegalStateException.class)
     public void feedFailsIfPrimitiveHasAlreadyCompleted() {
@@ -169,8 +169,8 @@ public class HelixImplTest implements HelixTestVectors {
     }
 
     /**
-     * Asserts that <tt>HelixImpl#feed(byte[])</tt> only processes whole
-     * words at a time, buffering extra bytes.
+     * Asserts that <tt>HelixImpl#feed(byte[])</tt> only processes whole words
+     * at a time, buffering extra bytes.
      */
     @Test
     public void feedProcessesOnlyWholeWordsOfInput() {
@@ -223,8 +223,8 @@ public class HelixImplTest implements HelixTestVectors {
     }
 
     /**
-     * Asserts that <tt>HelixImpl#finish(byte[])</tt> fails if the
-     * primitive has already been used to complete an encryption operation.
+     * Asserts that <tt>HelixImpl#finish(byte[])</tt> fails if the primitive has
+     * already been used to complete an encryption operation.
      */
     @Test(expected = IllegalStateException.class)
     public void finishFailsIfPrimitiveHasAlreadyCompleted() {
@@ -235,8 +235,8 @@ public class HelixImplTest implements HelixTestVectors {
     }
 
     /**
-     * Asserts that <tt>HelixImpl#finish(byte[])</tt> processes all
-     * remaining bytes.
+     * Asserts that <tt>HelixImpl#finish(byte[])</tt> processes all remaining
+     * bytes.
      */
     @Test
     public void finishProcessesAllRemainingBytes() {

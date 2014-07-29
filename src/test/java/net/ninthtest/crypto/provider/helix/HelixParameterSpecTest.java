@@ -1,18 +1,18 @@
 /*
- * Copyright (c) 2011 Matthew Zipay <mattz@ninthtest.net>
+ * Copyright (c) 2011-2014 Matthew Zipay <mattz@ninthtest.net>
  * 
  * This file is part of the NinthTest JCA Provider.
- *
+ * 
  * The NinthTest JCA Provider is free software: you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or (at your
  * option) any later version.
- *
- * The NinthTest JCA Provider is distributed in the hope that it will be
- * useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * 
+ * The NinthTest JCA Provider is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
  * Public License for more details.
- *
+ * 
  * You should have received a copy of the GNU General Public License along with
  * the NinthTest JCA Provider. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -22,6 +22,7 @@ package net.ninthtest.crypto.provider.helix;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 
+import java.security.spec.AlgorithmParameterSpec;
 import java.util.Arrays;
 
 import org.junit.Test;
@@ -30,7 +31,7 @@ import org.junit.Test;
  * The unit test case for {@link HelixParameterSpec}.
  * 
  * @author Matthew Zipay (mattz@ninthtest.net)
- * @version 1.0
+ * @version 1.1.0
  */
 public class HelixParameterSpecTest {
     /* tests for HelixParameterSpec#HelixParameterSpec(byte[]) */
@@ -40,9 +41,9 @@ public class HelixParameterSpecTest {
      * rejects a <tt>null</tt> nonce argument.
      */
     @Test(expected = IllegalArgumentException.class)
-    @SuppressWarnings("unused")
     public void initRejectsNullNonce() {
-        new HelixParameterSpec(null);
+        @SuppressWarnings("unused")
+        AlgorithmParameterSpec paramSpec = new HelixParameterSpec(null);
     }
 
     /**
@@ -50,9 +51,9 @@ public class HelixParameterSpecTest {
      * rejects a nonce that is less than 16 bytes.
      */
     @Test(expected = IllegalArgumentException.class)
-    @SuppressWarnings("unused")
     public void initRejectsNonceLT16Bytes() {
-        new HelixParameterSpec(new byte[15]);
+        @SuppressWarnings("unused")
+        AlgorithmParameterSpec paramSpec = new HelixParameterSpec(new byte[15]);
     }
 
     /**
@@ -60,9 +61,9 @@ public class HelixParameterSpecTest {
      * rejects a nonce that is longer than 16 bytes.
      */
     @Test(expected = IllegalArgumentException.class)
-    @SuppressWarnings("unused")
     public void initRejectsNonceGT16Bytes() {
-        new HelixParameterSpec(new byte[17]);
+        @SuppressWarnings("unused")
+        AlgorithmParameterSpec paramSpec = new HelixParameterSpec(new byte[17]);
     }
 
     /**
@@ -70,9 +71,9 @@ public class HelixParameterSpecTest {
      * accepts a 16-byte nonce.
      */
     @Test
-    @SuppressWarnings("unused")
     public void initAccepts16ByteNonce() {
-        new HelixParameterSpec(new byte[16]);
+        @SuppressWarnings("unused")
+        AlgorithmParameterSpec paramSpec = new HelixParameterSpec(new byte[16]);
     }
 
     /**
@@ -96,9 +97,9 @@ public class HelixParameterSpecTest {
      * <tt>null</tt> MAC argument.
      */
     @Test(expected = IllegalArgumentException.class)
-    @SuppressWarnings("unused")
     public void initRejectsNullMac() {
-        new HelixParameterSpec(new byte[16], null);
+        @SuppressWarnings("unused")
+        AlgorithmParameterSpec paramSpec = new HelixParameterSpec(new byte[16], null);
     }
 
     /**
@@ -107,9 +108,9 @@ public class HelixParameterSpecTest {
      * MAC that is less than 16 bytes.
      */
     @Test(expected = IllegalArgumentException.class)
-    @SuppressWarnings("unused")
     public void initRejectsMacLT16Bytes() {
-        new HelixParameterSpec(new byte[16], new byte[15]);
+        @SuppressWarnings("unused")
+        AlgorithmParameterSpec paramSpec = new HelixParameterSpec(new byte[16], new byte[15]);
     }
 
     /**
@@ -118,9 +119,9 @@ public class HelixParameterSpecTest {
      * MAC that is longer than 16 bytes.
      */
     @Test(expected = IllegalArgumentException.class)
-    @SuppressWarnings("unused")
     public void initRejectsMacGT16Bytes() {
-        new HelixParameterSpec(new byte[16], new byte[17]);
+        @SuppressWarnings("unused")
+        AlgorithmParameterSpec paramSpec = new HelixParameterSpec(new byte[16], new byte[17]);
     }
 
     /**
@@ -129,9 +130,9 @@ public class HelixParameterSpecTest {
      * 16-byte MAC.
      */
     @Test
-    @SuppressWarnings("unused")
     public void initAccepts16ByteMac() {
-        new HelixParameterSpec(new byte[16], new byte[16]);
+        @SuppressWarnings("unused")
+        AlgorithmParameterSpec paramSpec = new HelixParameterSpec(new byte[16], new byte[16]);
     }
 
     /**

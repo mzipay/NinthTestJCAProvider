@@ -1,18 +1,18 @@
 /*
- * Copyright (c) 2011 Matthew Zipay <mattz@ninthtest.net>
+ * Copyright (c) 2011-2014 Matthew Zipay <mattz@ninthtest.net>
  * 
  * This file is part of the NinthTest JCA Provider.
- *
+ * 
  * The NinthTest JCA Provider is free software: you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or (at your
  * option) any later version.
- *
- * The NinthTest JCA Provider is distributed in the hope that it will be
- * useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * 
+ * The NinthTest JCA Provider is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
  * Public License for more details.
- *
+ * 
  * You should have received a copy of the GNU General Public License along with
  * the NinthTest JCA Provider. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -30,7 +30,7 @@ import org.junit.Test;
  * The unit test case for {@link HelixDecryption}.
  * 
  * @author Matthew Zipay (mattz@ninthtest.net)
- * @version 1.0
+ * @version 1.1.0
  */
 public class HelixDecryptionTest implements HelixTestVectors {
     /* tests for HelixDecryption#HelixDecryption(byte[], byte[]) */
@@ -40,28 +40,28 @@ public class HelixDecryptionTest implements HelixTestVectors {
      * succeeds with a valid key and nonce.
      * 
      * <p>
-     * This method exists so that the <tt>HelixDecryption</tt> constructor is
+     * This method exists so that the {@link HelixDecryption} constructor is
      * exercised. Refer to {@link HelixImplTest} for more exhaustive tests of
-     * the <tt>HelixPrimitive</tt> constructor.
+     * the {@link HelixPrimitive} constructor.
      * </p>
      */
     @Test
-    @SuppressWarnings("unused")
     public void initAcceptsKeyAndNonce() {
-        new HelixDecryption(new byte[32], new byte[16]);
+        @SuppressWarnings("unused")
+        HelixPrimitive primitive = new HelixDecryption(new byte[32], new byte[16]);
     }
 
     /* tests for HelixDecryption#HelixDecryption(byte[], byte[], byte[]) */
 
     /**
      * Asserts that
-     * {@link HelixDecryption#HelixDecryption(byte[], byte[], byte[])} rejects
-     * a <tt>null</tt> expected MAC.
+     * {@link HelixDecryption#HelixDecryption(byte[], byte[], byte[])} rejects a
+     * <tt>null</tt> expected MAC.
      */
     @Test
-    @SuppressWarnings("unused")
     public void initAcceptsKeyAndNonceAndNullMac() {
-        new HelixDecryption(new byte[32], new byte[16], null);
+        @SuppressWarnings("unused")
+        HelixPrimitive primitive = new HelixDecryption(new byte[32], new byte[16], null);
     }
 
     /**
@@ -70,9 +70,9 @@ public class HelixDecryptionTest implements HelixTestVectors {
      * an expected MAC shorter than 16 bytes.
      */
     @Test(expected = IllegalArgumentException.class)
-    @SuppressWarnings("unused")
     public void initRejectsMacShorterThan16Bytes() {
-        new HelixDecryption(new byte[32], new byte[16], new byte[15]);
+        @SuppressWarnings("unused")
+        HelixPrimitive primitive = new HelixDecryption(new byte[32], new byte[16], new byte[15]);
     }
 
     /**
@@ -81,9 +81,9 @@ public class HelixDecryptionTest implements HelixTestVectors {
      * an expected MAC longer than 16 bytes.
      */
     @Test(expected = IllegalArgumentException.class)
-    @SuppressWarnings("unused")
     public void initRejectsMacLongerThan16Bytes() {
-        new HelixDecryption(new byte[32], new byte[16], new byte[17]);
+        @SuppressWarnings("unused")
+        HelixPrimitive primitive = new HelixDecryption(new byte[32], new byte[16], new byte[17]);
     }
 
     /**
@@ -92,9 +92,9 @@ public class HelixDecryptionTest implements HelixTestVectors {
      * with a valid key, nonce, and expected MAC.
      */
     @Test
-    @SuppressWarnings("unused")
     public void initAcceptsKeyAndNonceAndMac() {
-        new HelixDecryption(new byte[32], new byte[16], new byte[16]);
+        @SuppressWarnings("unused")
+        HelixPrimitive primitive = new HelixDecryption(new byte[32], new byte[16], new byte[16]);
     }
 
     /*

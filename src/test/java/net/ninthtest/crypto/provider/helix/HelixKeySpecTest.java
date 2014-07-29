@@ -1,18 +1,18 @@
 /*
- * Copyright (c) 2011 Matthew Zipay <mattz@ninthtest.net>
+ * Copyright (c) 2011-2014 Matthew Zipay <mattz@ninthtest.net>
  * 
  * This file is part of the NinthTest JCA Provider.
- *
+ * 
  * The NinthTest JCA Provider is free software: you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or (at your
  * option) any later version.
- *
- * The NinthTest JCA Provider is distributed in the hope that it will be
- * useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * 
+ * The NinthTest JCA Provider is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
  * Public License for more details.
- *
+ * 
  * You should have received a copy of the GNU General Public License along with
  * the NinthTest JCA Provider. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -22,6 +22,7 @@ package net.ninthtest.crypto.provider.helix;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertFalse;
 
+import java.security.spec.KeySpec;
 import java.util.Arrays;
 
 import org.junit.Test;
@@ -30,7 +31,7 @@ import org.junit.Test;
  * The unit test case for {@link HelixKeySpec}.
  * 
  * @author Matthew Zipay (mattz@ninthtest.net)
- * @version 1.0
+ * @version 1.1.0
  */
 public class HelixKeySpecTest {
     /* tests for HelixKeySpec#HelixKeySpec(byte[])} */
@@ -40,9 +41,9 @@ public class HelixKeySpecTest {
      * <tt>null</tt> argument.
      */
     @Test(expected = IllegalArgumentException.class)
-    @SuppressWarnings("unused")
     public void initRejectsNullByteArray() {
-        new HelixKeySpec(null);
+        @SuppressWarnings("unused")
+        KeySpec keySpec = new HelixKeySpec(null);
     }
 
     /**
@@ -50,9 +51,9 @@ public class HelixKeySpecTest {
      * zero-length byte array argument.
      */
     @Test(expected = IllegalArgumentException.class)
-    @SuppressWarnings("unused")
     public void initRejectsZeroLengthByteArray() {
-        new HelixKeySpec(new byte[0]);
+        @SuppressWarnings("unused")
+        KeySpec keySpec = new HelixKeySpec(new byte[0]);
     }
 
     /**
@@ -60,10 +61,10 @@ public class HelixKeySpecTest {
      * array that is less than 32 bytes in length.
      */
     @Test
-    @SuppressWarnings("unused")
     public void initAcceptsByteArrayLT32() {
         // length of key material is < 32 bytes
-        new HelixKeySpec(new byte[1]);
+        @SuppressWarnings("unused")
+        KeySpec keySpec = new HelixKeySpec(new byte[1]);
     }
 
     /**
@@ -71,9 +72,9 @@ public class HelixKeySpecTest {
      * array that is exactly 32 bytes in length.
      */
     @Test
-    @SuppressWarnings("unused")
     public void initAcceptsByteArrayEQ32() {
-        new HelixKeySpec(new byte[32]);
+        @SuppressWarnings("unused")
+        KeySpec keySpec = new HelixKeySpec(new byte[32]);
     }
 
     /**
@@ -81,9 +82,9 @@ public class HelixKeySpecTest {
      * array that is greater than 32 bytes in length.
      */
     @Test
-    @SuppressWarnings("unused")
     public void initAcceptsByteArrayGT32() {
-        new HelixKeySpec(new byte[64]);
+        @SuppressWarnings("unused")
+        KeySpec keySpec = new HelixKeySpec(new byte[64]);
     }
 
     /**
@@ -120,9 +121,9 @@ public class HelixKeySpecTest {
      * offset is less than zero.
      */
     @Test(expected = IllegalArgumentException.class)
-    @SuppressWarnings("unused")
     public void initOffsetLTZero() {
-        new HelixKeySpec(new byte[32], -1);
+        @SuppressWarnings("unused")
+        KeySpec keySpec = new HelixKeySpec(new byte[32], -1);
     }
 
     /**
@@ -130,9 +131,9 @@ public class HelixKeySpecTest {
      * offset is equal to the byte array length.
      */
     @Test(expected = IllegalArgumentException.class)
-    @SuppressWarnings("unused")
     public void initOffsetEqualsLength() {
-        new HelixKeySpec(new byte[32], 32);
+        @SuppressWarnings("unused")
+        KeySpec keySpec = new HelixKeySpec(new byte[32], 32);
     }
 
     /**
@@ -140,9 +141,9 @@ public class HelixKeySpecTest {
      * offset is greater than the byte array length.
      */
     @Test(expected = IllegalArgumentException.class)
-    @SuppressWarnings("unused")
     public void initOffsetExceedsLength() {
-        new HelixKeySpec(new byte[32], 33);
+        @SuppressWarnings("unused")
+        KeySpec keySpec = new HelixKeySpec(new byte[32], 33);
     }
 
     /**
@@ -159,8 +160,8 @@ public class HelixKeySpecTest {
     }
 
     /**
-     * Asserts that {@link HelixKeySpec#HelixKeySpec(byte[], int)} uses only
-     * 32 bytes when (length - offset) is greater than 32 bytes.
+     * Asserts that {@link HelixKeySpec#HelixKeySpec(byte[], int)} uses only 32
+     * bytes when (length - offset) is greater than 32 bytes.
      */
     @Test
     public void initOnlyUses32Bytes() {

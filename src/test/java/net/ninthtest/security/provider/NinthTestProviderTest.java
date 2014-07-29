@@ -1,18 +1,18 @@
 /*
- * Copyright (c) 2011 Matthew Zipay <mattz@ninthtest.net>
+ * Copyright (c) 2011-2014 Matthew Zipay <mattz@ninthtest.net>
  * 
  * This file is part of the NinthTest JCA Provider.
- *
+ * 
  * The NinthTest JCA Provider is free software: you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or (at your
  * option) any later version.
- *
- * The NinthTest JCA Provider is distributed in the hope that it will be
- * useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * 
+ * The NinthTest JCA Provider is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
  * Public License for more details.
- *
+ * 
  * You should have received a copy of the GNU General Public License along with
  * the NinthTest JCA Provider. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -29,6 +29,7 @@ import net.ninthtest.crypto.provider.helix.HelixCipher;
 import net.ninthtest.crypto.provider.helix.HelixKeyGenerator;
 import net.ninthtest.crypto.provider.helix.HelixMac;
 import net.ninthtest.crypto.provider.helix.HelixSecretKeyFactory;
+import net.ninthtest.crypto.provider.helix.HelixSecureRandom;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -36,10 +37,10 @@ import org.junit.Test;
  * The unit test case for {@link NinthTestProvider}.
  * 
  * @author Matthew Zipay (mattz@ninthtest.net)
- * @version 1.0
+ * @version 1.1.0
  */
 public class NinthTestProviderTest {
-    /* the instance used by test fixtures */
+    /* The instance used by unit tests. */
     private Provider provider;
 
     /**
@@ -101,6 +102,17 @@ public class NinthTestProviderTest {
 
     /**
      * Asserts that {@link NinthTestProvider#getService(String, String)} returns
+     * the Helix SecureRandom service.
+     */
+    @Test
+    public void getServiceReturnsHelixSecureRandom() {
+        Provider.Service service = provider.getService("SecureRandom", NinthTestProvider.HELIX);
+
+        assertEquals(HelixSecureRandom.class.getName(), service.getClassName());
+    }
+
+    /**
+     * Asserts that {@link NinthTestProvider#getService(String, String)} returns
      * the Helix SecretKeyFactory service.
      */
     @Test
@@ -140,6 +152,6 @@ public class NinthTestProviderTest {
     public void testGetServices() {
         Set<Provider.Service> services = provider.getServices();
 
-        assertEquals(5, services.size());
+        assertEquals(6, services.size());
     }
 }

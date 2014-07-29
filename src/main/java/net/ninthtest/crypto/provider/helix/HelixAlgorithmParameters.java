@@ -1,18 +1,18 @@
 /*
- * Copyright (c) 2011 Matthew Zipay <mattz@ninthtest.net>
+ * Copyright (c) 2011-2014 Matthew Zipay <mattz@ninthtest.net>
  * 
  * This file is part of the NinthTest JCA Provider.
- *
+ * 
  * The NinthTest JCA Provider is free software: you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or (at your
  * option) any later version.
- *
- * The NinthTest JCA Provider is distributed in the hope that it will be
- * useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * 
+ * The NinthTest JCA Provider is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
  * Public License for more details.
- *
+ * 
  * You should have received a copy of the GNU General Public License along with
  * the NinthTest JCA Provider. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -64,10 +64,12 @@ public final class HelixAlgorithmParameters extends AlgorithmParametersSpi {
      * Initializes this parameters object using the parameters specified in
      * <tt>paramSpec</tt>.
      * 
-     * @param paramSpec the algorithm parameter specification (must be a
+     * @param paramSpec
+     *            the algorithm parameter specification (must be a
      *            {@link HelixParameterSpec})
-     * @throws InvalidParameterSpecException if <i>paramSpec</i> is
-     *             <tt>null</tt> or not a {@link HelixParameterSpec}
+     * @throws InvalidParameterSpecException
+     *             if <i>paramSpec</i> is <tt>null</tt> or not a
+     *             {@link HelixParameterSpec}
      * @see java.security.AlgorithmParametersSpi#engineInit(java.security.spec.AlgorithmParameterSpec)
      */
     @Override
@@ -93,6 +95,7 @@ public final class HelixAlgorithmParameters extends AlgorithmParametersSpi {
      * 
      * <p>
      * Nonce-only (18 bytes, expressed in hexadecimal below):
+     * </p>
      * 
      * <pre>
      * 04 10 xx xx xx xx xx xx
@@ -100,10 +103,9 @@ public final class HelixAlgorithmParameters extends AlgorithmParametersSpi {
      * xx xx
      * </pre>
      * 
-     * </p>
-     * 
      * <p>
      * Nonce + MAC (38 bytes, expressed in hexadecimal below):
+     * </p>
      * 
      * <pre>
      * 30 24 04 10 xx xx xx xx
@@ -113,10 +115,10 @@ public final class HelixAlgorithmParameters extends AlgorithmParametersSpi {
      * xx xx xx xx xx xx
      * </pre>
      * 
-     * </p>
-     * 
-     * @param params the ASN.1/DER-encoded parameters
-     * @throws IOException if <i>params</i> cannot be decoded according to the
+     * @param params
+     *            the ASN.1/DER-encoded parameters
+     * @throws IOException
+     *             if <i>params</i> cannot be decoded according to the
      *             specifications above
      * @see java.security.AlgorithmParametersSpi#engineInit(byte[])
      */
@@ -174,10 +176,12 @@ public final class HelixAlgorithmParameters extends AlgorithmParametersSpi {
      * ASN.1.
      * </p>
      * 
-     * @param params the encoded parameters
-     * @param format the name of the decoding format (should be
-     *            &quot;ASN.1&quot; or &quot;DER&quot;)
-     * @throws IOException if <i>params</i> cannot be decoded
+     * @param params
+     *            the encoded parameters
+     * @param format
+     *            the name of the decoding format (should be "ASN.1" or "DER")
+     * @throws IOException
+     *             if <i>params</i> cannot be decoded
      * @see java.security.AlgorithmParametersSpi#engineInit(byte[],
      *      java.lang.String)
      */
@@ -198,12 +202,13 @@ public final class HelixAlgorithmParameters extends AlgorithmParametersSpi {
     /**
      * Returns a (transparent) specification of this parameters object.
      * 
-     * @param paramSpec the specification class in which the parameters should
-     *            be returned (must be {@link HelixParameterSpec})
+     * @param paramSpec
+     *            the specification class in which the parameters should be
+     *            returned (must be {@link HelixParameterSpec})
      * @return the Helix parameter specification
-     * @throws InvalidParameterSpecException if <i>paramSpec</i> is
-     *             <tt>null</tt> or not equal to the class of
-     *             {@link HelixParameterSpec}
+     * @throws InvalidParameterSpecException
+     *             if <i>paramSpec</i> is <tt>null</tt> or not equal to the
+     *             class of {@link HelixParameterSpec}
      * @see java.security.AlgorithmParametersSpi#engineGetParameterSpec(java.lang.Class)
      */
     @Override
@@ -231,6 +236,7 @@ public final class HelixAlgorithmParameters extends AlgorithmParametersSpi {
      * 
      * <p>
      * Nonce-only (18 bytes, expressed in hexadecimal below):
+     * </p>
      * 
      * <pre>
      * 04 10 xx xx xx xx xx xx
@@ -238,10 +244,9 @@ public final class HelixAlgorithmParameters extends AlgorithmParametersSpi {
      * xx xx
      * </pre>
      * 
-     * </p>
-     * 
      * <p>
      * Nonce + MAC (38 bytes, expressed in hexadecimal below):
+     * </p>
      * 
      * <pre>
      * 30 24 04 10 xx xx xx xx
@@ -251,11 +256,9 @@ public final class HelixAlgorithmParameters extends AlgorithmParametersSpi {
      * xx xx xx xx xx xx
      * </pre>
      * 
-     * </p>
-     * 
      * @return the ASN.1/DER-encoded Helix parameters
-     * @throws IOException if an error occurs while encoding the Helix
-     *             parameters
+     * @throws IOException
+     *             if an error occurs while encoding the Helix parameters
      * @see java.security.AlgorithmParametersSpi#engineGetEncoded()
      */
     @Override
@@ -302,12 +305,14 @@ public final class HelixAlgorithmParameters extends AlgorithmParametersSpi {
      * ASN.1.
      * </p>
      * 
-     * @param format the name of the encoding format (should be
-     *            &quot;ASN.1&quot;, &quot;DER&quot;, or <tt>null</tt>)
+     * @param format
+     *            the name of the encoding format (should be "ASN.1", "DER", or
+     *            <tt>null</tt>)
      * @return the ASN.1/DER-encoded Helix parameters
-     * @throws IOException if <i>format</i> is non-<tt>null</tt> and not
-     *             &quot;ASN.1&quot; or &quot;DER&quot;; or if an error occurs
-     *             while encoding the Helix parameters
+     * @throws IOException
+     *             if <i>format</i> is non-<tt>null</tt> and not "ASN.1" or
+     *             "DER"; or if an error occurs while encoding the Helix
+     *             parameters
      * @see java.security.AlgorithmParametersSpi#engineGetEncoded(java.lang.String)
      */
     @Override
@@ -326,6 +331,7 @@ public final class HelixAlgorithmParameters extends AlgorithmParametersSpi {
      * This method returns the appropriate PDU (protocol data unit) for the
      * Helix parameters represented by this instance, according to the following
      * ASN.1/DER type specification:
+     * </p>
      * 
      * <pre>
      * HelixParameters DEFINITIONS ::= BEGIN
@@ -340,21 +346,19 @@ public final class HelixAlgorithmParameters extends AlgorithmParametersSpi {
      * END
      * </pre>
      * 
-     * </p>
-     * 
      * <p>
      * If this instance represents a Helix nonce only, the following PDU is
      * returned:
+     * </p>
      * 
      * <pre>
      * helixParameters HelixNonce ::= {"xx xx xx xx xx xx xx xx xx xx xx xx xx xx xx xx"}
      * </pre>
      * 
-     * </p>
-     * 
      * <p>
      * If this instance represents a Helix nonce <b>and</b> MAC, the following
      * PDU is returned:
+     * </p>
      * 
      * <pre>
      * helixParameters HelixNonceAndMac ::= {
@@ -362,8 +366,6 @@ public final class HelixAlgorithmParameters extends AlgorithmParametersSpi {
      *     mac     "xx xx xx xx xx xx xx xx xx xx xx xx xx xx xx xx"
      * }
      * </pre>
-     * 
-     * </p>
      * 
      * <p>
      * All bytes represented in PDUs are in hexadecimal format. If this instance

@@ -1,18 +1,18 @@
 /*
- * Copyright (c) 2011 Matthew Zipay <mattz@ninthtest.net>
+ * Copyright (c) 2011-2014 Matthew Zipay <mattz@ninthtest.net>
  * 
  * This file is part of the NinthTest JCA Provider.
- *
+ * 
  * The NinthTest JCA Provider is free software: you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or (at your
  * option) any later version.
- *
- * The NinthTest JCA Provider is distributed in the hope that it will be
- * useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * 
+ * The NinthTest JCA Provider is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
  * Public License for more details.
- *
+ * 
  * You should have received a copy of the GNU General Public License along with
  * the NinthTest JCA Provider. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -29,7 +29,7 @@ import org.junit.Test;
  * The unit test case for {@link HelixEncryption}.
  * 
  * @author Matthew Zipay (mattz@ninthtest.net)
- * @version 1.0
+ * @version 1.1.0
  */
 public class HelixEncryptionTest implements HelixTestVectors {
     /* tests for HelixEncryption#HelixEncryption(byte[], byte[]) */
@@ -39,15 +39,15 @@ public class HelixEncryptionTest implements HelixTestVectors {
      * succeeds with a valid key and nonce.
      * 
      * <p>
-     * This method exists so that the <tt>HelixEncryption</tt> constructor is
+     * This method exists so that the {@link HelixEncryption} constructor is
      * exercised. Refer to {@link HelixImplTest} for more exhaustive tests of
-     * the <tt>HelixPrimitive</tt> constructor.
+     * the {@link HelixPrimitive} constructor.
      * </p>
      */
     @Test
-    @SuppressWarnings("unused")
     public void initAcceptsKeyAndNonce() {
-        new HelixEncryption(new byte[32], new byte[16]);
+        @SuppressWarnings("unused")
+        HelixPrimitive primitive = new HelixEncryption(new byte[32], new byte[16]);
     }
 
     /* tests for HelixEncryption#feed(byte[]) and HelixEncryption#finish(byte[]) */
@@ -178,5 +178,21 @@ public class HelixEncryptionTest implements HelixTestVectors {
 
         assertArrayEquals(TEST_VECTOR_3[CIPHERTEXT], actualCipherText);
         assertArrayEquals(TEST_VECTOR_3[MAC], primitive.getGeneratedMac());
+    }
+
+    /**
+     * Asserts that {@link HelixEncryption#getGeneratedMac()} fails if called
+     * before the encryption operation has completed.
+     */
+    @Test(expected = IllegalStateException.class)
+    public void getGeneratedMacFailsBeforeEncryptOperationHasCompleted() {
+        HelixEncryption primitive = new HelixEncryption(TEST_VECTOR_1[KEY], TEST_VECTOR_1[NONCE]);
+
+        byte[] plainTextPart = new byte[3];
+        System.arraycopy(TEST_VECTOR_1[PLAINTEXT], 0, plainTextPart, 0, 3);
+        primitive.feed(plainTextPart);
+
+        @SuppressWarnings("unused")
+        byte[] mac = primitive.getGeneratedMac();
     }
 }

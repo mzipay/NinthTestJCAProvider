@@ -1,4 +1,4 @@
-~~ Copyright (c) 2011 Matthew Zipay <mattz@ninthtest.net>
+~~ Copyright (c) 2011-2014 Matthew Zipay <mattz@ninthtest.net>
 ~~
 ~~ This file is part of the NinthTest JCA Provider.
 ~~
@@ -31,27 +31,29 @@ Security services provided by the NinthTest JCA Provider
 
 * Helix
 
- {{{http://www.macfergus.com/helix/index.html}Helix}} is a
+ {{{http://www.schneier.com/paper-helix.html}Helix}} is a
  {{{http://en.wikipedia.org/wiki/Stream_cipher}stream cipher}} with a built-in
  {{{http://en.wikipedia.org/wiki/Message_authentication_code}MAC}} function.
 
-*--+--+--+
-||Service||JCA engine class||Description|
-*--+--+--+
-|Cipher|<<<{{{http://download.oracle.com/javase/6/docs/api/javax/crypto/Cipher.html}javax.crypto.Cipher}}>>>| Supports encryption, decryption, and key wrapping/unwrapping operation modes.\ |
-| | | Supports the Helix built-in MAC function for all operation modes.\ |
-| | | Generated MACs can be retrieved from algorithm parameters following an encryption or key-wrapping operation.\ |
-| | | Expected MACs for decryption or key-unwrapping operations can be provided as algorithm parameters when initializing the cipher.\ |
-| | | Supports the use of Helix as a pure stream cipher (i.e. without MAC function).|
-*--+--+--+
-|Mac|<<<{{{http://download.oracle.com/javase/6/docs/api/javax/crypto/Mac.html}javax.crypto.Mac}}>>>| Supports the use of Helix as a pure MAC function.|
-*--+--+--+
-|KeyGenerator|<<<{{{http://download.oracle.com/javase/6/docs/api/javax/crypto/KeyGenerator.html}javax.crypto.KeyGenerator}}>>>| Generates random Helix keys.\ |
-| | | Allows key sizes up to a maximum of 256 bits, in multiples of eight (256 bits is recommended, and is the default).|
-*--+--+--+
-|SecretKeyFactory|<<<{{{http://download.oracle.com/javase/6/docs/api/javax/crypto/SecretKeyFactory.html}javax.crypto.SecretKeyFactory}}>>>| Creates Helix secret keys from Helix key specifications (i.e. representations of raw key bytes), and vice-versa.|
-*--+--+--+
-|AlgorithmParameters|<<<{{{http://download.oracle.com/javase/6/docs/api/java/security/AlgorithmParameters.html}java.security.AlgorithmParameters}}>>>| Manages Helix parameters (nonce and MAC).\ |
-| | | Following an encryption or key-wrapping operation, the generated MAC can be retrieved from the <<<AlgorithmParameters>>> returned by the <<<Cipher>>>.|
-*--+--+--+
+*--+--+--+--+
+||Version||Service||JCA engine class||Description|
+*--+--+--+--+
+|1.0|Cipher|<<<{{{http://docs.oracle.com/javase/6/docs/api/javax/crypto/Cipher.html}javax.crypto.Cipher}}>>>| Supports encryption, decryption, and key wrapping/unwrapping operation modes.\ |
+| | | | Supports the Helix built-in MAC function for all operation modes.\ |
+| | | | Generated MACs can be retrieved from algorithm parameters following an encryption or key-wrapping operation.\ |
+| | | | Expected MACs for decryption or key-unwrapping operations can be provided as algorithm parameters when initializing the cipher.\ |
+| | | | Supports the use of Helix as a pure stream cipher (i.e. without MAC function).|
+*--+--+--+--+
+|1.0|Mac|<<<{{{http://docs.oracle.com/javase/6/docs/api/javax/crypto/Mac.html}javax.crypto.Mac}}>>>| Supports the use of Helix as a pure MAC function.|
+*--+--+--+--+
+|1.0|KeyGenerator|<<<{{{http://docs.oracle.com/javase/6/docs/api/javax/crypto/KeyGenerator.html}javax.crypto.KeyGenerator}}>>>| Generates random Helix keys.\ |
+| | | | Allows key sizes up to a maximum of 256 bits, in multiples of eight (256 bits is recommended, and is the default).|
+*--+--+--+--+
+|1.0|SecretKeyFactory|<<<{{{http://docs.oracle.com/javase/6/docs/api/javax/crypto/SecretKeyFactory.html}javax.crypto.SecretKeyFactory}}>>>| Creates Helix secret keys from Helix key specifications (i.e. representations of raw key bytes), and vice-versa.|
+*--+--+--+--+
+|1.0|AlgorithmParameters|<<<{{{http://docs.oracle.com/javase/6/docs/api/java/security/AlgorithmParameters.html}java.security.AlgorithmParameters}}>>>| Manages Helix parameters (nonce and MAC).\ |
+| | | | Following an encryption or key-wrapping operation, the generated MAC can be retrieved from the <<<AlgorithmParameters>>> returned by the <<<Cipher>>>.|
+*--+--+--+--+
+|1.1.0|SecureRandom|<<<{{{http://docs.oracle.com/javase/6/docs/api/java/security/SecureRandom.html}java.security.SecureRandom}}>>>| Supports the use of Helix as a PRNG.|
+*--+--+--+--+
 <Helix services provided by the NinthTest JCA Provider>
