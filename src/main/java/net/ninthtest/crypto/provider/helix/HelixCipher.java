@@ -1,18 +1,18 @@
 /*
- * Copyright (c) 2011 Matthew Zipay <mattz@ninthtest.net>
+ * Copyright (c) 2011-2014 Matthew Zipay <mattz@ninthtest.net>
  * 
  * This file is part of the NinthTest JCA Provider.
- *
+ * 
  * The NinthTest JCA Provider is free software: you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or (at your
  * option) any later version.
- *
- * The NinthTest JCA Provider is distributed in the hope that it will be
- * useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * 
+ * The NinthTest JCA Provider is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
  * Public License for more details.
- *
+ * 
  * You should have received a copy of the GNU General Public License along with
  * the NinthTest JCA Provider. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -26,7 +26,6 @@ import java.security.InvalidKeyException;
 import java.security.Key;
 import java.security.KeyFactory;
 import java.security.NoSuchAlgorithmException;
-import java.security.NoSuchProviderException;
 import java.security.ProviderException;
 import java.security.SecureRandom;
 import java.security.spec.AlgorithmParameterSpec;
@@ -57,8 +56,9 @@ import net.ninthtest.security.provider.NinthTestProvider;
  * and verification) operations for the Helix stream cipher.
  * 
  * @author Matthew Zipay (mattz@ninthtest.net)
- * @version 1.0
- * @see "http://www.macfergus.com/helix/index.html"
+ * @version 1.1.0
+ * @see <a href="http://www.schneier.com/paper-helix.html">Helix: Fast
+ *      Encryption and Authentication in a Single Cryptographic Primitive</a>
  */
 public final class HelixCipher extends CipherSpi {
     /*
@@ -104,15 +104,17 @@ public final class HelixCipher extends CipherSpi {
     /**
      * Returns the key size of the given <tt>key</tt> object in bits.
      * 
-     * @param key a Helix {@link SecretKey}
+     * @param key
+     *            a Helix {@link SecretKey}
      * @return the size of <i>key</i> expressed in number of bits
-     * @throws InvalidKeyException if <i>key</i> is <tt>null</tt> or not a
-     *             Helix {@link SecretKey}
+     * @throws InvalidKeyException
+     *             if <i>key</i> is <tt>null</tt> or not a Helix
+     *             {@link SecretKey}
      * @see javax.crypto.CipherSpi#engineGetKeySize(java.security.Key)
      */
     @Override
     protected int engineGetKeySize(Key key) throws InvalidKeyException {
-        if ((key == null) || !NinthTestProvider.HELIX.equals(key.getAlgorithm()) || !(key instanceof SecretKey)) {
+        if ((key == null) || !(key instanceof SecretKey) || !NinthTestProvider.HELIX.equals(key.getAlgorithm())) {
             throw new InvalidKeyException(Messages.getMessage("helix.error.expect_secret_key"));
         }
 
@@ -133,26 +135,31 @@ public final class HelixCipher extends CipherSpi {
      * {@link Cipher#getIV()} or indirectly via {@link Cipher#getParameters()}.
      * </p>
      * 
-     * @param opmode the operation mode of this cipher (restricted to
+     * @param opmode
+     *            the operation mode of this cipher (restricted to
      *            {@link Cipher#ENCRYPT_MODE} or {@link Cipher#WRAP_MODE})
-     * @param key the secret key to be used for encryption or key wrapping (must
+     * @param key
+     *            the secret key to be used for encryption or key wrapping (must
      *            be a Helix {@link SecretKey})
-     * @param random the RNG
-     * @throws IllegalArgumentException if the operation mode is
-     *             {@link Cipher#DECRYPT_MODE} or {@link Cipher#UNWRAP_MODE}
-     * @throws InvalidKeyException if <i>key</i> is <tt>null</tt> or is not a
-     *             Helix {@link SecretKey}
+     * @param random
+     *            the RNG
+     * @throws IllegalArgumentException
+     *             if the operation mode is {@link Cipher#DECRYPT_MODE} or
+     *             {@link Cipher#UNWRAP_MODE}
+     * @throws InvalidKeyException
+     *             if <i>key</i> is <tt>null</tt> or is not a Helix
+     *             {@link SecretKey}
      * @see javax.crypto.CipherSpi#engineInit(int, java.security.Key,
      *      java.security.SecureRandom)
      */
     @Override
     protected void engineInit(@SuppressWarnings("hiding") int opmode, Key key, SecureRandom random)
             throws InvalidKeyException {
-        clear();
+        resetInternalState();
 
         if ((Cipher.DECRYPT_MODE == opmode) || (Cipher.UNWRAP_MODE == opmode)) {
             throw new IllegalArgumentException(Messages.getMessage("helix.error.nonce_is_missing"));
-        } else if ((key == null) || !NinthTestProvider.HELIX.equals(key.getAlgorithm()) || !(key instanceof SecretKey)) {
+        } else if ((key == null) || !(key instanceof SecretKey) || !NinthTestProvider.HELIX.equals(key.getAlgorithm())) {
             throw new InvalidKeyException(Messages.getMessage("helix.error.expect_secret_key"));
         }
 
@@ -167,8 +174,8 @@ public final class HelixCipher extends CipherSpi {
 
         try {
             parameters = createHelixAlgorithmParameters(new HelixParameterSpec(randomNonce));
-        } catch (GeneralSecurityException ex) {
-            throw new InvalidKeyException(Messages.getMessage("helix.error.failed_to_create_params"), ex);
+        } catch (InvalidParameterSpecException ex) {
+            throw new ProviderException(Messages.getMessage("helix.error.failed_to_create_params"), ex);
         }
 
         primitive = new HelixEncryption(key.getEncoded(), randomNonce);
@@ -196,19 +203,25 @@ public final class HelixCipher extends CipherSpi {
      * re-initialized).
      * </p>
      * 
-     * @param opmode the operation mode of this cipher
-     * @param key a Helix {@link SecretKey}
-     * @param params a {@link HelixParameterSpec}
-     * @param random the RNG (not used)
-     * @throws InvalidKeyException if <i>key</i> is <tt>null</tt> or is not a
-     *             Helix {@link SecretKey}; or if the algorithm parameters
-     *             cannot be initialized from the parameter spec
-     * @throws InvalidAlgorithmParameterException if <i>params</i> is
-     *             <tt>null</tt> or is not a {@link HelixParameterSpec}; or if
-     *             a non-<tt>null</tt> MAC in <i>params</i> is not exactly 16
-     *             bytes in length; or if a non-<tt>null</tt> MAC is specified
-     *             in <i>params</i> when <i>opmode</i> is
-     *             {@link Cipher#ENCRYPT_MODE} or {@link Cipher#WRAP_MODE}
+     * @param opmode
+     *            the operation mode of this cipher
+     * @param key
+     *            a Helix {@link SecretKey}
+     * @param params
+     *            a {@link HelixParameterSpec}
+     * @param random
+     *            the RNG (not used)
+     * @throws InvalidKeyException
+     *             if <i>key</i> is <tt>null</tt> or is not a Helix
+     *             {@link SecretKey}; or if the algorithm parameters cannot be
+     *             initialized from the parameter spec
+     * @throws InvalidAlgorithmParameterException
+     *             if <i>params</i> is <tt>null</tt> or is not a
+     *             {@link HelixParameterSpec}; or if a non-<tt>null</tt> MAC in
+     *             <i>params</i> is not exactly 16 bytes in length; or if a non-
+     *             <tt>null</tt> MAC is specified in <i>params</i> when
+     *             <i>opmode</i> is {@link Cipher#ENCRYPT_MODE} or
+     *             {@link Cipher#WRAP_MODE}
      * @see javax.crypto.CipherSpi#engineInit(int, java.security.Key,
      *      java.security.spec.AlgorithmParameterSpec,
      *      java.security.SecureRandom)
@@ -216,9 +229,9 @@ public final class HelixCipher extends CipherSpi {
     @Override
     protected void engineInit(@SuppressWarnings("hiding") int opmode, Key key, AlgorithmParameterSpec params,
             SecureRandom random) throws InvalidKeyException, InvalidAlgorithmParameterException {
-        clear();
+        resetInternalState();
 
-        if ((key == null) || !NinthTestProvider.HELIX.equals(key.getAlgorithm()) || !(key instanceof SecretKey)) {
+        if ((key == null) || !(key instanceof SecretKey) || !NinthTestProvider.HELIX.equals(key.getAlgorithm())) {
             throw new InvalidKeyException(Messages.getMessage("helix.error.expect_secret_key"));
         } else if ((params == null) || !(params instanceof HelixParameterSpec)) {
             throw new InvalidAlgorithmParameterException(Messages.getMessage("helix.error.expect_helix_paramspec"));
@@ -231,8 +244,8 @@ public final class HelixCipher extends CipherSpi {
 
         try {
             parameters = createHelixAlgorithmParameters(parameterSpec);
-        } catch (GeneralSecurityException ex) {
-            throw new InvalidKeyException(Messages.getMessage("helix.error.failed_to_create_params"), ex);
+        } catch (InvalidParameterSpecException ex) {
+            throw new ProviderException(Messages.getMessage("helix.error.failed_to_create_params"), ex);
         }
 
         if ((Cipher.ENCRYPT_MODE == opmode) || (Cipher.WRAP_MODE == opmode)) {
@@ -264,31 +277,35 @@ public final class HelixCipher extends CipherSpi {
      * re-initialized).
      * </p>
      * 
-     * @param opmode the operation mode of this cipher
-     * @param key a Helix {@link SecretKey}
-     * @param params a &quot;Helix&quot; {@link AlgorithmParameters} provided by
-     *            &quot;NinthTest&quot;
-     * @param random the RNG (not used)
-     * @throws InvalidKeyException if <i>key</i> is <tt>null</tt> or is not a
-     *             Helix {@link SecretKey}
-     * @throws InvalidAlgorithmParameterException if <i>params</i> is
-     *             <tt>null</tt> or is not a &quot;Helix&quot;
-     *             {@link AlgorithmParameters}; provided by
-     *             &quot;NinthTest&quot;; or if a {@link HelixParameterSpec}
-     *             cannot be derived from <i>params</i>; or if a non-
-     *             <tt>null</tt> MAC in <i>parmams</i> is not exactly 16 bytes
-     *             in length; or if a non-<tt>null</tt> MAC is specified in
-     *             <i>params</i> when <i>opmode</i> is
-     *             {@link Cipher#ENCRYPT_MODE} or {@link Cipher#WRAP_MODE}
+     * @param opmode
+     *            the operation mode of this cipher
+     * @param key
+     *            a Helix {@link SecretKey}
+     * @param params
+     *            Helix algorithm parameters provided by NinthTest
+     * @param random
+     *            the RNG (not used)
+     * @throws InvalidKeyException
+     *             if <i>key</i> is <tt>null</tt> or is not a Helix
+     *             {@link SecretKey}
+     * @throws InvalidAlgorithmParameterException
+     *             if <i>params</i> is <tt>null</tt> or is not a Helix
+     *             {@link AlgorithmParameters} provided by NinthTest; or if a
+     *             {@link HelixParameterSpec} cannot be derived from
+     *             <i>params</i>; or if a non-<tt>null</tt> MAC in <i>params</i>
+     *             is not exactly 16 bytes in length; or if a non-<tt>null</tt>
+     *             MAC is specified in <i>params</i> when <i>opmode</i> is
+     *             either {@link Cipher#ENCRYPT_MODE} or
+     *             {@link Cipher#WRAP_MODE}
      * @see javax.crypto.CipherSpi#engineInit(int, java.security.Key,
      *      java.security.AlgorithmParameters, java.security.SecureRandom)
      */
     @Override
     protected void engineInit(@SuppressWarnings("hiding") int opmode, Key key, AlgorithmParameters params,
             SecureRandom random) throws InvalidKeyException, InvalidAlgorithmParameterException {
-        clear();
+        resetInternalState();
 
-        if ((key == null) || !NinthTestProvider.HELIX.equals(key.getAlgorithm()) || !(key instanceof SecretKey)) {
+        if ((key == null) || !(key instanceof SecretKey) || !NinthTestProvider.HELIX.equals(key.getAlgorithm())) {
             throw new InvalidKeyException(Messages.getMessage("helix.error.expect_secret_key"));
         } else if ((params == null) || !NinthTestProvider.HELIX.equals(params.getAlgorithm())
                 || !NinthTestProvider.NAME.equals(params.getProvider().getName())) {
@@ -321,7 +338,7 @@ public final class HelixCipher extends CipherSpi {
      * This method is always called as the first step of the overloaded
      * #engineInit methods.
      */
-    private void clear() {
+    private void resetInternalState() {
         opmode = -1;
         parameters = null;
         primitive = null;
@@ -344,25 +361,20 @@ public final class HelixCipher extends CipherSpi {
         if (mac != null) {
             if ((Cipher.ENCRYPT_MODE == opmode) || (Cipher.WRAP_MODE == opmode)) {
                 throw new InvalidAlgorithmParameterException(Messages.getMessage("helix.error.mac_not_expected"));
-            } else if (((Cipher.DECRYPT_MODE == opmode) || (Cipher.UNWRAP_MODE == opmode)) && (mac.length != 16)) {
+            } else if (mac.length != 16) { // DECRYPT_MODE || UNWRAP_MODE
                 throw new InvalidAlgorithmParameterException(Messages.getMessage("helix.error.invalid_mac_length"));
             }
         }
     }
 
-    /*
-     * Creates an instance of HelixAlgorithmParameters using parameterSpec.
-     */
+    /* Creates an instance of HelixAlgorithmParameters using parameterSpec. */
     private AlgorithmParameters createHelixAlgorithmParameters(HelixParameterSpec parameterSpec)
-            throws InvalidParameterSpecException, NoSuchAlgorithmException, NoSuchProviderException {
+            throws InvalidParameterSpecException {
         AlgorithmParameters algorithmParameters =
-        //        // UNITTESTING: Create an anonymous subclass for unit testing.
-        //                new AlgorithmParameters(new HelixAlgorithmParameters(), new NinthTestProvider(),
-        //                        NinthTestProvider.HELIX) {
-        //                    // nothing overridden
-        //                };
-                AlgorithmParameters.getInstance(NinthTestProvider.HELIX, NinthTestProvider.NAME);
-
+                new AlgorithmParameters(new HelixAlgorithmParameters(), new NinthTestProvider(),
+                        NinthTestProvider.HELIX) {
+                    // nothing overridden
+                };
         algorithmParameters.init(parameterSpec);
 
         return algorithmParameters;
@@ -375,10 +387,12 @@ public final class HelixCipher extends CipherSpi {
      * This method always throws {@link UnsupportedOperationException}.
      * </p>
      * 
-     * @param mode the cipher mode
-     * @throws NoSuchAlgorithmException if the requested cipher mode does not
-     *             exist
-     * @throws UnsupportedOperationException if this method is invoked
+     * @param mode
+     *            the cipher mode
+     * @throws NoSuchAlgorithmException
+     *             if the requested cipher mode does not exist
+     * @throws UnsupportedOperationException
+     *             if this method is invoked
      * @see javax.crypto.CipherSpi#engineSetMode(java.lang.String)
      */
     @Override
@@ -399,10 +413,12 @@ public final class HelixCipher extends CipherSpi {
      * This method always throws {@link UnsupportedOperationException}.
      * </p>
      * 
-     * @param padding the cipher padding method
-     * @throws NoSuchPaddingException if the requested padding mechanism does
-     *             not exist
-     * @throws UnsupportedOperationException if this method is invoked
+     * @param padding
+     *            the cipher padding method
+     * @throws NoSuchPaddingException
+     *             if the requested padding mechanism does not exist
+     * @throws UnsupportedOperationException
+     *             if this method is invoked
      * @see javax.crypto.CipherSpi#engineSetPadding(java.lang.String)
      */
     @Override
@@ -496,7 +512,8 @@ public final class HelixCipher extends CipherSpi {
      * one word (i.e. one 32-bit integer) at a time.
      * </p>
      * 
-     * @param inputLen the number of input bytes that will be passed to the
+     * @param inputLen
+     *            the number of input bytes that will be passed to the
      *            <i>next</i> {@link Cipher#update} or {@link Cipher#doFinal()}
      *            operation
      * @return the size that the output buffer would need to be to hold the
@@ -542,13 +559,15 @@ public final class HelixCipher extends CipherSpi {
      * always have a length that is a multiple of four.
      * </p>
      * 
-     * @param input the input buffer
-     * @param inputOffset the index into <i>input</i> where the input bytes
-     *            begin
-     * @param inputLen the number of bytes to be used from <i>input</i>
-     *            (beginning at <i>inputOffset</i>)
-     * @return four or more bytes of output, or <tt>null</tt> if there are
-     *         not enough input bytes to yield at least four bytes of output
+     * @param input
+     *            the input buffer
+     * @param inputOffset
+     *            the index into <i>input</i> where the input bytes begin
+     * @param inputLen
+     *            the number of bytes to be used from <i>input</i> (beginning at
+     *            <i>inputOffset</i>)
+     * @return four or more bytes of output, or <tt>null</tt> if there are not
+     *         enough input bytes to yield at least four bytes of output
      * @see javax.crypto.CipherSpi#engineUpdate(byte[], int, int)
      */
     @Override
@@ -583,20 +602,24 @@ public final class HelixCipher extends CipherSpi {
      * zero, as described above).
      * </p>
      * 
-     * @param input the input buffer
-     * @param inputOffset the index into <i>input</i> where the input bytes
-     *            begin
-     * @param inputLen the number of bytes to be used from <i>input</i>
-     *            (beginning at <i>inputOffset</i>)
-     * @param output the buffer for the result
-     * @param outputOffset the index into <i>output</i> where the output bytes
-     *            are stored
+     * @param input
+     *            the input buffer
+     * @param inputOffset
+     *            the index into <i>input</i> where the input bytes begin
+     * @param inputLen
+     *            the number of bytes to be used from <i>input</i> (beginning at
+     *            <i>inputOffset</i>)
+     * @param output
+     *            the buffer for the result
+     * @param outputOffset
+     *            the index into <i>output</i> where the output bytes are stored
      * @return the number of bytes that were written to <i>output</i>, or 0
      *         (zero) if there was not enough input to produce at least four
      *         bytes of output
-     * @throws ShortBufferException if <i>output</i> (beginning at
-     *             <i>outputOffset</i>) is not large enough to store the number
-     *             of bytes produced by this call
+     * @throws ShortBufferException
+     *             if <i>output</i> (beginning at <i>outputOffset</i>) is not
+     *             large enough to store the number of bytes produced by this
+     *             call
      * @see javax.crypto.CipherSpi#engineUpdate(byte[], int, int, byte[], int)
      */
     @Override
@@ -642,17 +665,21 @@ public final class HelixCipher extends CipherSpi {
      * {@link MessageAuthenticationException}.
      * </p>
      * 
-     * @param input the input buffer
-     * @param inputOffset the index into <i>input</i> where the input bytes
-     *            begin
-     * @param inputLen the number of bytes to be used from <i>input</i>
-     *            (beginning at <i>inputOffset</i>)
+     * @param input
+     *            the input buffer
+     * @param inputOffset
+     *            the index into <i>input</i> where the input bytes begin
+     * @param inputLen
+     *            the number of bytes to be used from <i>input</i> (beginning at
+     *            <i>inputOffset</i>)
      * @return all remaining bytes of output
-     * @throws IllegalBlockSizeException never (Helix is a stream cipher)
-     * @throws BadPaddingException never (Helix padding is masked off)
-     * @throws MessageAuthenticationException for a decryption operation
-     *             only, if the non-<tt>null</tt> expected MAC does not
-     *             match the generated MAC
+     * @throws IllegalBlockSizeException
+     *             never (Helix is a stream cipher)
+     * @throws BadPaddingException
+     *             never (Helix padding is masked off)
+     * @throws MessageAuthenticationException
+     *             for a decryption operation only, if the non-<tt>null</tt>
+     *             expected MAC does not match the generated MAC
      * @see javax.crypto.CipherSpi#engineDoFinal(byte[], int, int)
      */
     @Override
@@ -727,23 +754,29 @@ public final class HelixCipher extends CipherSpi {
      * {@link MessageAuthenticationException}.
      * </p>
      * 
-     * @param input the input buffer
-     * @param inputOffset the index into <i>input</i> where the input bytes
-     *            begin
-     * @param inputLen the number of bytes to be used from <i>input</i>
-     *            (beginning at <i>inputOffset</i>)
-     * @param output the buffer for the result
-     * @param outputOffset the index into <i>output</i> where the output bytes
-     *            are stored
+     * @param input
+     *            the input buffer
+     * @param inputOffset
+     *            the index into <i>input</i> where the input bytes begin
+     * @param inputLen
+     *            the number of bytes to be used from <i>input</i> (beginning at
+     *            <i>inputOffset</i>)
+     * @param output
+     *            the buffer for the result
+     * @param outputOffset
+     *            the index into <i>output</i> where the output bytes are stored
      * @return all remaining bytes of output
-     * @throws ShortBufferException if <i>output</i> (beginning at
-     *             <i>outputOffset</i>) is not large enough to store the number
-     *             of bytes produced by this call
-     * @throws IllegalBlockSizeException never (Helix is a stream cipher)
-     * @throws BadPaddingException never (Helix padding is masked off)
-     * @throws MessageAuthenticationException for a decryption operation
-     *             only, if the non-<tt>null</tt> expected MAC does not
-     *             match the generated MAC
+     * @throws ShortBufferException
+     *             if <i>output</i> (beginning at <i>outputOffset</i>) is not
+     *             large enough to store the number of bytes produced by this
+     *             call
+     * @throws IllegalBlockSizeException
+     *             never (Helix is a stream cipher)
+     * @throws BadPaddingException
+     *             never (Helix padding is masked off)
+     * @throws MessageAuthenticationException
+     *             for a decryption operation only, if the non-<tt>null</tt>
+     *             expected MAC does not match the generated MAC
      * @see javax.crypto.CipherSpi#engineDoFinal(byte[], int, int, byte[], int)
      */
     @Override
@@ -770,10 +803,13 @@ public final class HelixCipher extends CipherSpi {
     /**
      * Wraps a key.
      * 
-     * @param key the key to be wrapped
+     * @param key
+     *            the key to be wrapped
      * @return the wrapped key
-     * @throws IllegalBlockSizeException never (Helix is a stream cipher)
-     * @throws InvalidKeyException if <i>key</i> is <tt>null</tt>
+     * @throws IllegalBlockSizeException
+     *             never (Helix is a stream cipher)
+     * @throws InvalidKeyException
+     *             if <i>key</i> is <tt>null</tt>
      * @see javax.crypto.CipherSpi#engineWrap(java.security.Key)
      */
     @Override
@@ -800,20 +836,23 @@ public final class HelixCipher extends CipherSpi {
      * will throw {@link MessageAuthenticationException}.
      * </p>
      * 
-     * @param wrappedKey the key to be unwrapped
-     * @param wrappedKeyAlgorithm the algorithm associated with the wrapped key
-     * @param wrappedKeyType the type of the wrapped key (
-     *            {@link Cipher#SECRET_KEY}, {@link Cipher#PRIVATE_KEY}, or
-     *            {@link Cipher#PUBLIC_KEY})
+     * @param wrappedKey
+     *            the key to be unwrapped
+     * @param wrappedKeyAlgorithm
+     *            the algorithm associated with the wrapped key
+     * @param wrappedKeyType
+     *            the type of the wrapped key ( {@link Cipher#SECRET_KEY},
+     *            {@link Cipher#PRIVATE_KEY}, or {@link Cipher#PUBLIC_KEY})
      * @return the unwrapped key
-     * @throws InvalidKeyException if <i>wrappedKey</i> does not represent a
-     *             key of type <i>wrappedKeyType</i> for the
-     *             <i>wrappedKeyAlgorithm</i>
-     * @throws NoSuchAlgorithmException if no installed providers can create
-     *             keys of type <i>wrappedKeyType</i> for the
-     *             <i>wrappedKeyAlgorithm</i>
-     * @throws MessageAuthenticationException if the non-<tt>null</tt> expected
-     *             MAC does not match the generated MAC
+     * @throws InvalidKeyException
+     *             if <i>wrappedKey</i> does not represent a key of type
+     *             <i>wrappedKeyType</i> for the <i>wrappedKeyAlgorithm</i>
+     * @throws NoSuchAlgorithmException
+     *             if no installed providers can create keys of type
+     *             <i>wrappedKeyType</i> for the <i>wrappedKeyAlgorithm</i>
+     * @throws MessageAuthenticationException
+     *             if the non-<tt>null</tt> expected MAC does not match the
+     *             generated MAC
      * @see javax.crypto.CipherSpi#engineUnwrap(byte[], java.lang.String, int)
      */
     @Override

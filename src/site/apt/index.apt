@@ -1,4 +1,4 @@
-~~ Copyright (c) 2011 Matthew Zipay <mattz@ninthtest.net>
+~~ Copyright (c) 2011-2014 Matthew Zipay <mattz@ninthtest.net>
 ~~
 ~~ This file is part of the NinthTest JCA Provider.
 ~~
@@ -24,7 +24,7 @@
 About the NinthTest JCA Provider
 
  The NinthTest JCA Provider is a security provider for the
- {{{http://download.oracle.com/javase/6/docs/technotes/guides/security/crypto/CryptoSpec.html}
+ {{{http://docs.oracle.com/javase/6/docs/technotes/guides/security/crypto/CryptoSpec.html}
  Java\u2122 Cryptography Architecture}}, focused on supporting candidate,
  reference, academic, and experimental cryptographic algorithms and security
  services.
@@ -54,6 +54,8 @@ About the NinthTest JCA Provider
 *------------+---------------------+
 |            | AlgorithmParameters |
 *------------+---------------------+
+|            | SecureRandom        |
+*------------+---------------------+
 <Algorithms and services supported by the NinthTest JCA Provider>
 
  Many services are also available independent of the JCA API. Please refer to
@@ -61,7 +63,7 @@ About the NinthTest JCA Provider
 
 * Download
 
- The current version is <<1.0>>.
+ The current version is <<1.1.0>>.
 
  The NinthTest JCA Provider is available for download in binary (JAR) and
  source form. Due to a JCA code-signing requirement, the binary form is
@@ -75,13 +77,15 @@ About the NinthTest JCA Provider
  This section is a summary of planned changes for upcoming releases. This
  roadmap is subject to change at any time, and without notice.
 
-** Planned for version 1.1
-
-    * a Helix PRNG service
+** Planned
 
     * support for the {{{http://www.skein-hash.info/}Skein hash function}}
       (including the {{{http://www.schneier.com/threefish.html}Threefish block
       cipher}})
+
+    * support for the
+      {{{http://crypto.cs.uiuc.edu/wiki/index.php/Elgamal_encryption_scheme}ElGamal}}
+      encryption system (asymmetric key encryption, digital signature)
 
 ** Under consideration
 

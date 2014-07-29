@@ -1,4 +1,4 @@
-~~ Copyright (c) 2011 Matthew Zipay <mattz@ninthtest.net>
+~~ Copyright (c) 2011-2014 Matthew Zipay <mattz@ninthtest.net>
 ~~
 ~~ This file is part of the NinthTest JCA Provider.
 ~~
@@ -24,10 +24,10 @@
 Downloading and installing the NinthTest JCA Provider
 
  The NinthTest JCA Provider is available in both binary (JAR) and source forms.
- Please note that Java SE version 6 is required.
+ Please note that Java SE version 6 or greater is required.
 
  The
- {{{http://download.oracle.com/javase/6/docs/technotes/guides/security/crypto/CryptoSpec.html}
+ {{{http://docs.oracle.com/javase/6/docs/technotes/guides/security/crypto/CryptoSpec.html}
  Java\u2122 Cryptography Architecture}} requires that Java security providers
  be code-signed (using a code-signing certificate issued by Oracle Corporation).
  As a consequence of this requirement, a JAR that is compiled directly from
@@ -44,20 +44,29 @@ Downloading and installing the NinthTest JCA Provider
 * Download the signed NinthTest JCA Provider JAR
 
  This download is recommended for general use of the NinthTest JCA Provider.
+ The current version is <<1.1.0>>.
+
+*--+--+--+--+
+|| Version || Filename || Description || MD5 |
+*--+--+--+--+
+| 1.1.0 | {{{./releases/ninthtest_provider-1.1.jar}ninthtest_provider-1.1.0}} | The signed NinthTest JCA Provider 1.1.0 JAR. | <<<19dda0a0c20824b6b8b04d558d1ff76b>>> |
+*--+--+--+--+
+| 1.0 | {{{./releases/ninthtest_provider-1.0.jar}ninthtest_provider-1.0}} | The signed NinthTest JCA Provider 1.0 JAR. | <<<062d4e4e903ae10d543dd170bfa8cd78>>> |
+*--+--+--+--+
+Signed JARs by version
+
+** Version 1.1.0
+
+ This release adds support for a
+ {{{http://www.schneier.com/paper-helix.html}Helix}} PRNG (<SecureRandom>
+ service).
 
 ** Version 1.0
 
  This release adds support for the
- {{{http://www.macfergus.com/helix/index.html}Helix combined stream cipher and
+ {{{http://www.schneier.com/paper-helix.html}Helix combined stream cipher and
  MAC function}} (<Cipher>, <Mac>, <SecretKeyFactory>, <AlgorithmParameters>,
  and <KeyGenerator> services).
-
-*--+--+--+
-|| Filename || Description || MD5 |
-*--+--+--+
-| {{{./releases/ninthtest_provider-1.0.jar}ninthtest_provider-1.0}} | The signed NinthTest JCA Provider 1.0 JAR. | <<<062d4e4e903ae10d543dd170bfa8cd78>>> |
-*--+--+--+
-Version 1.0
 
 * Download the NinthTest JCA Provider source code
 
@@ -74,7 +83,7 @@ Version 1.0
  <<Note:>> If you wish to create a derivative work, <even for personal
  (non-distribution) use>, you must obtain your own code-signing certificate
  from Oracle Corporation to sign the JAR. Please refer to
- {{{http://download.oracle.com/javase/6/docs/technotes/guides/security/crypto/HowToImplAProvider.html}
+ {{{http://docs.oracle.com/javase/6/docs/technotes/guides/security/crypto/HowToImplAProvider.html}
  How to Implement a Provider in the Java\u2122 Cryptography Architecture}}
  (step 6) for details.
 
@@ -84,7 +93,7 @@ Version 1.0
  must take additional steps to <<install>> or <<register>> the provider before
  using it; <it is not sufficient to simply place the JAR on your CLASSPATH!>
  This is a security provision of the
- {{{http://download.oracle.com/javase/6/docs/technotes/guides/security/crypto/CryptoSpec.html}
+ {{{http://docs.oracle.com/javase/6/docs/technotes/guides/security/crypto/CryptoSpec.html}
  Java\u2122 Cryptography Architecture}}.
 
  The sections below describe the differences between "installing" and
@@ -98,7 +107,7 @@ Version 1.0
  examples in {{{./usage.html}Using the NinthTest JCA Provider}}).
 
 ** Use the NinthTest JCA Provider as an 
-   {{{http://download.oracle.com/javase/6/docs/technotes/guides/extensions/spec.html#installed}
+   {{{http://docs.oracle.com/javase/6/docs/technotes/guides/extensions/spec.html#installed}
    installed extension}}
 
  This form of installation is persistent; the steps only need to be followed
@@ -162,33 +171,15 @@ grant codeBase "file:/path/to/ninthtest_provider.jar" {
 
 * Versioning
 
- Support for new algorithms will increment the major version, while support for
- new services for an existing algorithm will increment the minor version.
- Defect fixes will be accumulated, and will introduce or increment a micro
- version.
-
- For example, given a base version of <<<M.N>>> the following table illustrates
- the effect of changes on the version increment:
-
-*----------------------------------+-------------*
-New algorithm                      | <<<(M+1).N>>>
-*----------------------------------+-------------*
-New service for existing algorithm | <<<M.(N+1)>>>
-*----------------------------------+-------------*
-Defect fix(es)                     | <<<M.N.1>>>
-*----------------------------------+-------------*
-
- Version increments are treated cumulatively. For example, a changeset
- introducing a new algorithm, <and> a new service for an existing algorithm,
- <and> one or more defect fixes will increment just the major version.
+ The NinthTest JCA Provider follows the
+ {{{http://semver.org/}Semantic Versioning Specification (SemVer)}}.
 
 * Redistributing
 
  Because the NinthTest JCA Provider deals with encryption, it is subject to
- U.S. Export Regulations. The source code provided by
- {{http://www.ninthtest.net/}} is classified as <<ECCN 5D002>>, and takes
- advantage of <<License Exception TSU under section 740.13(e)>> of the Export
- Administration Regulations (EAR).
+ U.S. Export Regulations. The source code is classified as <<ECCN 5D002>>, and
+ takes advantage of <<License Exception TSU under section 740.13(e)>> of the
+ Export Administration Regulations (EAR).
 
  Derivative works and/or redistribution may be subject to additional or
  alternate restrictions. Please visit {{http://www.bis.doc.gov/}} for more

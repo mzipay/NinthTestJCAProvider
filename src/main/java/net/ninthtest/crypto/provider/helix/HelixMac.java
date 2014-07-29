@@ -1,18 +1,18 @@
 /*
- * Copyright (c) 2011 Matthew Zipay <mattz@ninthtest.net>
+ * Copyright (c) 2011-2014 Matthew Zipay <mattz@ninthtest.net>
  * 
  * This file is part of the NinthTest JCA Provider.
- *
+ * 
  * The NinthTest JCA Provider is free software: you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or (at your
  * option) any later version.
- *
- * The NinthTest JCA Provider is distributed in the hope that it will be
- * useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * 
+ * The NinthTest JCA Provider is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
  * Public License for more details.
- *
+ * 
  * You should have received a copy of the GNU General Public License along with
  * the NinthTest JCA Provider. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -57,7 +57,8 @@ public final class HelixMac extends MacSpi {
     /**
      * Returns the length of the MAC in bytes.
      * 
-     * @return the length of a Helix MAC expressed in bytes (always <tt>16</tt>)
+     * @return the length of a Helix MAC expressed in bytes (always <tt>16</tt>
+     *         )
      * @see javax.crypto.MacSpi#engineGetMacLength()
      */
     @Override
@@ -72,14 +73,18 @@ public final class HelixMac extends MacSpi {
      * If a MAC is non-<tt>null</tt> in <i>params</i>, it is ignored.
      * </p>
      * 
-     * @param key the secret key for an MAC generation (encryption) operation
-     *            (must be a &quot;Helix&quot; {@link SecretKey})
-     * @param params the algorithm parameters (must be a
-     *            {@link HelixParameterSpec})
-     * @throws InvalidKeyException if <i>key</i> is <tt>null</tt> or not a
-     *             &quot;Helix&quot; {@link SecretKey}
-     * @throws InvalidAlgorithmParameterException if <i>params</i> is
-     *             <tt>null</tt> or not a {@link HelixParameterSpec}
+     * @param key
+     *            the secret key for an MAC generation (encryption) operation
+     *            (must be a Helix {@link SecretKey})
+     * @param params
+     *            the algorithm parameters (must be a {@link HelixParameterSpec}
+     *            )
+     * @throws InvalidKeyException
+     *             if <i>key</i> is <tt>null</tt> or not a Helix
+     *             {@link SecretKey}
+     * @throws InvalidAlgorithmParameterException
+     *             if <i>params</i> is <tt>null</tt> or not a
+     *             {@link HelixParameterSpec}
      * @see javax.crypto.MacSpi#engineInit(java.security.Key,
      *      java.security.spec.AlgorithmParameterSpec)
      */
@@ -111,7 +116,8 @@ public final class HelixMac extends MacSpi {
     /**
      * Processes the given byte.
      * 
-     * @param input the input byte to be processed
+     * @param input
+     *            the input byte to be processed
      * @see javax.crypto.MacSpi#engineUpdate(byte)
      */
     @Override
@@ -123,15 +129,18 @@ public final class HelixMac extends MacSpi {
      * Processes the first <tt>len</tt> bytes in input, starting at
      * <tt>offset</tt> inclusive.
      * 
-     * @param input the input buffer
-     * @param offset the index into <i>input</i> where the input bytes begin
-     * @param len the number of bytes to be used from <i>input</i> (beginning at
+     * @param input
+     *            the input buffer
+     * @param offset
+     *            the index into <i>input</i> where the input bytes begin
+     * @param len
+     *            the number of bytes to be used from <i>input</i> (beginning at
      *            <i>offset</i>)
      * @see javax.crypto.MacSpi#engineUpdate(byte[], int, int)
      */
     @Override
     protected void engineUpdate(byte[] input, int offset, int len) {
-        if ((input == null)) {
+        if (input == null) {
             throw new IllegalArgumentException(Messages.getMessage("error.input_buffer_is_required"));
         } else if ((offset < 0) || (offset >= input.length)) {
             throw new IllegalArgumentException(Messages.getMessage("error.invalid_input_offset"));

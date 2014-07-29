@@ -1,18 +1,18 @@
 /*
- * Copyright (c) 2011 Matthew Zipay <mattz@ninthtest.net>
+ * Copyright (c) 2011-2014 Matthew Zipay <mattz@ninthtest.net>
  * 
  * This file is part of the NinthTest JCA Provider.
- *
+ * 
  * The NinthTest JCA Provider is free software: you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or (at your
  * option) any later version.
- *
- * The NinthTest JCA Provider is distributed in the hope that it will be
- * useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * 
+ * The NinthTest JCA Provider is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
  * Public License for more details.
- *
+ * 
  * You should have received a copy of the GNU General Public License along with
  * the NinthTest JCA Provider. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -35,7 +35,8 @@ public final class Messages {
     /**
      * Returns the localized message associated with <i>key</i>.
      * 
-     * @param key the message key
+     * @param key
+     *            the message key
      * @return the localized message, or <i>key</i> itself if the message is not
      *         found
      */
@@ -47,8 +48,10 @@ public final class Messages {
      * Returns the localized message associated with <i>key</i>, formatted using
      * <i>arguments</i>.
      * 
-     * @param key the message key
-     * @param arguments values used as positional substitutions into the message
+     * @param key
+     *            the message key
+     * @param arguments
+     *            values used as positional substitutions into the message
      * @return the formatted, localized message; or <i>key</i> itself if the
      *         message is not found
      */
@@ -61,8 +64,8 @@ public final class Messages {
             return MessageFormat.format(MESSAGES.getString(key), arguments);
         } else {
             /*
-             * the ResourceBundle keys should have descriptive names so
-             * that in this case the message at least makes sense
+             * the ResourceBundle keys should have descriptive names so that in
+             * this case the message at least makes sense
              */
             return key;
         }

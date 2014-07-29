@@ -1,18 +1,18 @@
 /*
- * Copyright (c) 2011 Matthew Zipay <mattz@ninthtest.net>
+ * Copyright (c) 2011-2014 Matthew Zipay <mattz@ninthtest.net>
  * 
  * This file is part of the NinthTest JCA Provider.
- *
+ * 
  * The NinthTest JCA Provider is free software: you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or (at your
  * option) any later version.
- *
- * The NinthTest JCA Provider is distributed in the hope that it will be
- * useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * 
+ * The NinthTest JCA Provider is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
  * Public License for more details.
- *
+ * 
  * You should have received a copy of the GNU General Public License along with
  * the NinthTest JCA Provider. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -35,35 +35,38 @@ import java.security.ProviderException;
  */
 public class MessageAuthenticationException extends ProviderException {
     /*
-     * the universal serialization version ID for
+     * The universal serialization version ID for
      * MessageAuthenticationException.
      */
     private static final long serialVersionUID = -2518272027619590751L;
 
-    /* a copy of the MAC the caller expected to be generated */
+    /* A copy of the MAC the caller expected to be generated. */
     private byte[] expectedMac;
 
-    /* a copy of the MAC that was actually generated */
+    /* A copy of the MAC that was actually generated. */
     private byte[] actualMac;
 
     /**
-     * Creates a new <tt>MessageAuthenticationException</tt> with the
-     * specified detail message.
+     * Creates a new <tt>MessageAuthenticationException</tt> with the specified
+     * detail message.
      * 
-     * @param message the detail message describing this exception
+     * @param message
+     *            the detail message describing this exception
      */
     public MessageAuthenticationException(String message) {
         super(message);
     }
 
     /**
-     * Creates a new <tt>MessageAuthenticationException</tt> with the
-     * specified detail message, and saving the expected and actual MACs for
-     * reference.
+     * Creates a new <tt>MessageAuthenticationException</tt> with the specified
+     * detail message, and saving the expected and actual MACs for reference.
      * 
-     * @param message the detail message describing this exception
-     * @param expectedMac the MAC that was expected to be generated
-     * @param actualMac the MAC that was actually generated
+     * @param message
+     *            the detail message describing this exception
+     * @param expectedMac
+     *            the MAC that was expected to be generated
+     * @param actualMac
+     *            the MAC that was actually generated
      */
     public MessageAuthenticationException(String message, final byte[] expectedMac, final byte[] actualMac) {
         super(message);
@@ -74,12 +77,14 @@ public class MessageAuthenticationException extends ProviderException {
     }
 
     /**
-     * Creates a new <tt>MessageAuthenticationException</tt> with the
-     * specified detail message and cause.
+     * Creates a new <tt>MessageAuthenticationException</tt> with the specified
+     * detail message and cause.
      * 
-     * @param message the detail message describing this exception
-     * @param cause the throwable that caused this exception to be thrown, or
-     *            <tt>null</tt> if the cause is nonexistent or unknown
+     * @param message
+     *            the detail message describing this exception
+     * @param cause
+     *            the throwable that caused this exception to be thrown, or
+     *            <tt>null</tt> if the cause is nonexistent/unknown
      */
     public MessageAuthenticationException(String message, Throwable cause) {
         super(message, cause);

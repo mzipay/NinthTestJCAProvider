@@ -1,18 +1,18 @@
 /*
- * Copyright (c) 2011 Matthew Zipay <mattz@ninthtest.net>
+ * Copyright (c) 2011-2014 Matthew Zipay <mattz@ninthtest.net>
  * 
  * This file is part of the NinthTest JCA Provider.
- *
+ * 
  * The NinthTest JCA Provider is free software: you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or (at your
  * option) any later version.
- *
- * The NinthTest JCA Provider is distributed in the hope that it will be
- * useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * 
+ * The NinthTest JCA Provider is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
  * Public License for more details.
- *
+ * 
  * You should have received a copy of the GNU General Public License along with
  * the NinthTest JCA Provider. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -22,6 +22,7 @@ package net.ninthtest.crypto.provider.helix;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
 import java.security.spec.AlgorithmParameterSpec;
@@ -38,66 +39,66 @@ import org.junit.Test;
  * The unit test case for {@link HelixAlgorithmParameters}.
  * 
  * @author Matthew Zipay (mattz@ninthtest.net)
- * @version 1.0
+ * @version 1.1.0
  */
 public class HelixAlgorithmParametersTest implements HelixTestVectors {
     /*
-     * expected toString() value for a HelixAlgorithmParameters initialized with
-     * a nonce
+     * Expected string representation of a HelixAlgorithmParameters initialized
+     * with a nonce.
      */
     private static final String TOSTRING_TEST_VECTOR_3_NONCE_ONLY =
             "helixParameters HelixNonce ::= {\"30 31 32 33 34 35 36 37 38 39 61 62 63 64 65 66\"}";
 
     /*
-     * expected toString() value for a HelixAlgorithmParameters initialized with
-     * a nonce and MAC
+     * Expected string representation of a HelixAlgorithmParameters initialized
+     * with a nonce and MAC.
      */
     private static final String TOSTRING_TEST_VECTOR_3_NONCE_AND_MAC =
             "helixParameters HelixNonceAndMac ::= {\n    nonce  \"30 31 32 33 34 35 36 37 38 39 61 62 63 64 65 66\",\n    mac    \"6c 82 d1 aa 3b 90 5f 12 f1 44 3f a7 f6 a1 01 d2\"\n}";
 
-    /* the ASN.1 representation of the Helix test vector #3 nonce */
+    /* The ASN.1 representation of the Helix test vector #3 nonce. */
     private static byte[] asn1Nonce;
 
-    /* the ASN.1 representation of the Helix test vector #3 nonce and MAC */
+    /* The ASN.1 representation of the Helix test vector #3 nonce and MAC. */
     private static byte[] asn1NonceAndMac;
 
-    /* an ASN.1 representation that specifies an unrecognized type */
+    /* An ASN.1 representation that specifies an unrecognized type. */
     private static byte[] asn1BadType;
 
-    /* an ASN.1 representation of a nonce that specifies an incorrect length */
+    /* An ASN.1 representation of a nonce that specifies an incorrect length. */
     private static byte[] asn1NonceBadLength;
 
     /*
-     * an ASN.1 representation of a nonce and MAC that specifies an incorrect
-     * length
+     * An ASN.1 representation of a nonce and MAC that specifies an incorrect
+     * length.
      */
     private static byte[] asn1SequenceBadLength;
 
     /*
-     * an ASN.1 representation of a nonce and MAC that specifies an unrecognized
-     * type for the nonce
+     * An ASN.1 representation of a nonce and MAC that specifies an unrecognized
+     * type for the nonce.
      */
     private static byte[] asn1SequenceNonceBadType;
 
     /*
-     * an ASN.1 representation of a nonce and MAC that specifies an incorrect
-     * length for the nonce
+     * An ASN.1 representation of a nonce and MAC that specifies an incorrect
+     * length for the nonce.
      */
     private static byte[] asn1SequenceNonceBadLength;
 
     /*
-     * an ASN.1 representation of a nonce and MAC that specifies an unrecognized
-     * type for the MAC
+     * An ASN.1 representation of a nonce and MAC that specifies an unrecognized
+     * type for the MAC.
      */
     private static byte[] asn1SequenceMacBadType;
 
     /*
-     * an ASN.1 representation of a nonce and MAC that specifies an incorrect
-     * length for the MAC
+     * An ASN.1 representation of a nonce and MAC that specifies an incorrect
+     * length for the MAC.
      */
     private static byte[] asn1SequenceMacBadLength;
 
-    /* the instance used by test fixtures */
+    /* The instance used by test fixtures. */
     private HelixAlgorithmParameters parameters;
 
     /**
@@ -112,7 +113,7 @@ public class HelixAlgorithmParametersTest implements HelixTestVectors {
 
         asn1NonceAndMac = new byte[38];
         asn1NonceAndMac[0] = 0x30; // Type=Sequence
-        asn1NonceAndMac[1] = 0x24; // Length=36 (2 * 18; i.e. two OctetStrings, each of length 16)
+        asn1NonceAndMac[1] = 0x24; // Length=36 (two OctetStrings)
         asn1NonceAndMac[2] = 0x04; // Type=OctetString
         asn1NonceAndMac[3] = 0x10; // Length=16
         System.arraycopy(TEST_VECTOR_3[NONCE], 0, asn1NonceAndMac, 4, 16); // Contents
@@ -164,7 +165,8 @@ public class HelixAlgorithmParametersTest implements HelixTestVectors {
      * {@link HelixAlgorithmParameters#engineInit(AlgorithmParameterSpec)}
      * rejects a <tt>null</tt> argument.
      * 
-     * @throws InvalidParameterSpecException if the test succeeds
+     * @throws InvalidParameterSpecException
+     *             if the test succeeds
      */
     @Test(expected = InvalidParameterSpecException.class)
     public void engineInitRejectsNullSpec() throws InvalidParameterSpecException {
@@ -178,7 +180,8 @@ public class HelixAlgorithmParametersTest implements HelixTestVectors {
      * rejects a non-<tt>null</tt> argument that is <i>not</i> a
      * {@link HelixParameterSpec}.
      * 
-     * @throws InvalidParameterSpecException if the test succeeds
+     * @throws InvalidParameterSpecException
+     *             if the test succeeds
      */
     @Test(expected = InvalidParameterSpecException.class)
     public void engineInitRejectsNonHelixSpec() throws InvalidParameterSpecException {
@@ -191,7 +194,8 @@ public class HelixAlgorithmParametersTest implements HelixTestVectors {
      * {@link HelixAlgorithmParameters#engineInit(AlgorithmParameterSpec)}
      * accepts a {@link HelixParameterSpec} that specifies only a nonce.
      * 
-     * @throws InvalidParameterSpecException if the test fails
+     * @throws InvalidParameterSpecException
+     *             if the test fails
      */
     @Test
     public void engineInitAcceptsSpecWithNonceOnly() throws InvalidParameterSpecException {
@@ -204,7 +208,8 @@ public class HelixAlgorithmParametersTest implements HelixTestVectors {
      * {@link HelixAlgorithmParameters#engineInit(AlgorithmParameterSpec)}
      * accepts a {@link HelixParameterSpec} that specifies a nonce and MAC.
      * 
-     * @throws InvalidParameterSpecException if the test fails
+     * @throws InvalidParameterSpecException
+     *             if the test fails
      */
     @Test
     public void engineInitAcceptsSpecWithNonceAndMac() throws InvalidParameterSpecException {
@@ -218,7 +223,8 @@ public class HelixAlgorithmParametersTest implements HelixTestVectors {
      * Asserts that {@link HelixAlgorithmParameters#engineInit(byte[])} rejects
      * a <tt>null</tt> byte array.
      * 
-     * @throws IOException if the test succeeds
+     * @throws IOException
+     *             if the test succeeds
      */
     @Test(expected = IOException.class)
     public void engineInitRejectsNullByteArray() throws IOException {
@@ -236,7 +242,8 @@ public class HelixAlgorithmParametersTest implements HelixTestVectors {
      * nonce and MAC byte array).
      * </p>
      * 
-     * @throws IOException if the test succeeds
+     * @throws IOException
+     *             if the test succeeds
      */
     @Test(expected = IOException.class)
     public void engineInitRejectsByteArrayWithBadLength() throws IOException {
@@ -254,7 +261,8 @@ public class HelixAlgorithmParametersTest implements HelixTestVectors {
      * <tt>0x30</tt> (<i>Sequence</i>).
      * </p>
      * 
-     * @throws IOException if the test succeeds
+     * @throws IOException
+     *             if the test succeeds
      */
     @Test(expected = IOException.class)
     public void engineInitRejectsByteArrayWithBadASN1Type() throws IOException {
@@ -265,7 +273,8 @@ public class HelixAlgorithmParametersTest implements HelixTestVectors {
      * Asserts that {@link HelixAlgorithmParameters#engineInit(byte[])} rejects
      * a byte array that specifies an incorrect length for the nonce.
      * 
-     * @throws IOException if the test succeeds
+     * @throws IOException
+     *             if the test succeeds
      */
     @Test(expected = IOException.class)
     public void engineInitRejectsByteArrayWithBadNonceLength() throws IOException {
@@ -277,7 +286,8 @@ public class HelixAlgorithmParametersTest implements HelixTestVectors {
      * a byte array that specifies an incorrect length for the sequence
      * containing the nonce and MAC.
      * 
-     * @throws IOException if the test succeeds
+     * @throws IOException
+     *             if the test succeeds
      */
     @Test(expected = IOException.class)
     public void engineInitRejectsSequenceWithBadLength() throws IOException {
@@ -289,7 +299,8 @@ public class HelixAlgorithmParametersTest implements HelixTestVectors {
      * a byte array that specifies an incorrect type for the nonce in a
      * sequence.
      * 
-     * @throws IOException if the test succeeds
+     * @throws IOException
+     *             if the test succeeds
      */
     @Test(expected = IOException.class)
     public void engineInitRejectsSequenceWithBadNonceType() throws IOException {
@@ -301,7 +312,8 @@ public class HelixAlgorithmParametersTest implements HelixTestVectors {
      * a byte array that specifies an incorrect length for the nonce in a
      * sequence.
      * 
-     * @throws IOException if the test succeeds
+     * @throws IOException
+     *             if the test succeeds
      */
     @Test(expected = IOException.class)
     public void engineInitRejectsSequenceWithBadNonceLength() throws IOException {
@@ -310,10 +322,10 @@ public class HelixAlgorithmParametersTest implements HelixTestVectors {
 
     /**
      * Asserts that {@link HelixAlgorithmParameters#engineInit(byte[])} rejects
-     * a byte array that specifies an incorrect type for the MAC in a
-     * sequence.
+     * a byte array that specifies an incorrect type for the MAC in a sequence.
      * 
-     * @throws IOException if the test succeeds
+     * @throws IOException
+     *             if the test succeeds
      */
     @Test(expected = IOException.class)
     public void engineInitRejectsSequenceWithBadMacType() throws IOException {
@@ -325,7 +337,8 @@ public class HelixAlgorithmParametersTest implements HelixTestVectors {
      * a byte array that specifies an incorrect length for the MAC in a
      * sequence.
      * 
-     * @throws IOException if the test succeeds
+     * @throws IOException
+     *             if the test succeeds
      */
     @Test(expected = IOException.class)
     public void engineInitRejectsSequenceWithBadMacLength() throws IOException {
@@ -336,7 +349,8 @@ public class HelixAlgorithmParametersTest implements HelixTestVectors {
      * Asserts that {@link HelixAlgorithmParameters#engineInit(byte[])} accepts
      * a byte array containing only a nonce.
      * 
-     * @throws IOException if the test fails
+     * @throws IOException
+     *             if the test fails
      */
     @Test
     public void engineInitAcceptsASN1NonceOnly() throws IOException {
@@ -347,7 +361,8 @@ public class HelixAlgorithmParametersTest implements HelixTestVectors {
      * Asserts that {@link HelixAlgorithmParameters#engineInit(byte[])} accepts
      * a byte array containing a nonce and a MAC.
      * 
-     * @throws IOException if the test fails
+     * @throws IOException
+     *             if the test fails
      */
     @Test
     public void engineInitAcceptsASN1NonceAndMac() throws IOException {
@@ -361,7 +376,8 @@ public class HelixAlgorithmParametersTest implements HelixTestVectors {
      * rejects a byte array that does not represent an ASN.1 nonce or nonce+MAC
      * sequence.
      * 
-     * @throws IOException if the test succeeds
+     * @throws IOException
+     *             if the test succeeds
      */
     @Test(expected = IOException.class)
     public void engineInitRejectsNonASN1WithUnrecognizedFormat() throws IOException {
@@ -378,7 +394,8 @@ public class HelixAlgorithmParametersTest implements HelixTestVectors {
      * should be assumed.
      * </p>
      * 
-     * @throws IOException if the test fails
+     * @throws IOException
+     *             if the test fails
      */
     @Test
     public void engineInitAcceptsASN1WithNullFormat() throws IOException {
@@ -388,9 +405,10 @@ public class HelixAlgorithmParametersTest implements HelixTestVectors {
     /**
      * Asserts that {@link HelixAlgorithmParameters#engineInit(byte[], String)}
      * accepts a correctly-formatted ASN.1 byte array when the format is
-     * &quot;ASN.1&quot;.
+     * "ASN.1".
      * 
-     * @throws IOException if the test fails
+     * @throws IOException
+     *             if the test fails
      */
     @Test
     public void engineInitAcceptsASN1WithASN1Format() throws IOException {
@@ -399,10 +417,10 @@ public class HelixAlgorithmParametersTest implements HelixTestVectors {
 
     /**
      * Asserts that {@link HelixAlgorithmParameters#engineInit(byte[], String)}
-     * accepts a correctly-formatted ASN.1 byte array when the format is
-     * &quot;DER&quot;.
+     * accepts a correctly-formatted ASN.1 byte array when the format is "DER".
      * 
-     * @throws IOException if the test fails
+     * @throws IOException
+     *             if the test fails
      */
     @Test
     public void engineInitAcceptsASN1WithDERFormat() throws IOException {
@@ -414,7 +432,8 @@ public class HelixAlgorithmParametersTest implements HelixTestVectors {
      * accepts a correctly-formatted ASN.1 byte array even when the format is
      * not recognized.
      * 
-     * @throws IOException if the test fails
+     * @throws IOException
+     *             if the test fails
      */
     @Test
     public void engineInitAcceptsASN1WithUnrecognizedFormat() throws IOException {
@@ -428,7 +447,8 @@ public class HelixAlgorithmParametersTest implements HelixTestVectors {
      * {@link HelixAlgorithmParameters#engineGetParameterSpec(Class)} rejects a
      * <tt>null</tt> class argument.
      * 
-     * @throws InvalidParameterSpecException if the test succeeds
+     * @throws InvalidParameterSpecException
+     *             if the test succeeds
      */
     @Test(expected = InvalidParameterSpecException.class)
     public void engineGetParameterSpecRejectsNullClass() throws InvalidParameterSpecException {
@@ -440,7 +460,8 @@ public class HelixAlgorithmParametersTest implements HelixTestVectors {
      * {@link HelixAlgorithmParameters#engineGetParameterSpec(Class)} rejects a
      * class that is not {@link HelixParameterSpec}.
      * 
-     * @throws InvalidParameterSpecException if the test succeeds
+     * @throws InvalidParameterSpecException
+     *             if the test succeeds
      */
     @Test(expected = InvalidParameterSpecException.class)
     public void engineGetParameterSpecRejectsNonHelixClass() throws InvalidParameterSpecException {
@@ -452,8 +473,10 @@ public class HelixAlgorithmParametersTest implements HelixTestVectors {
      * {@link HelixAlgorithmParameters#engineGetParameterSpec(Class)} creates a
      * {@link HelixParameterSpec} with a nonce only.
      * 
-     * @throws IOException if the test fails
-     * @throws InvalidParameterSpecException if the test fails
+     * @throws IOException
+     *             if the test fails
+     * @throws InvalidParameterSpecException
+     *             if the test fails
      */
     @Test
     public void engineGetParameterSpecForNonceOnly() throws IOException, InvalidParameterSpecException {
@@ -469,8 +492,10 @@ public class HelixAlgorithmParametersTest implements HelixTestVectors {
      * {@link HelixAlgorithmParameters#engineGetParameterSpec(Class)} creates a
      * {@link HelixParameterSpec} with a nonce and MAC.
      * 
-     * @throws IOException if the test fails
-     * @throws InvalidParameterSpecException if the test fails
+     * @throws IOException
+     *             if the test fails
+     * @throws InvalidParameterSpecException
+     *             if the test fails
      */
     @Test
     public void engineGetParameterSpecForNonceAndMac() throws IOException, InvalidParameterSpecException {
@@ -487,8 +512,10 @@ public class HelixAlgorithmParametersTest implements HelixTestVectors {
      * Asserts that {@link HelixAlgorithmParameters#engineGetEncoded()} returns
      * the expected ASN.1 representation of a Helix nonce.
      * 
-     * @throws InvalidParameterSpecException if the test fails
-     * @throws IOException if the test fails
+     * @throws InvalidParameterSpecException
+     *             if the test fails
+     * @throws IOException
+     *             if the test fails
      */
     @Test
     public void engineGetEncodedForNonceOnly() throws InvalidParameterSpecException, IOException {
@@ -502,8 +529,10 @@ public class HelixAlgorithmParametersTest implements HelixTestVectors {
      * Asserts that {@link HelixAlgorithmParameters#engineGetEncoded()} returns
      * the expected ASN.1 representation of a Helix nonce and MAC sequence.
      * 
-     * @throws InvalidParameterSpecException if the test fails
-     * @throws IOException if the test fails
+     * @throws InvalidParameterSpecException
+     *             if the test fails
+     * @throws IOException
+     *             if the test fails
      */
     @Test
     public void engineGetEncodedForNonceAndMac() throws InvalidParameterSpecException, IOException {
@@ -519,8 +548,10 @@ public class HelixAlgorithmParametersTest implements HelixTestVectors {
      * Asserts that {@link HelixAlgorithmParameters#engineGetEncoded()} throws
      * an exception if the specified format is not recognized.
      * 
-     * @throws InvalidParameterSpecException if the test fails
-     * @throws IOException if the test fails
+     * @throws InvalidParameterSpecException
+     *             if the test fails
+     * @throws IOException
+     *             if the test fails
      */
     @Test(expected = IOException.class)
     public void engineGetEncodedWithUnrecognizedFormat() throws InvalidParameterSpecException, IOException {
@@ -539,8 +570,10 @@ public class HelixAlgorithmParametersTest implements HelixTestVectors {
      * should be assumed.
      * </p>
      * 
-     * @throws InvalidParameterSpecException if the test fails
-     * @throws IOException if the test fails
+     * @throws InvalidParameterSpecException
+     *             if the test fails
+     * @throws IOException
+     *             if the test fails
      */
     @Test
     public void engineGetEncodedWithNullFormat() throws InvalidParameterSpecException, IOException {
@@ -552,10 +585,12 @@ public class HelixAlgorithmParametersTest implements HelixTestVectors {
 
     /**
      * Asserts that {@link HelixAlgorithmParameters#engineGetEncoded()} returns
-     * the expected ASN.1 byte array when the format is &quot;ASN.1&quot;.
+     * the expected ASN.1 byte array when the format is "ASN.1".
      * 
-     * @throws InvalidParameterSpecException if the test fails
-     * @throws IOException if the test fails
+     * @throws InvalidParameterSpecException
+     *             if the test fails
+     * @throws IOException
+     *             if the test fails
      */
     @Test
     public void engineGetEncodedWithASN1Format() throws InvalidParameterSpecException, IOException {
@@ -567,10 +602,12 @@ public class HelixAlgorithmParametersTest implements HelixTestVectors {
 
     /**
      * Asserts that {@link HelixAlgorithmParameters#engineGetEncoded()} returns
-     * the expected ASN.1 byte array when the format is &quot;DER&quot;.
+     * the expected ASN.1 byte array when the format is "DER".
      * 
-     * @throws InvalidParameterSpecException if the test fails
-     * @throws IOException if the test fails
+     * @throws InvalidParameterSpecException
+     *             if the test fails
+     * @throws IOException
+     *             if the test fails
      */
     @Test
     public void testEngineGetEncoded_StringDer() throws InvalidParameterSpecException, IOException {
@@ -584,9 +621,21 @@ public class HelixAlgorithmParametersTest implements HelixTestVectors {
 
     /**
      * Asserts that {@link HelixAlgorithmParameters#engineToString()} returns
+     * the generic string representation when both the nonce and MAC are
+     * <tt>null</tt>.
+     */
+    @Test
+    public void engineToStringWithNullNonceAndMac() {
+        assertTrue(parameters.engineToString().startsWith(
+                "net.ninthtest.crypto.provider.helix.HelixAlgorithmParameters@"));
+    }
+
+    /**
+     * Asserts that {@link HelixAlgorithmParameters#engineToString()} returns
      * the expected string when initialized with a nonce only.
      * 
-     * @throws InvalidParameterSpecException if the test fails
+     * @throws InvalidParameterSpecException
+     *             if the test fails
      */
     @Test
     public void engineToStringWithNonceOnly() throws InvalidParameterSpecException {
@@ -599,7 +648,8 @@ public class HelixAlgorithmParametersTest implements HelixTestVectors {
      * Asserts that {@link HelixAlgorithmParameters#engineToString()} returns
      * the expected string when initialized with a nonce and MAC.
      * 
-     * @throws InvalidParameterSpecException if the test fails
+     * @throws InvalidParameterSpecException
+     *             if the test fails
      */
     @Test
     public void engineToStringWithNonceAndMac() throws InvalidParameterSpecException {

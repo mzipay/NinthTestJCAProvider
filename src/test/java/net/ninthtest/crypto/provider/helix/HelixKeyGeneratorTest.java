@@ -1,18 +1,18 @@
 /*
- * Copyright (c) 2011 Matthew Zipay <mattz@ninthtest.net>
+ * Copyright (c) 2011-2014 Matthew Zipay <mattz@ninthtest.net>
  * 
  * This file is part of the NinthTest JCA Provider.
- *
+ * 
  * The NinthTest JCA Provider is free software: you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or (at your
  * option) any later version.
- *
- * The NinthTest JCA Provider is distributed in the hope that it will be
- * useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * 
+ * The NinthTest JCA Provider is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
  * Public License for more details.
- *
+ * 
  * You should have received a copy of the GNU General Public License along with
  * the NinthTest JCA Provider. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -66,7 +66,8 @@ public class HelixKeyGeneratorTest {
      * Asserts that {@link HelixKeyGenerator#engineInit(SecureRandom)} accepts a
      * non-default {@link SecureRandom} argument.
      * 
-     * @throws NoSuchAlgorithmException if the test fails
+     * @throws NoSuchAlgorithmException
+     *             if the test fails
      */
     @Test
     public void engineInitAcceptsNonDefaultSecureRandom() throws NoSuchAlgorithmException {
@@ -106,7 +107,8 @@ public class HelixKeyGeneratorTest {
      * Asserts that {@link HelixKeyGenerator#engineInit(int, SecureRandom)}
      * accepts a valid key size and a non-default {@link SecureRandom} argument.
      * 
-     * @throws NoSuchAlgorithmException if the test fails
+     * @throws NoSuchAlgorithmException
+     *             if the test fails
      */
     @Test
     public void engineInitAcceptsKeySizeAndNonDefaultSecureRandom() throws NoSuchAlgorithmException {
@@ -127,7 +129,8 @@ public class HelixKeyGeneratorTest {
      * The Helix key generator does not support algorithm parameters.
      * </p>
      * 
-     * @throws InvalidAlgorithmParameterException if the test succeeds
+     * @throws InvalidAlgorithmParameterException
+     *             if the test succeeds
      */
     @Test(expected = InvalidAlgorithmParameterException.class)
     public void engineInitRejectsAlgorithmParameterSpec() throws InvalidAlgorithmParameterException {

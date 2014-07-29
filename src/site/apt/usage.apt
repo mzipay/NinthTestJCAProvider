@@ -1,4 +1,4 @@
-~~ Copyright (c) 2011 Matthew Zipay <mattz@ninthtest.net>
+~~ Copyright (c) 2011-2014 Matthew Zipay <mattz@ninthtest.net>
 ~~
 ~~ This file is part of the NinthTest JCA Provider.
 ~~
@@ -27,7 +27,7 @@ Using the NinthTest JCA Provider
  scenarios by algorithm.
 
  These examples are not exhaustive; please refer to the
- {{{http://download.oracle.com/javase/6/docs/technotes/guides/security/crypto/CryptoSpec.html#CoreClasses}
+ {{{http://docs.oracle.com/javase/6/docs/technotes/guides/security/crypto/CryptoSpec.html#CoreClasses}
  Java\u2122 Cryptography Architecture Core Classes and Interfaces}} and the
  {{{./apidocs/index.html}NinthTest JCA Provider API documentation}} for more
  information.
@@ -70,18 +70,19 @@ SecretKey secretKey = keyGenerator.generateKey();
  factory to create the secret key.
 
 +--
-HelixKeySpec keySpec = new HelixKeySpec("KeepMeSecret".getBytes("UTF-8"));
+byte[] keyMaterial = "KeepMeSecret".getBytes("UTF-8");
+HelixKeySpec keySpec = new HelixKeySpec(keyMaterial);
 SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("Helix", "NinthTest");
 SecretKey secretKey = keyFactory.generateSecret(keySpec);
 +--
 
  See:
 
-    * <<<{{{http://download.oracle.com/javase/6/docs/api/javax/crypto/KeyGenerator.html}javax.crypto.KeyGenerator}}>>>
+    * <<<{{{http://docs.oracle.com/javase/6/docs/api/javax/crypto/KeyGenerator.html}javax.crypto.KeyGenerator}}>>>
 
-    * <<<{{{http://download.oracle.com/javase/6/docs/api/javax/crypto/SecretKey.html}javax.crypto.SecretKey}}>>>
+    * <<<{{{http://docs.oracle.com/javase/6/docs/api/javax/crypto/SecretKey.html}javax.crypto.SecretKey}}>>>
 
-    * <<<{{{http://download.oracle.com/javase/6/docs/api/javax/crypto/SecretKeyFactory.html}javax.crypto.SecretKeyFactory}}>>>
+    * <<<{{{http://docs.oracle.com/javase/6/docs/api/javax/crypto/SecretKeyFactory.html}javax.crypto.SecretKeyFactory}}>>>
 
     * <<<{{{./apidocs/net/ninthtest/crypto/provider/helix/HelixKeyGenerator.html}net.ninthtest.crypto.provider.helix.HelixKeyGenerator}}>>>
 
@@ -91,9 +92,9 @@ SecretKey secretKey = keyFactory.generateSecret(keySpec);
 
 *** Initialize the Helix cipher with a randomly-generated nonce
 
- Initializing the cipher for encryption <<without>> specifying a nonce causes
- the NinthTest JCA Provider to generate a random nonce. Be sure to save this
- generated nonce, as it will be required for decryption!
+ Initializing the cipher for encryption <without> specifying a nonce causes
+ the NinthTest JCA Provider to generate a random nonce. <<Be sure to save the
+ generated nonce, as it will be required for decryption!>>
 
 +--
 Cipher cipher = Cipher.getInstance("Helix", "NinthTest");
@@ -107,7 +108,7 @@ byte[] randomNonce = cipher.getIV();
  cipher for encryption. The nonce <must> be 16 bytes in length.
 
 +--
-byte[] nonce = "MustBe16Bytes!!!".getBytes("US-ASCII");
+byte[] nonce = "MustBe16Bytes!!!".getBytes("UTF-8");
 HelixParameterSpec paramSpec = new HelixParameterSpec(nonce);
 Cipher cipher = Cipher.getInstance("Helix", "NinthTest");
 cipher.init(Cipher.ENCRYPT_MODE, secretKey, paramSpec);
@@ -129,9 +130,9 @@ byte[] generatedMac = paramSpec.getMac();
 
  See:
 
-    * <<<{{{http://download.oracle.com/javase/6/docs/api/java/security/AlgorithmParameters.html}java.security.AlgorithmParameters}}>>>
+    * <<<{{{http://docs.oracle.com/javase/6/docs/api/java/security/AlgorithmParameters.html}java.security.AlgorithmParameters}}>>>
 
-    * <<<{{{http://download.oracle.com/javase/6/docs/api/javax/crypto/Cipher.html}javax.crypto.Cipher}}>>>
+    * <<<{{{http://docs.oracle.com/javase/6/docs/api/javax/crypto/Cipher.html}javax.crypto.Cipher}}>>>
 
     * <<<{{{./apidocs/net/ninthtest/crypto/provider/helix/HelixAlgorithmParameters.html}net.ninthtest.crypto.provider.helix.HelixAlgorithmParameters}}>>>
 
@@ -151,9 +152,9 @@ byte[] generatedMac = paramSpec.getMac();
  encryption/decryption in order for the generated MAC to be useful.
 
 +--
-SecureRandom rng = new SecureRandom();
+SecureRandom prng = new SecureRandom();
 byte[] randomNonce = new byte[16];
-rng.nextBytes(randomNonce);
+prng.nextBytes(randomNonce);
 HelixParameterSpec paramSpec = new HelixParameterSpec(randomNonce);
 Mac macFunction = Mac.getInstance("Helix", "NinthTest");
 macFunction.init(secretKey, paramSpec);
@@ -163,7 +164,7 @@ byte[] mac = macFunction.doFinal(plainText);
 *** Generate a Helix MAC using a specified nonce
 
 +--
-byte[] nonce = "MustBe16Bytes!!!".getBytes("US-ASCII");
+byte[] nonce = "MustBe16Bytes!!!".getBytes("UTF-8");
 HelixParameterSpec paramSpec = new HelixParameterSpec(nonce);
 Mac macFunction = Mac.getInstance("Helix", "NinthTest");
 macFunction.init(secretKey, paramSpec);
@@ -172,9 +173,9 @@ byte[] mac = macFunction.doFinal(plainText);
 
  See:
 
-    * <<<{{{http://download.oracle.com/javase/6/docs/api/java/security/SecureRandom.html}java.security.SecureRandom}}>>>
+    * <<<{{{http://docs.oracle.com/javase/6/docs/api/java/security/SecureRandom.html}java.security.SecureRandom}}>>>
 
-    * <<<{{{http://download.oracle.com/javase/6/docs/api/javax/crypto/Mac.html}javax.crypto.Mac}}>>>
+    * <<<{{{http://docs.oracle.com/javase/6/docs/api/javax/crypto/Mac.html}javax.crypto.Mac}}>>>
 
     * <<<{{{./apidocs/net/ninthtest/crypto/provider/helix/HelixParameterSpec.html}net.ninthtest.crypto.provider.helix.HelixParameterSpec}}>>>
 
@@ -209,7 +210,7 @@ byte[] plainText = cipher.doFinal(cipherText);
 
  See:
 
-    * <<<{{{http://download.oracle.com/javase/6/docs/api/javax/crypto/Cipher.html}javax.crypto.Cipher}}>>>
+    * <<<{{{http://docs.oracle.com/javase/6/docs/api/javax/crypto/Cipher.html}javax.crypto.Cipher}}>>>
 
     * <<<{{{./apidocs/net/ninthtest/crypto/MessageAuthenticationException.html}net.ninthtest.crypto.MessageAuthenticationException}}>>>
 
@@ -217,11 +218,26 @@ byte[] plainText = cipher.doFinal(cipherText);
 
     * <<<{{{./apidocs/net/ninthtest/crypto/provider/helix/HelixParameterSpec.html}net.ninthtest.crypto.provider.helix.HelixParameterSpec}}>>>
 
+** Helix pseudo-random number generation (PRNG)
+
+*** Generate pseudo-random numbers using Helix
+
++--
+SecureRandom prng = SecureRandom.getInstance("Helix");
+byte bytes[] = new byte[16];
+prng.nextBytes(bytes);
++--
+
+ See:
+
+    * <<<{{{http://docs.oracle.com/javase/6/docs/api/java/security/SecureRandom.html}java.security.SecureRandom}}>>>
+
+    * <<<{{{./apidocs/net/ninthtest/crypto/provider/helix/HelixSecureRandom.html}net.ninthtest.crypto.provider.helix.HelixSecureRandom}}>>>
+
 ** Non-provider usage of Helix
 
  The Helix cryptographic primitive may also be used independently of the JCA by
- using the <<<HelixPrimitive>>>, <<<HelixEncryption>>>, and
- <<<HelixDecryption>>> classes directly.
+ using the classes defined in the <<<net.ninthtest.crypto.helix>>> package.
 
 *** Non-provider Helix encryption
 
@@ -254,6 +270,16 @@ HelixPrimitive helixDecryption = new HelixDecryption(key, nonce);
 byte[] plaintText = helixEncryption.finish(cipherText);
 +--
 
+*** Non-provider Helix pseudo-random number generation
+
+ The <<<HelixRandom>>> class is a subclass of
+ <<<{{{http://docs.oracle.com/javase/6/docs/api/java/util/Random.html}java.util.Random}}>>>.
+
++--
+Random rand = new HelixRandom();
+int digit = rand.nextInt(10);
++--
+
  See:
 
     * <<<{{{./apidocs/net/ninthtest/crypto/helix/HelixDecryption.html}net.ninthtest.crypto.helix.HelixDecryption}}>>>
@@ -261,3 +287,5 @@ byte[] plaintText = helixEncryption.finish(cipherText);
     * <<<{{{./apidocs/net/ninthtest/crypto/helix/HelixEncryption.html}net.ninthtest.crypto.helix.HelixEncryption}}>>>
 
     * <<<{{{./apidocs/net/ninthtest/crypto/helix/HelixPrimitive.html}net.ninthtest.crypto.helix.HelixPrimitive}}>>>
+
+    * <<<{{{./apidocs/net/ninthtest/crypto/helix/HelixRandom.html}net.ninthtest.crypto.helix.HelixRandom}}>>>

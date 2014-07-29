@@ -1,18 +1,18 @@
 /*
- * Copyright (c) 2011 Matthew Zipay <mattz@ninthtest.net>
+ * Copyright (c) 2011-2014 Matthew Zipay <mattz@ninthtest.net>
  * 
  * This file is part of the NinthTest JCA Provider.
- *
+ * 
  * The NinthTest JCA Provider is free software: you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or (at your
  * option) any later version.
- *
- * The NinthTest JCA Provider is distributed in the hope that it will be
- * useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * 
+ * The NinthTest JCA Provider is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
  * Public License for more details.
- *
+ * 
  * You should have received a copy of the GNU General Public License along with
  * the NinthTest JCA Provider. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -65,10 +65,10 @@ import org.junit.Test;
  * The unit test case for {@link HelixCipher}.
  * 
  * @author Matthew Zipay (mattz@ninthtest.net)
- * @version 1.0
+ * @version 1.1.0
  */
 public class HelixCipherTest implements HelixTestVectors {
-    /* used to test key (un)wrapping of a public key */
+    /* Used to test key (un)wrapping of a public key. */
     private static final byte[] DSA_PUBLIC_KEY_MATERIAL = new byte[] {(byte) 0x30, (byte) 0x81, (byte) 0xf0,
             (byte) 0x30, (byte) 0x81, (byte) 0xa8, (byte) 0x06, (byte) 0x07, (byte) 0x2a, (byte) 0x86, (byte) 0x48,
             (byte) 0xce, (byte) 0x38, (byte) 0x04, (byte) 0x01, (byte) 0x30, (byte) 0x81, (byte) 0x9c, (byte) 0x02,
@@ -102,8 +102,8 @@ public class HelixCipherTest implements HelixTestVectors {
             (byte) 0xcd, (byte) 0xf8, (byte) 0x7a, (byte) 0x8f, (byte) 0xd9, (byte) 0xa7, (byte) 0x33, (byte) 0x52};
 
     /*
-     * used to test key (un)wrapping of a public key; assumes test vector #3 key
-     * and nonce
+     * Used to test key (un)wrapping of a public key; assumes test vector #3 key
+     * and nonce.
      */
     private static final byte[] DSA_WRAPPED_PUBLIC_KEY = new byte[] {(byte) 0x14, (byte) 0xa8, (byte) 0xbb,
             (byte) 0xe5, (byte) 0x09, (byte) 0x82, (byte) 0x15, (byte) 0xb0, (byte) 0x60, (byte) 0x49, (byte) 0xb0,
@@ -138,14 +138,14 @@ public class HelixCipherTest implements HelixTestVectors {
             (byte) 0xc8, (byte) 0x28, (byte) 0x77, (byte) 0x71, (byte) 0x5b, (byte) 0xb4, (byte) 0x91, (byte) 0xfe};
 
     /*
-     * used to test key (un)wrapping of a public key; assumes test vector #3 key
-     * and nonce
+     * Used to test key (un)wrapping of a public key; assumes test vector #3 key
+     * and nonce.
      */
     private static final byte[] DSA_WRAPPED_PUBLIC_KEY_MAC = new byte[] {(byte) 0x47, (byte) 0xb0, (byte) 0xcb,
             (byte) 0x3c, (byte) 0x10, (byte) 0xd8, (byte) 0xd0, (byte) 0x79, (byte) 0x6e, (byte) 0x16, (byte) 0x98,
             (byte) 0xff, (byte) 0xc7, (byte) 0x8c, (byte) 0x94, (byte) 0x24};
 
-    /* used to test key (un)wrapping of a private key */
+    /* Used to test key (un)wrapping of a private key. */
     private static final byte[] DSA_PRIVATE_KEY_MATERIAL = new byte[] {(byte) 0x30, (byte) 0x81, (byte) 0xc6,
             (byte) 0x02, (byte) 0x01, (byte) 0x00, (byte) 0x30, (byte) 0x81, (byte) 0xa8, (byte) 0x06, (byte) 0x07,
             (byte) 0x2a, (byte) 0x86, (byte) 0x48, (byte) 0xce, (byte) 0x38, (byte) 0x04, (byte) 0x01, (byte) 0x30,
@@ -174,8 +174,8 @@ public class HelixCipherTest implements HelixTestVectors {
             (byte) 0x9d, (byte) 0x98, (byte) 0x62, (byte) 0x1b, (byte) 0xad, (byte) 0xec};
 
     /*
-     * used to test key (un)wrapping of a private key; assumes test vector #3
-     * key and nonce
+     * Used to test key (un)wrapping of a private key; assumes test vector #3
+     * key and nonce.
      */
     private static final byte[] DSA_WRAPPED_PRIVATE_KEY = new byte[] {(byte) 0x14, (byte) 0xa8, (byte) 0x8d,
             (byte) 0xd7, (byte) 0x89, (byte) 0xea, (byte) 0x6d, (byte) 0x34, (byte) 0xd5, (byte) 0xd4, (byte) 0xd2,
@@ -205,14 +205,14 @@ public class HelixCipherTest implements HelixTestVectors {
             (byte) 0xbf, (byte) 0x67, (byte) 0xa4, (byte) 0xd9, (byte) 0x62, (byte) 0x0c};
 
     /*
-     * used to test key (un)wrapping of a private key; assumes test vector #3
-     * key and nonce
+     * Used to test key (un)wrapping of a private key; assumes test vector #3
+     * key and nonce.
      */
     private static final byte[] DSA_WRAPPED_PRIVATE_KEY_MAC = new byte[] {(byte) 0xd9, (byte) 0xc1, (byte) 0x8c,
             (byte) 0xf8, (byte) 0x3a, (byte) 0xce, (byte) 0xc7, (byte) 0x9c, (byte) 0x07, (byte) 0x48, (byte) 0xa9,
             (byte) 0x13, (byte) 0x1e, (byte) 0x42, (byte) 0xaf, (byte) 0xf9};
 
-    /* used to test key (un)wrapping of a secret key */
+    /* Used to test key (un)wrapping of a secret key. */
     private static final byte[] BLOWFISH_SECRET_KEY_MATERIAL = new byte[] {(byte) 0x94, (byte) 0xd7, (byte) 0x08,
             (byte) 0xff, (byte) 0xc3, (byte) 0x44, (byte) 0x38, (byte) 0x7a, (byte) 0xca, (byte) 0x40, (byte) 0xe7,
             (byte) 0xf3, (byte) 0xa1, (byte) 0xdf, (byte) 0x87, (byte) 0x9a, (byte) 0xc5, (byte) 0xcc, (byte) 0x63,
@@ -220,8 +220,8 @@ public class HelixCipherTest implements HelixTestVectors {
             (byte) 0x55, (byte) 0x77, (byte) 0xfd, (byte) 0x8a, (byte) 0x1d};
 
     /*
-     * used to test key (un)wrapping of a secret key; assumes test vector #3 key
-     * and nonce
+     * Used to test key (un)wrapping of a secret key; assumes test vector #3 key
+     * and nonce.
      */
     private static final byte[] BLOWFISH_WRAPPED_SECRET_KEY = new byte[] {(byte) 0xb0, (byte) 0xfe, (byte) 0x43,
             (byte) 0x2a, (byte) 0x7e, (byte) 0x75, (byte) 0xdc, (byte) 0x5a, (byte) 0xd5, (byte) 0xe6, (byte) 0x67,
@@ -230,32 +230,45 @@ public class HelixCipherTest implements HelixTestVectors {
             (byte) 0x99, (byte) 0x07, (byte) 0x3e, (byte) 0xbc, (byte) 0xf6};
 
     /*
-     * used to test key (un)wrapping of a secret key; assumes test vector #3 key
-     * and nonce
+     * Used to test key (un)wrapping of a secret key; assumes test vector #3 key
+     * and nonce.
      */
     private static final byte[] BLOWFISH_WRAPPED_SECRET_KEY_MAC = new byte[] {(byte) 0x61, (byte) 0x44, (byte) 0xaa,
             (byte) 0xf9, (byte) 0xbb, (byte) 0x4d, (byte) 0xe6, (byte) 0x48, (byte) 0xc4, (byte) 0x1c, (byte) 0x9e,
             (byte) 0xd6, (byte) 0xb9, (byte) 0x30, (byte) 0xe1, (byte) 0x04};
 
+    /*
+     * The ASN.1 representation of a Helix test vector nonce and mac, used for
+     * testing.
+     */
     private static byte[] asn1NonceAndMac;
 
+    /* A Helix secret key for testing. */
     private SecretKey secretKey;
 
+    /* A HelixParameterSpec for testing encryption operations. */
     private AlgorithmParameterSpec encryptionParamSpec;
 
+    /* A HelixParameterSpec for testing decryption operations. */
     private AlgorithmParameterSpec decryptionParamSpec;
 
+    /* Helix algorithm parameters for testing encryption operations. */
     private AlgorithmParameters encryptionParameters;
 
+    /* Helix algorithm parameters for testing decryption operations. */
     private AlgorithmParameters decryptionParameters;
 
+    /* The Helix primitive used in unit tests. */
     private HelixCipher cipher;
 
+    /* A CSPRNG used in some unit tests. */
     private SecureRandom secureRandom;
 
-    private Key notHelixKey;
+    /* A non-Helix key used in some unit tests. */
+    private Key nonHelixKey;
 
-    private Key notSecretKey;
+    /* A non-secret key used in some unit tests. */
+    private Key nonSecretKey;
 
     /**
      * Initializes the ASN.1 representation of a nonce and MAC using Helix test
@@ -265,7 +278,7 @@ public class HelixCipherTest implements HelixTestVectors {
     public static void initializeASN1NonceAndMac() {
         asn1NonceAndMac = new byte[38];
         asn1NonceAndMac[0] = 0x30; // Type=Sequence
-        asn1NonceAndMac[1] = 0x24; // Length=36 (2 * 18; i.e. two OctetStrings, each of length 16)
+        asn1NonceAndMac[1] = 0x24; // Length=36 (two OctetStrings)
         asn1NonceAndMac[2] = 0x04; // Type=OctetString
         asn1NonceAndMac[3] = 0x10; // Length=16
         System.arraycopy(TEST_VECTOR_3[NONCE], 0, asn1NonceAndMac, 4, 16); // Contents
@@ -278,7 +291,8 @@ public class HelixCipherTest implements HelixTestVectors {
      * Creates a number of support objects used in testing the operations of
      * {@link HelixCipher}.
      * 
-     * @throws GeneralSecurityException if any support objects cannot be created
+     * @throws GeneralSecurityException
+     *             if any support objects cannot be created
      */
     @Before
     public void createSupportObjects() throws GeneralSecurityException {
@@ -306,8 +320,8 @@ public class HelixCipherTest implements HelixTestVectors {
         // use something non-default but generally available
         secureRandom = SecureRandom.getInstance("SHA1PRNG");
 
-        notHelixKey = SecretKeyFactory.getInstance("DES").generateSecret(new DESKeySpec(new byte[8]));
-        notSecretKey =
+        nonHelixKey = SecretKeyFactory.getInstance("DES").generateSecret(new DESKeySpec(new byte[8]));
+        nonSecretKey =
                 KeyFactory.getInstance("DH").generatePublic(
                         new DHPublicKeySpec(BigInteger.ZERO, BigInteger.ZERO, BigInteger.ZERO));
     }
@@ -332,7 +346,8 @@ public class HelixCipherTest implements HelixTestVectors {
      * The Helix cipher does not support any explicit modes.
      * </p>
      * 
-     * @throws NoSuchAlgorithmException if the test fails
+     * @throws NoSuchAlgorithmException
+     *             if the test fails
      */
     @Test(expected = UnsupportedOperationException.class)
     public void testEngineSetMode_String() throws NoSuchAlgorithmException {
@@ -347,7 +362,8 @@ public class HelixCipherTest implements HelixTestVectors {
      * The Helix cipher does not support any explicit padding schemes.
      * </p>
      * 
-     * @throws NoSuchPaddingException if the test fails
+     * @throws NoSuchPaddingException
+     *             if the test fails
      */
     @Test(expected = UnsupportedOperationException.class)
     public void testEngineSetPadding_String() throws NoSuchPaddingException {
@@ -360,7 +376,8 @@ public class HelixCipherTest implements HelixTestVectors {
      * Asserts that {@link HelixCipher#engineGetKeySize(Key)} rejects a
      * <tt>null</tt> {@link Key} argument.
      * 
-     * @throws InvalidKeyException if the test succeeds
+     * @throws InvalidKeyException
+     *             if the test succeeds
      */
     @Test(expected = InvalidKeyException.class)
     public void engineGetKeySizeRejectsNullKey() throws InvalidKeyException {
@@ -369,31 +386,34 @@ public class HelixCipherTest implements HelixTestVectors {
 
     /**
      * Asserts that {@link HelixCipher#engineGetKeySize(Key)} rejects a
-     * non-Helix key.
+     * non-secret key.
      * 
-     * @throws InvalidKeyException if the test succeeds
+     * @throws InvalidKeyException
+     *             if the test succeeds
      */
     @Test(expected = InvalidKeyException.class)
-    public void engineGetKeySizeRejectsNonHelixKey() throws InvalidKeyException {
-        cipher.engineGetKeySize(notHelixKey);
+    public void engineGetKeySizeRejectsNonSecretKey() throws InvalidKeyException {
+        cipher.engineGetKeySize(nonSecretKey);
     }
 
     /**
      * Asserts that {@link HelixCipher#engineGetKeySize(Key)} rejects a
-     * non-secret key.
+     * non-Helix key.
      * 
-     * @throws InvalidKeyException if the test succeeds
+     * @throws InvalidKeyException
+     *             if the test succeeds
      */
     @Test(expected = InvalidKeyException.class)
-    public void engineGetKeySizeRejectsNonSecretKey() throws InvalidKeyException {
-        cipher.engineGetKeySize(notSecretKey);
+    public void engineGetKeySizeRejectsNonHelixKey() throws InvalidKeyException {
+        cipher.engineGetKeySize(nonHelixKey);
     }
 
     /**
      * Asserts that {@link HelixCipher#engineGetKeySize(Key)} reports the
      * correct size for a Helix secret key.
      * 
-     * @throws InvalidKeyException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
      */
     @Test
     public void engineGetKeySizeReportsCorrectSize() throws InvalidKeyException {
@@ -414,8 +434,10 @@ public class HelixCipherTest implements HelixTestVectors {
      * nonce.
      * </p>
      * 
-     * @throws IllegalArgumentException if the test succeeds
-     * @throws InvalidKeyException if the test fails
+     * @throws IllegalArgumentException
+     *             if the test succeeds
+     * @throws InvalidKeyException
+     *             if the test fails
      */
     @Test(expected = IllegalArgumentException.class)
     public void engineInitForDecryptWithoutNonceFails() throws InvalidKeyException {
@@ -432,8 +454,10 @@ public class HelixCipherTest implements HelixTestVectors {
      * the nonce.
      * </p>
      * 
-     * @throws IllegalArgumentException if the test succeeds
-     * @throws InvalidKeyException if the test fails
+     * @throws IllegalArgumentException
+     *             if the test succeeds
+     * @throws InvalidKeyException
+     *             if the test fails
      */
     @Test(expected = IllegalArgumentException.class)
     public void engineInitForUnwrapWithoutNonceFails() throws InvalidKeyException {
@@ -445,7 +469,8 @@ public class HelixCipherTest implements HelixTestVectors {
      * Asserts that {@link HelixCipher#engineInit(int, Key, SecureRandom)}
      * rejects a <tt>null</tt> {@link Key} argument.
      * 
-     * @throws InvalidKeyException if the test succeeds
+     * @throws InvalidKeyException
+     *             if the test succeeds
      */
     @Test(expected = InvalidKeyException.class)
     public void engineInitRejectsNullKey() throws InvalidKeyException {
@@ -456,29 +481,32 @@ public class HelixCipherTest implements HelixTestVectors {
      * Asserts that {@link HelixCipher#engineInit(int, Key, SecureRandom)}
      * rejects a non-Helix {@link Key} argument.
      * 
-     * @throws InvalidKeyException if the test succeeds
+     * @throws InvalidKeyException
+     *             if the test succeeds
      */
     @Test(expected = InvalidKeyException.class)
     public void engineInitRejectsNonHelixKey() throws InvalidKeyException {
-        cipher.engineInit(Cipher.ENCRYPT_MODE, notHelixKey, null);
+        cipher.engineInit(Cipher.ENCRYPT_MODE, nonHelixKey, null);
     }
 
     /**
      * Asserts that {@link HelixCipher#engineInit(int, Key, SecureRandom)}
      * rejects a non-{@link SecretKey} argument.
      * 
-     * @throws InvalidKeyException if the test succeeds
+     * @throws InvalidKeyException
+     *             if the test succeeds
      */
     @Test(expected = InvalidKeyException.class)
     public void engineInitRejectsNonSecretKey() throws InvalidKeyException {
-        cipher.engineInit(Cipher.ENCRYPT_MODE, notSecretKey, null);
+        cipher.engineInit(Cipher.ENCRYPT_MODE, nonSecretKey, null);
     }
 
     /**
      * Asserts that {@link HelixCipher#engineInit(int, Key, SecureRandom)}
      * accepts a <tt>null</tt> {@link SecureRandom} argument.
      * 
-     * @throws InvalidKeyException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
      */
     @Test
     public void engineInitAcceptsNullSecureRandom() throws InvalidKeyException {
@@ -489,7 +517,8 @@ public class HelixCipherTest implements HelixTestVectors {
      * Asserts that {@link HelixCipher#engineInit(int, Key, SecureRandom)}
      * accepts an explicit {@link SecureRandom} argument.
      * 
-     * @throws InvalidKeyException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
      */
     @Test
     public void engineInitAcceptsExplicitSecureRandom() throws InvalidKeyException {
@@ -506,8 +535,10 @@ public class HelixCipherTest implements HelixTestVectors {
      * {@link HelixCipher#engineInit(int, Key, AlgorithmParameterSpec, SecureRandom)}
      * rejects a <tt>null</tt> {@link Key} argument.
      * 
-     * @throws InvalidKeyException if the test succeeds
-     * @throws InvalidAlgorithmParameterException if the test fails
+     * @throws InvalidKeyException
+     *             if the test succeeds
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
      */
     @Test(expected = InvalidKeyException.class)
     public void engineInitWithSpecRejectsNullKey() throws InvalidKeyException, InvalidAlgorithmParameterException {
@@ -519,12 +550,14 @@ public class HelixCipherTest implements HelixTestVectors {
      * {@link HelixCipher#engineInit(int, Key, AlgorithmParameterSpec, SecureRandom)}
      * rejects a non-Helix {@link Key} argument.
      * 
-     * @throws InvalidKeyException if the test succeeds
-     * @throws InvalidAlgorithmParameterException if the test fails
+     * @throws InvalidKeyException
+     *             if the test succeeds
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
      */
     @Test(expected = InvalidKeyException.class)
     public void engineInitWithSpecRejectsNonHelixKey() throws InvalidKeyException, InvalidAlgorithmParameterException {
-        cipher.engineInit(Cipher.ENCRYPT_MODE, notHelixKey, encryptionParamSpec, null);
+        cipher.engineInit(Cipher.ENCRYPT_MODE, nonHelixKey, encryptionParamSpec, null);
     }
 
     /**
@@ -532,12 +565,14 @@ public class HelixCipherTest implements HelixTestVectors {
      * {@link HelixCipher#engineInit(int, Key, AlgorithmParameterSpec, SecureRandom)}
      * rejects a non-{@link SecretKey} argument.
      * 
-     * @throws InvalidKeyException if the test succeeds
-     * @throws InvalidAlgorithmParameterException if the test fails
+     * @throws InvalidKeyException
+     *             if the test succeeds
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
      */
     @Test(expected = InvalidKeyException.class)
     public void engineInitWithSpecRejectsNonSecretKey() throws InvalidKeyException, InvalidAlgorithmParameterException {
-        cipher.engineInit(Cipher.ENCRYPT_MODE, notSecretKey, encryptionParamSpec, null);
+        cipher.engineInit(Cipher.ENCRYPT_MODE, nonSecretKey, encryptionParamSpec, null);
     }
 
     /**
@@ -545,8 +580,10 @@ public class HelixCipherTest implements HelixTestVectors {
      * {@link HelixCipher#engineInit(int, Key, AlgorithmParameterSpec, SecureRandom)}
      * rejects a <tt>null</tt> {@link AlgorithmParameterSpec} argument.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test succeeds
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test succeeds
      */
     @Test(expected = InvalidAlgorithmParameterException.class)
     public void engineInitWithSpecRejectsNullSpec() throws InvalidKeyException, InvalidAlgorithmParameterException {
@@ -558,8 +595,10 @@ public class HelixCipherTest implements HelixTestVectors {
      * {@link HelixCipher#engineInit(int, Key, AlgorithmParameterSpec, SecureRandom)}
      * rejects a non-Helix {@link AlgorithmParameterSpec} argument.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test succeeds
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test succeeds
      */
     @Test(expected = InvalidAlgorithmParameterException.class)
     public void engineInitWithSpecRejectsNonHelixSpec() throws InvalidKeyException, InvalidAlgorithmParameterException {
@@ -571,8 +610,10 @@ public class HelixCipherTest implements HelixTestVectors {
      * {@link HelixCipher#engineInit(int, Key, AlgorithmParameterSpec, SecureRandom)}
      * accepts a {@link HelixParameterSpec} argument.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
      */
     @Test
     public void engineInitWithSpecAcceptsHelixSpec() throws InvalidKeyException, InvalidAlgorithmParameterException {
@@ -585,8 +626,10 @@ public class HelixCipherTest implements HelixTestVectors {
      * rejects a {@link HelixParameterSpec} argument with a non-<tt>null</tt>
      * MAC when the operation mode is {@link Cipher#ENCRYPT_MODE}.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test succeeds
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test succeeds
      */
     @Test(expected = InvalidAlgorithmParameterException.class)
     public void engineInitForEncryptWithSpecRejectsNonNullMac() throws InvalidKeyException,
@@ -601,8 +644,10 @@ public class HelixCipherTest implements HelixTestVectors {
      * rejects a {@link HelixParameterSpec} argument with a non-<tt>null</tt>
      * MAC when the operation mode is {@link Cipher#WRAP_MODE}.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test succeeds
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test succeeds
      */
     @Test(expected = InvalidAlgorithmParameterException.class)
     public void engineInitForWrapWithSpecRejectsNonNullMac() throws InvalidKeyException,
@@ -617,8 +662,10 @@ public class HelixCipherTest implements HelixTestVectors {
      * accepts a {@link HelixParameterSpec} argument with a <tt>null</tt> MAC
      * when the operation mode is {@link Cipher#DECRYPT_MODE}.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
      */
     @Test
     public void engineInitForDecryptWithSpecAcceptsNullMac() throws InvalidKeyException,
@@ -630,11 +677,37 @@ public class HelixCipherTest implements HelixTestVectors {
     /**
      * Asserts that
      * {@link HelixCipher#engineInit(int, Key, AlgorithmParameterSpec, SecureRandom)}
+     * rejects an {@link AlgorithmParameterSpec} argument that contains a MAC
+     * with an incorrect length (!= 16) when initialized for decryption.
+     * 
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test succeeds
+     */
+    @Test(expected = InvalidAlgorithmParameterException.class)
+    public void engineInitForDecryptWithSpecRejectsMacWithBadLength() throws InvalidKeyException,
+            InvalidAlgorithmParameterException {
+        HelixParameterSpec spec = new HelixParameterSpec(new byte[16]) {
+            @Override
+            public byte[] getMac() {
+                // bad length for MAC; not possible under normal usage
+                return new byte[7];
+            }
+        };
+        cipher.engineInit(Cipher.DECRYPT_MODE, secretKey, spec, secureRandom);
+    }
+
+    /**
+     * Asserts that
+     * {@link HelixCipher#engineInit(int, Key, AlgorithmParameterSpec, SecureRandom)}
      * accepts a {@link HelixParameterSpec} argument with a non-<tt>null</tt>
      * MAC when the operation mode is {@link Cipher#DECRYPT_MODE}.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
      */
     @Test
     public void engineInitForDecryptWithSpecAcceptsNonNullMac() throws InvalidKeyException,
@@ -649,8 +722,10 @@ public class HelixCipherTest implements HelixTestVectors {
      * accepts a {@link HelixParameterSpec} argument with a <tt>null</tt> MAC
      * when the operation mode is {@link Cipher#UNWRAP_MODE}.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
      */
     @Test
     public void engineInitForUnwrapWithSpecAcceptsNullMac() throws InvalidKeyException,
@@ -662,11 +737,37 @@ public class HelixCipherTest implements HelixTestVectors {
     /**
      * Asserts that
      * {@link HelixCipher#engineInit(int, Key, AlgorithmParameterSpec, SecureRandom)}
+     * rejects an {@link AlgorithmParameterSpec} argument that contains a MAC
+     * with an incorrect length (!= 16) when initialized for key unwrapping.
+     * 
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test succeeds
+     */
+    @Test(expected = InvalidAlgorithmParameterException.class)
+    public void engineInitForUnwrapWithSpecRejectsMacWithBadLength() throws InvalidKeyException,
+            InvalidAlgorithmParameterException {
+        HelixParameterSpec spec = new HelixParameterSpec(new byte[16]) {
+            @Override
+            public byte[] getMac() {
+                // bad length for MAC; not possible under normal usage
+                return new byte[7];
+            }
+        };
+        cipher.engineInit(Cipher.UNWRAP_MODE, secretKey, spec, secureRandom);
+    }
+
+    /**
+     * Asserts that
+     * {@link HelixCipher#engineInit(int, Key, AlgorithmParameterSpec, SecureRandom)}
      * accepts a {@link HelixParameterSpec} argument with a non-<tt>null</tt>
      * MAC when the operation mode is {@link Cipher#UNWRAP_MODE}.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
      */
     @Test
     public void engineInitForUnwrapWithSpecAcceptsNonNullMac() throws InvalidKeyException,
@@ -681,8 +782,10 @@ public class HelixCipherTest implements HelixTestVectors {
      * accepts a {@link HelixParameterSpec} argument with a <tt>null</tt> MAC
      * when the operation mode is {@link Cipher#WRAP_MODE}.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
      */
     @Test
     public void engineInitForWrapWithSpecAcceptsNullMac() throws InvalidKeyException,
@@ -700,8 +803,10 @@ public class HelixCipherTest implements HelixTestVectors {
      * {@link HelixCipher#engineInit(int, Key, AlgorithmParameters, SecureRandom)}
      * rejects a <tt>null</tt> {@link Key} argument.
      * 
-     * @throws InvalidKeyException if the test succeeds
-     * @throws InvalidAlgorithmParameterException if the test fails
+     * @throws InvalidKeyException
+     *             if the test succeeds
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
      */
     @Test(expected = InvalidKeyException.class)
     public void engineInitWithParamsRejectsNullKey() throws InvalidKeyException, InvalidAlgorithmParameterException {
@@ -713,12 +818,14 @@ public class HelixCipherTest implements HelixTestVectors {
      * {@link HelixCipher#engineInit(int, Key, AlgorithmParameters, SecureRandom)}
      * rejects a non-Helix {@link Key} argument.
      * 
-     * @throws InvalidKeyException if the test succeeds
-     * @throws InvalidAlgorithmParameterException if the test fails
+     * @throws InvalidKeyException
+     *             if the test succeeds
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
      */
     @Test(expected = InvalidKeyException.class)
     public void engineInitWithParamsRejectsNonHelixKey() throws InvalidKeyException, InvalidAlgorithmParameterException {
-        cipher.engineInit(Cipher.ENCRYPT_MODE, notHelixKey, encryptionParameters, null);
+        cipher.engineInit(Cipher.ENCRYPT_MODE, nonHelixKey, encryptionParameters, null);
     }
 
     /**
@@ -726,13 +833,15 @@ public class HelixCipherTest implements HelixTestVectors {
      * {@link HelixCipher#engineInit(int, Key, AlgorithmParameters, SecureRandom)}
      * rejects a non-{@link SecretKey} argument.
      * 
-     * @throws InvalidKeyException if the test succeeds
-     * @throws InvalidAlgorithmParameterException if the test fails
+     * @throws InvalidKeyException
+     *             if the test succeeds
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
      */
     @Test(expected = InvalidKeyException.class)
     public void engineInitWithParamsRejectsNonSecretKey() throws InvalidKeyException,
             InvalidAlgorithmParameterException {
-        cipher.engineInit(Cipher.ENCRYPT_MODE, notSecretKey, encryptionParameters, null);
+        cipher.engineInit(Cipher.ENCRYPT_MODE, nonSecretKey, encryptionParameters, null);
     }
 
     /**
@@ -740,8 +849,10 @@ public class HelixCipherTest implements HelixTestVectors {
      * {@link HelixCipher#engineInit(int, Key, AlgorithmParameters, SecureRandom)}
      * rejects a <tt>null</tt> {@link AlgorithmParameters} argument.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test succeeds
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test succeeds
      */
     @Test(expected = InvalidAlgorithmParameterException.class)
     public void engineInitWithParamsRejectsNullParams() throws InvalidKeyException, InvalidAlgorithmParameterException {
@@ -753,9 +864,12 @@ public class HelixCipherTest implements HelixTestVectors {
      * {@link HelixCipher#engineInit(int, Key, AlgorithmParameters, SecureRandom)}
      * rejects a non-Helix {@link AlgorithmParameters} argument.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test succeeds
-     * @throws NoSuchAlgorithmException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test succeeds
+     * @throws NoSuchAlgorithmException
+     *             if the test fails
      */
     @Test(expected = InvalidAlgorithmParameterException.class)
     public void engineInitWithParamsRejectsNonHelixParams() throws InvalidKeyException,
@@ -767,15 +881,18 @@ public class HelixCipherTest implements HelixTestVectors {
      * Asserts that
      * {@link HelixCipher#engineInit(int, Key, AlgorithmParameters, SecureRandom)}
      * rejects a {@link AlgorithmParameters} argument not provided by the
-     * &quot;NinthTest&quot; provider.
+     * "NinthTest" provider.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test succeeds
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test succeeds
      */
     @Test(expected = InvalidAlgorithmParameterException.class)
     public void engineInitWithParamsRejectsNonNinthTestParams() throws InvalidKeyException,
             InvalidAlgorithmParameterException {
-        @SuppressWarnings("serial") AlgorithmParameters notProvidedByNinthTest =
+        @SuppressWarnings("serial")
+        AlgorithmParameters notProvidedByNinthTest =
                 new AlgorithmParameters(new HelixAlgorithmParameters(), new Provider(
                         "testEngineInit_Int_Key_AlgorithmParametersNotNinthTest_SecureRandom", 0,
                         "Not the NinthTest provider") {
@@ -793,8 +910,10 @@ public class HelixCipherTest implements HelixTestVectors {
      * rejects an {@link AlgorithmParameters} argument with a non-<tt>null</tt>
      * MAC when the operation mode is {@link Cipher#ENCRYPT_MODE}.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test succeeds
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test succeeds
      */
     @Test(expected = InvalidAlgorithmParameterException.class)
     public void engineInitForEncryptWithParamsRejectsNonNullMac() throws InvalidKeyException,
@@ -809,8 +928,10 @@ public class HelixCipherTest implements HelixTestVectors {
      * rejects an {@link AlgorithmParameters} argument with a non-<tt>null</tt>
      * MAC when the operation mode is {@link Cipher#WRAP_MODE}.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test succeeds
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test succeeds
      */
     @Test(expected = InvalidAlgorithmParameterException.class)
     public void engineInitForWrapWithParamsRejectsNonNullMac() throws InvalidKeyException,
@@ -825,8 +946,10 @@ public class HelixCipherTest implements HelixTestVectors {
      * accepts an {@link AlgorithmParameters} argument with a <tt>null</tt> MAC
      * when the operation mode is {@link Cipher#DECRYPT_MODE}.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
      */
     @Test
     public void engineInitForDecryptWithParamsAcceptsNullMac() throws InvalidKeyException,
@@ -841,8 +964,10 @@ public class HelixCipherTest implements HelixTestVectors {
      * accepts an {@link AlgorithmParameters} argument with a non-<tt>null</tt>
      * MAC when the operation mode is {@link Cipher#DECRYPT_MODE}.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
      */
     @Test
     public void engineInitForDecryptWithParamsAcceptsNonNullMac() throws InvalidKeyException,
@@ -857,8 +982,10 @@ public class HelixCipherTest implements HelixTestVectors {
      * accepts an {@link AlgorithmParameters} argument with a <tt>null</tt> MAC
      * when the operation mode is {@link Cipher#UNWRAP_MODE}.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
      */
     @Test
     public void engineInitForUnwrapWithParamsAcceptsNullMac() throws InvalidKeyException,
@@ -873,8 +1000,10 @@ public class HelixCipherTest implements HelixTestVectors {
      * accepts an {@link AlgorithmParameters} argument with a non-<tt>null</tt>
      * MAC when the operation mode is {@link Cipher#UNWRAP_MODE}.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
      */
     @Test
     public void engineInitForUnwrapWithParamsAcceptsNonNullMac() throws InvalidKeyException,
@@ -889,8 +1018,10 @@ public class HelixCipherTest implements HelixTestVectors {
      * accepts an {@link AlgorithmParameters} argument with a <tt>null</tt> MAC
      * when the operation mode is {@link Cipher#WRAP_MODE}.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
      */
     @Test
     public void engineInitForWrapWithParamsAcceptsNullMac() throws InvalidKeyException,
@@ -913,9 +1044,12 @@ public class HelixCipherTest implements HelixTestVectors {
      * Asserts that {@link HelixCipher#engineGetParameters()} returns the
      * expected parameters after cipher initialization.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
-     * @throws IOException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
+     * @throws IOException
+     *             if the test fails
      */
     @Test
     public void engineGetParametersAfterEngineInit() throws InvalidKeyException, InvalidAlgorithmParameterException,
@@ -931,11 +1065,16 @@ public class HelixCipherTest implements HelixTestVectors {
      * expected parameters (specifically, the generated MAC) after a successful
      * encryption operation.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
-     * @throws BadPaddingException if the test fails
-     * @throws IllegalBlockSizeException if the test fails
-     * @throws IOException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
+     * @throws BadPaddingException
+     *             if the test fails
+     * @throws IllegalBlockSizeException
+     *             if the test fails
+     * @throws IOException
+     *             if the test fails
      */
     @Test
     public void engineGetParametersAfterEncryption() throws InvalidKeyException, InvalidAlgorithmParameterException,
@@ -962,8 +1101,10 @@ public class HelixCipherTest implements HelixTestVectors {
      * Asserts that {@link HelixCipher#engineGetIV()} returns the expected nonce
      * after cipher initialization.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
      */
     @Test
     public void engineGetIVAfterEngineInit() throws InvalidKeyException, InvalidAlgorithmParameterException {
@@ -997,8 +1138,10 @@ public class HelixCipherTest implements HelixTestVectors {
      * expected size <i>after</i> cipher initialization but <i>before</i> any
      * bytes are fed to the cipher.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
      */
     @Test
     public void engineGetOutputSizeAfterEngineInit() throws InvalidKeyException, InvalidAlgorithmParameterException {
@@ -1012,13 +1155,16 @@ public class HelixCipherTest implements HelixTestVectors {
      * expected size after some bytes have been fed to (and buffered by) the
      * cipher.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
      */
     @Test
     public void engineGetOutputSizeWithBufferedBytes() throws InvalidKeyException, InvalidAlgorithmParameterException {
         cipher.engineInit(Cipher.ENCRYPT_MODE, secretKey, encryptionParameters, null);
-        cipher.engineUpdate(TEST_VECTOR_3[PLAINTEXT], 0, 6); // process 4, buffer 2
+        cipher.engineUpdate(TEST_VECTOR_3[PLAINTEXT], 0, 6); // process 4,
+                                                             // buffer 2
 
         assertEquals(81, cipher.engineGetOutputSize(79));
     }
@@ -1028,10 +1174,14 @@ public class HelixCipherTest implements HelixTestVectors {
      * exception if an operation has been completed (and the cipher has not
      * since been re-initialized).
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
-     * @throws BadPaddingException if the test fails
-     * @throws IllegalBlockSizeException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
+     * @throws BadPaddingException
+     *             if the test fails
+     * @throws IllegalBlockSizeException
+     *             if the test fails
      */
     @Test(expected = IllegalStateException.class)
     public void engineGetOutputSizeAfterCompletedOperation() throws InvalidKeyException,
@@ -1048,8 +1198,10 @@ public class HelixCipherTest implements HelixTestVectors {
      * Asserts that {@link HelixCipher#engineUpdate(byte[], int, int)} rejects a
      * <tt>null</tt> input byte array.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
      */
     @Test(expected = IllegalArgumentException.class)
     public void engineUpdateRejectsNullInputByteArray() throws InvalidKeyException, InvalidAlgorithmParameterException {
@@ -1061,8 +1213,10 @@ public class HelixCipherTest implements HelixTestVectors {
      * Asserts that {@link HelixCipher#engineUpdate(byte[], int, int)} fails if
      * the offset is less than zero.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
      */
     @Test(expected = IllegalArgumentException.class)
     public void engineUpdateInputOffsetLTZero() throws InvalidKeyException, InvalidAlgorithmParameterException {
@@ -1074,8 +1228,10 @@ public class HelixCipherTest implements HelixTestVectors {
      * Asserts that {@link HelixCipher#engineUpdate(byte[], int, int)} fails if
      * the offset is greater than or equal to the input byte array length.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
      */
     @Test(expected = IllegalArgumentException.class)
     public void engineUpdateInputOffsetGEByteArrayLength() throws InvalidKeyException,
@@ -1088,8 +1244,10 @@ public class HelixCipherTest implements HelixTestVectors {
      * Asserts that {@link HelixCipher#engineUpdate(byte[], int, int)} fails if
      * the length is less than zero.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
      */
     @Test(expected = IllegalArgumentException.class)
     public void engineUpdateInputLengthLTZero() throws InvalidKeyException, InvalidAlgorithmParameterException {
@@ -1102,8 +1260,10 @@ public class HelixCipherTest implements HelixTestVectors {
      * the offset and length do not represent a valid slice of the input byte
      * array.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
      */
     @Test(expected = IllegalArgumentException.class)
     public void engineUpdateWithBadInputOffsetAndLength() throws InvalidKeyException,
@@ -1116,8 +1276,10 @@ public class HelixCipherTest implements HelixTestVectors {
      * Asserts that {@link HelixCipher#engineUpdate(byte[], int, int)} returns
      * <tt>null</tt> if the input length is zero.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
      */
     @Test
     public void engineUpdateInputLengthZero() throws InvalidKeyException, InvalidAlgorithmParameterException {
@@ -1130,8 +1292,10 @@ public class HelixCipherTest implements HelixTestVectors {
      * Asserts that {@link HelixCipher#engineUpdate(byte[], int, int)} returns
      * the expected number of output bytes.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
      */
     @Test
     public void engineUpdateExpectedBytes() throws InvalidKeyException, InvalidAlgorithmParameterException {
@@ -1146,8 +1310,10 @@ public class HelixCipherTest implements HelixTestVectors {
      * <tt>null</tt> if the input (and any buffered bytes) represents less than
      * a whole number of words (32-bit integers).
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
      */
     @Test
     public void engineUpdateNotEnoughForInputWord() throws InvalidKeyException, InvalidAlgorithmParameterException {
@@ -1164,9 +1330,12 @@ public class HelixCipherTest implements HelixTestVectors {
      * {@link HelixCipher#engineUpdate(byte[], int, int, byte[], int)} rejects a
      * <tt>null</tt> output byte array.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
-     * @throws ShortBufferException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
+     * @throws ShortBufferException
+     *             if the test fails
      */
     @Test(expected = IllegalArgumentException.class)
     public void engineUpdateRejectsNullOutputByteArray() throws InvalidKeyException,
@@ -1180,9 +1349,12 @@ public class HelixCipherTest implements HelixTestVectors {
      * {@link HelixCipher#engineUpdate(byte[], int, int, byte[], int)} fails if
      * the output offset is less than zero.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
-     * @throws ShortBufferException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
+     * @throws ShortBufferException
+     *             if the test fails
      */
     @Test(expected = IllegalArgumentException.class)
     public void engineUpdateOutputOffsetLTZero() throws InvalidKeyException, InvalidAlgorithmParameterException,
@@ -1197,9 +1369,12 @@ public class HelixCipherTest implements HelixTestVectors {
      * the output offset is greater than or equal to the output byte array
      * length.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
-     * @throws ShortBufferException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
+     * @throws ShortBufferException
+     *             if the test fails
      */
     @Test(expected = IllegalArgumentException.class)
     public void engineUpdateOutputOffsetGEByteArrayLength() throws InvalidKeyException,
@@ -1213,9 +1388,12 @@ public class HelixCipherTest implements HelixTestVectors {
      * {@link HelixCipher#engineUpdate(byte[], int, int, byte[], int)} returns
      * zero if the input length is zero.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
-     * @throws ShortBufferException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
+     * @throws ShortBufferException
+     *             if the test fails
      */
     @Test
     public void engineUpdateInputLengthZeroReturnsZero() throws InvalidKeyException,
@@ -1232,9 +1410,12 @@ public class HelixCipherTest implements HelixTestVectors {
      * zero if the input (and any buffered bytes) represents less than a whole
      * number of words (32-bit integers).
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
-     * @throws ShortBufferException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
+     * @throws ShortBufferException
+     *             if the test fails
      */
     @Test
     public void engineUpdateNotEnoughInputReturnsZero() throws InvalidKeyException, InvalidAlgorithmParameterException,
@@ -1252,9 +1433,12 @@ public class HelixCipherTest implements HelixTestVectors {
      * {@link HelixCipher#engineUpdate(byte[], int, int, byte[], int)} fails if
      * the processed bytes can't fit in the output byte array.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
-     * @throws ShortBufferException if the test succeeds
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
+     * @throws ShortBufferException
+     *             if the test succeeds
      */
     @Test(expected = ShortBufferException.class)
     public void engineUpdateProcessedTooLargeForOutput() throws InvalidKeyException,
@@ -1271,10 +1455,14 @@ public class HelixCipherTest implements HelixTestVectors {
      * Asserts that {@link HelixCipher#engineDoFinal(byte[], int, int)} rejects
      * a <tt>null</tt> input byte array.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
-     * @throws BadPaddingException if the test fails
-     * @throws IllegalBlockSizeException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
+     * @throws BadPaddingException
+     *             if the test fails
+     * @throws IllegalBlockSizeException
+     *             if the test fails
      */
     @Test(expected = IllegalArgumentException.class)
     public void engineDoFinalRejectsNullInputByteArray() throws InvalidKeyException,
@@ -1287,10 +1475,14 @@ public class HelixCipherTest implements HelixTestVectors {
      * Asserts that {@link HelixCipher#engineDoFinal(byte[], int, int)} fails if
      * the offset is less than zero.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
-     * @throws BadPaddingException if the test fails
-     * @throws IllegalBlockSizeException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
+     * @throws BadPaddingException
+     *             if the test fails
+     * @throws IllegalBlockSizeException
+     *             if the test fails
      */
     @Test(expected = IllegalArgumentException.class)
     public void engineDoFinalInputOffsetLTZero() throws InvalidKeyException, InvalidAlgorithmParameterException,
@@ -1303,10 +1495,14 @@ public class HelixCipherTest implements HelixTestVectors {
      * Asserts that {@link HelixCipher#engineDoFinal(byte[], int, int)} fails if
      * the offset is greater than or equal to the input byte array length.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
-     * @throws BadPaddingException if the test fails
-     * @throws IllegalBlockSizeException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
+     * @throws BadPaddingException
+     *             if the test fails
+     * @throws IllegalBlockSizeException
+     *             if the test fails
      */
     @Test(expected = IllegalArgumentException.class)
     public void engineDoFinalInputOffsetGEByteArrayLength() throws InvalidKeyException,
@@ -1319,10 +1515,14 @@ public class HelixCipherTest implements HelixTestVectors {
      * Asserts that {@link HelixCipher#engineDoFinal(byte[], int, int)} fails if
      * the length is less than zero.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
-     * @throws BadPaddingException if the test fails
-     * @throws IllegalBlockSizeException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
+     * @throws BadPaddingException
+     *             if the test fails
+     * @throws IllegalBlockSizeException
+     *             if the test fails
      */
     @Test(expected = IllegalArgumentException.class)
     public void engineDoFinalInputLengthLTZero() throws InvalidKeyException, InvalidAlgorithmParameterException,
@@ -1336,10 +1536,14 @@ public class HelixCipherTest implements HelixTestVectors {
      * the offset and length do not represent a valid slice of the input byte
      * array.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
-     * @throws BadPaddingException if the test fails
-     * @throws IllegalBlockSizeException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
+     * @throws BadPaddingException
+     *             if the test fails
+     * @throws IllegalBlockSizeException
+     *             if the test fails
      */
     @Test(expected = IllegalArgumentException.class)
     public void engineDoFinalWithBadInputOffsetAndLength() throws InvalidKeyException,
@@ -1353,10 +1557,14 @@ public class HelixCipherTest implements HelixTestVectors {
      * an empty byte array if the input length is zero and there are no buffered
      * bytes.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
-     * @throws BadPaddingException if the test fails
-     * @throws IllegalBlockSizeException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
+     * @throws BadPaddingException
+     *             if the test fails
+     * @throws IllegalBlockSizeException
+     *             if the test fails
      */
     @Test
     public void engineDoFinalInputLengthZeroNoBufferedBytes() throws InvalidKeyException,
@@ -1372,10 +1580,14 @@ public class HelixCipherTest implements HelixTestVectors {
      * the expected number of bytes if the input length is zero and there are
      * buffered bytes.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
-     * @throws BadPaddingException if the test fails
-     * @throws IllegalBlockSizeException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
+     * @throws BadPaddingException
+     *             if the test fails
+     * @throws IllegalBlockSizeException
+     *             if the test fails
      */
     @Test
     public void engineDoFinalInputLengthZeroWithBufferedBytes() throws InvalidKeyException,
@@ -1391,10 +1603,14 @@ public class HelixCipherTest implements HelixTestVectors {
      * Asserts that {@link HelixCipher#engineDoFinal(byte[], int, int)} returns
      * the expected number of output bytes.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
-     * @throws BadPaddingException if the test fails
-     * @throws IllegalBlockSizeException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
+     * @throws BadPaddingException
+     *             if the test fails
+     * @throws IllegalBlockSizeException
+     *             if the test fails
      */
     @Test
     public void engineDoFinalExpectedBytes() throws InvalidKeyException, InvalidAlgorithmParameterException,
@@ -1410,11 +1626,16 @@ public class HelixCipherTest implements HelixTestVectors {
      * the parameters with the generated MAC after a successful encryption
      * operation.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
-     * @throws BadPaddingException if the test fails
-     * @throws IllegalBlockSizeException if the test fails
-     * @throws InvalidParameterSpecException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
+     * @throws BadPaddingException
+     *             if the test fails
+     * @throws IllegalBlockSizeException
+     *             if the test fails
+     * @throws InvalidParameterSpecException
+     *             if the test fails
      */
     @Test
     public void engineDoFinalUpdatesParamsWithGeneratedMac() throws InvalidKeyException,
@@ -1433,10 +1654,14 @@ public class HelixCipherTest implements HelixTestVectors {
      * MAC verification if the expected MAC is not provided when the cipher is
      * initialized for decryption.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
-     * @throws BadPaddingException if the test fails
-     * @throws IllegalBlockSizeException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
+     * @throws BadPaddingException
+     *             if the test fails
+     * @throws IllegalBlockSizeException
+     *             if the test fails
      */
     @Test
     public void engineDoFinalSkipsMacVerification() throws InvalidKeyException, InvalidAlgorithmParameterException,
@@ -1454,10 +1679,14 @@ public class HelixCipherTest implements HelixTestVectors {
      * Asserts that {@link HelixCipher#engineDoFinal(byte[], int, int)} raises
      * an exception if MAC verification fails.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
-     * @throws BadPaddingException if the test fails
-     * @throws IllegalBlockSizeException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
+     * @throws BadPaddingException
+     *             if the test fails
+     * @throws IllegalBlockSizeException
+     *             if the test fails
      */
     @Test(expected = MessageAuthenticationException.class)
     public void engineDoFinalFailsMacVerification() throws InvalidKeyException, InvalidAlgorithmParameterException,
@@ -1473,11 +1702,16 @@ public class HelixCipherTest implements HelixTestVectors {
      * {@link HelixCipher#engineDoFinal(byte[], int, int, byte[], int)} rejects
      * a <tt>null</tt> output byte array.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
-     * @throws ShortBufferException if the test fails
-     * @throws BadPaddingException if the test fails
-     * @throws IllegalBlockSizeException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
+     * @throws ShortBufferException
+     *             if the test fails
+     * @throws BadPaddingException
+     *             if the test fails
+     * @throws IllegalBlockSizeException
+     *             if the test fails
      */
     @Test(expected = IllegalArgumentException.class)
     public void engineDoFinalRejectsNullOutputByteArray() throws InvalidKeyException,
@@ -1491,11 +1725,16 @@ public class HelixCipherTest implements HelixTestVectors {
      * {@link HelixCipher#engineDoFinal(byte[], int, int, byte[], int)} fails if
      * the output offset is less than zero.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
-     * @throws ShortBufferException if the test fails
-     * @throws BadPaddingException if the test fails
-     * @throws IllegalBlockSizeException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
+     * @throws ShortBufferException
+     *             if the test fails
+     * @throws BadPaddingException
+     *             if the test fails
+     * @throws IllegalBlockSizeException
+     *             if the test fails
      */
     @Test(expected = IllegalArgumentException.class)
     public void engineDoFinalOutputOffsetLTZero() throws InvalidKeyException, InvalidAlgorithmParameterException,
@@ -1510,11 +1749,16 @@ public class HelixCipherTest implements HelixTestVectors {
      * the output offset is greater than or equal to the output byte array
      * length.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
-     * @throws ShortBufferException if the test fails
-     * @throws BadPaddingException if the test fails
-     * @throws IllegalBlockSizeException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
+     * @throws ShortBufferException
+     *             if the test fails
+     * @throws BadPaddingException
+     *             if the test fails
+     * @throws IllegalBlockSizeException
+     *             if the test fails
      */
     @Test(expected = IllegalArgumentException.class)
     public void engineDoFinalOutputOffsetGEByteArrayLength() throws InvalidKeyException,
@@ -1528,11 +1772,16 @@ public class HelixCipherTest implements HelixTestVectors {
      * {@link HelixCipher#engineDoFinal(byte[], int, int, byte[], int)} returns
      * zero if the input length is zero.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
-     * @throws ShortBufferException if the test fails
-     * @throws BadPaddingException if the test fails
-     * @throws IllegalBlockSizeException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
+     * @throws ShortBufferException
+     *             if the test fails
+     * @throws BadPaddingException
+     *             if the test fails
+     * @throws IllegalBlockSizeException
+     *             if the test fails
      */
     @Test
     public void engineDoFinalInputLengthZeroReturnsZero() throws InvalidKeyException,
@@ -1549,11 +1798,16 @@ public class HelixCipherTest implements HelixTestVectors {
      * zero if the input (and any buffered bytes) represents less than a whole
      * number of words (32-bit integers).
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
-     * @throws ShortBufferException if the test fails
-     * @throws BadPaddingException if the test fails
-     * @throws IllegalBlockSizeException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
+     * @throws ShortBufferException
+     *             if the test fails
+     * @throws BadPaddingException
+     *             if the test fails
+     * @throws IllegalBlockSizeException
+     *             if the test fails
      */
     @Test
     public void engineDoFinalNotEnoughInputReturnsZero() throws InvalidKeyException,
@@ -1571,11 +1825,16 @@ public class HelixCipherTest implements HelixTestVectors {
      * {@link HelixCipher#engineDoFinal(byte[], int, int, byte[], int)} fails if
      * the processed bytes can't fit in the output byte array.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
-     * @throws ShortBufferException if the test succeeds
-     * @throws BadPaddingException if the test fails
-     * @throws IllegalBlockSizeException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
+     * @throws ShortBufferException
+     *             if the test succeeds
+     * @throws BadPaddingException
+     *             if the test fails
+     * @throws IllegalBlockSizeException
+     *             if the test fails
      */
     @Test(expected = ShortBufferException.class)
     public void engineDoFinalProcessedTooLargeForOutput() throws InvalidKeyException,
@@ -1598,12 +1857,18 @@ public class HelixCipherTest implements HelixTestVectors {
      * Asserts that {@link HelixCipher} produces the expected ciphertext and MAC
      * when Helix test vector #2 plaintext is fed incrementally.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
-     * @throws ShortBufferException if the test fails
-     * @throws IllegalBlockSizeException if the test fails
-     * @throws BadPaddingException if the test fails
-     * @throws InvalidParameterSpecException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
+     * @throws ShortBufferException
+     *             if the test fails
+     * @throws IllegalBlockSizeException
+     *             if the test fails
+     * @throws BadPaddingException
+     *             if the test fails
+     * @throws InvalidParameterSpecException
+     *             if the test fails
      */
     @Test
     public void engineUpdateEncryption2() throws InvalidKeyException, InvalidAlgorithmParameterException,
@@ -1629,11 +1894,16 @@ public class HelixCipherTest implements HelixTestVectors {
      * Asserts that {@link HelixCipher} produces the expected ciphertext and MAC
      * when Helix test vector #2 plaintext is fed incrementally.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
-     * @throws IllegalBlockSizeException if the test fails
-     * @throws BadPaddingException if the test fails
-     * @throws InvalidParameterSpecException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
+     * @throws IllegalBlockSizeException
+     *             if the test fails
+     * @throws BadPaddingException
+     *             if the test fails
+     * @throws InvalidParameterSpecException
+     *             if the test fails
      */
     @Test
     public void engineDoFinalEncryption2() throws InvalidKeyException, InvalidAlgorithmParameterException,
@@ -1655,12 +1925,18 @@ public class HelixCipherTest implements HelixTestVectors {
      * Asserts that {@link HelixCipher} produces the expected ciphertext and MAC
      * when Helix test vector #3 plaintext is fed incrementally.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
-     * @throws ShortBufferException if the test fails
-     * @throws IllegalBlockSizeException if the test fails
-     * @throws BadPaddingException if the test fails
-     * @throws InvalidParameterSpecException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
+     * @throws ShortBufferException
+     *             if the test fails
+     * @throws IllegalBlockSizeException
+     *             if the test fails
+     * @throws BadPaddingException
+     *             if the test fails
+     * @throws InvalidParameterSpecException
+     *             if the test fails
      */
     @Test
     public void engineUpdateEncryption3() throws InvalidKeyException, InvalidAlgorithmParameterException,
@@ -1684,11 +1960,16 @@ public class HelixCipherTest implements HelixTestVectors {
      * Asserts that {@link HelixCipher} produces the expected ciphertext and MAC
      * when Helix test vector #2 plaintext is fed incrementally.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
-     * @throws IllegalBlockSizeException if the test fails
-     * @throws BadPaddingException if the test fails
-     * @throws InvalidParameterSpecException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
+     * @throws IllegalBlockSizeException
+     *             if the test fails
+     * @throws BadPaddingException
+     *             if the test fails
+     * @throws InvalidParameterSpecException
+     *             if the test fails
      */
     @Test
     public void engineDoFinalEncryption3() throws InvalidKeyException, InvalidAlgorithmParameterException,
@@ -1712,8 +1993,10 @@ public class HelixCipherTest implements HelixTestVectors {
      * Asserts that {@link HelixCipher#engineWrap(Key)} rejects a <tt>null</tt>
      * {@link Key} argument.
      * 
-     * @throws InvalidKeyException if the test succeeds
-     * @throws IllegalBlockSizeException if the test fails
+     * @throws InvalidKeyException
+     *             if the test succeeds
+     * @throws IllegalBlockSizeException
+     *             if the test fails
      */
     @Test(expected = InvalidKeyException.class)
     public void engineWrapRejectsNullKey() throws InvalidKeyException, IllegalBlockSizeException {
@@ -1724,12 +2007,18 @@ public class HelixCipherTest implements HelixTestVectors {
      * Asserts that {@link HelixCipher#engineWrap(Key)} produces the expected
      * ciphertext and MAC for a wrapped public key.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
-     * @throws InvalidKeySpecException if the test fails
-     * @throws NoSuchAlgorithmException if the test fails
-     * @throws IllegalBlockSizeException if the test fails
-     * @throws InvalidParameterSpecException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
+     * @throws InvalidKeySpecException
+     *             if the test fails
+     * @throws NoSuchAlgorithmException
+     *             if the test fails
+     * @throws IllegalBlockSizeException
+     *             if the test fails
+     * @throws InvalidParameterSpecException
+     *             if the test fails
      */
     @Test
     public void engineWrapPublicKey() throws InvalidKeyException, InvalidAlgorithmParameterException,
@@ -1749,12 +2038,18 @@ public class HelixCipherTest implements HelixTestVectors {
      * Asserts that {@link HelixCipher#engineWrap(Key)} produces the expected
      * ciphertext and MAC for a wrapped private key.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
-     * @throws InvalidKeySpecException if the test fails
-     * @throws NoSuchAlgorithmException if the test fails
-     * @throws IllegalBlockSizeException if the test fails
-     * @throws InvalidParameterSpecException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
+     * @throws InvalidKeySpecException
+     *             if the test fails
+     * @throws NoSuchAlgorithmException
+     *             if the test fails
+     * @throws IllegalBlockSizeException
+     *             if the test fails
+     * @throws InvalidParameterSpecException
+     *             if the test fails
      */
     @Test
     public void engineWrapPrivateKey() throws InvalidKeyException, InvalidAlgorithmParameterException,
@@ -1774,10 +2069,14 @@ public class HelixCipherTest implements HelixTestVectors {
      * Asserts that {@link HelixCipher#engineWrap(Key)} produces the expected
      * ciphertext and MAC for a wrapped secret key.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws IllegalBlockSizeException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
-     * @throws InvalidParameterSpecException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws IllegalBlockSizeException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
+     * @throws InvalidParameterSpecException
+     *             if the test fails
      */
     @Test
     public void engineWrapSecretKey() throws InvalidKeyException, IllegalBlockSizeException,
@@ -1798,8 +2097,10 @@ public class HelixCipherTest implements HelixTestVectors {
      * Asserts that {@link HelixCipher#engineUnwrap(byte[], String, int)}
      * rejects a <tt>null</tt> byte array (wrapped key) argument.
      * 
-     * @throws InvalidKeyException if the test succeeds
-     * @throws NoSuchAlgorithmException if the test fails
+     * @throws InvalidKeyException
+     *             if the test succeeds
+     * @throws NoSuchAlgorithmException
+     *             if the test fails
      */
     @Test(expected = InvalidKeyException.class)
     public void engineUnwrapRejectsNullWrappedKey() throws InvalidKeyException, NoSuchAlgorithmException {
@@ -1810,8 +2111,10 @@ public class HelixCipherTest implements HelixTestVectors {
      * Asserts that {@link HelixCipher#engineUnwrap(byte[], String, int)}
      * rejects a <tt>null</tt> string (algorithm) argument.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws NoSuchAlgorithmException if the test succeeds
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws NoSuchAlgorithmException
+     *             if the test succeeds
      */
     @Test(expected = NoSuchAlgorithmException.class)
     public void engineUnwrapRejectsNullAlgorithm() throws InvalidKeyException, NoSuchAlgorithmException {
@@ -1822,8 +2125,10 @@ public class HelixCipherTest implements HelixTestVectors {
      * Asserts that {@link HelixCipher#engineUnwrap(byte[], String, int)}
      * rejects an empty string (algorithm) argument.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws NoSuchAlgorithmException if the test succeeds
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws NoSuchAlgorithmException
+     *             if the test succeeds
      */
     @Test(expected = NoSuchAlgorithmException.class)
     public void engineUnwrapRejectsEmptyAlgorithm() throws InvalidKeyException, NoSuchAlgorithmException {
@@ -1835,9 +2140,12 @@ public class HelixCipherTest implements HelixTestVectors {
      * MAC verification and produces the expected plaintext for a wrapped public
      * key.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
-     * @throws NoSuchAlgorithmException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
+     * @throws NoSuchAlgorithmException
+     *             if the test fails
      */
     @Test
     public void engineUnwrapPublicKey() throws InvalidKeyException, InvalidAlgorithmParameterException,
@@ -1854,9 +2162,12 @@ public class HelixCipherTest implements HelixTestVectors {
      * MAC verification and produces the expected plaintext for a wrapped
      * private key.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
-     * @throws NoSuchAlgorithmException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
+     * @throws NoSuchAlgorithmException
+     *             if the test fails
      */
     @Test
     public void engineUnwrapPrivateKey() throws InvalidKeyException, InvalidAlgorithmParameterException,
@@ -1873,9 +2184,12 @@ public class HelixCipherTest implements HelixTestVectors {
      * MAC verification and produces the expected plaintext for a wrapped secret
      * key.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
-     * @throws NoSuchAlgorithmException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
+     * @throws NoSuchAlgorithmException
+     *             if the test fails
      */
     @Test
     public void engineUnwrapSecretKey() throws InvalidKeyException, InvalidAlgorithmParameterException,
@@ -1892,9 +2206,12 @@ public class HelixCipherTest implements HelixTestVectors {
      * Asserts that {@link HelixCipher#engineUnwrap(byte[], String, int)} skips
      * MAC verification if a MAC is not provided at initialization.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
-     * @throws NoSuchAlgorithmException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
+     * @throws NoSuchAlgorithmException
+     *             if the test fails
      */
     @Test
     public void engineUnwrapSkipsMacVerification() throws InvalidKeyException, InvalidAlgorithmParameterException,
@@ -1912,9 +2229,12 @@ public class HelixCipherTest implements HelixTestVectors {
      * Asserts that {@link HelixCipher#engineUnwrap(byte[], String, int)} throws
      * an exception when MAC verification fails.
      * 
-     * @throws InvalidKeyException if the test fails
-     * @throws InvalidAlgorithmParameterException if the test fails
-     * @throws NoSuchAlgorithmException if the test fails
+     * @throws InvalidKeyException
+     *             if the test fails
+     * @throws InvalidAlgorithmParameterException
+     *             if the test fails
+     * @throws NoSuchAlgorithmException
+     *             if the test fails
      */
     @Test(expected = MessageAuthenticationException.class)
     public void engineUnwrapFailsMacVerification() throws InvalidKeyException, InvalidAlgorithmParameterException,

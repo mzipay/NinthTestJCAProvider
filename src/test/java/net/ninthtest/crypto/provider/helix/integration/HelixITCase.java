@@ -1,18 +1,18 @@
 /*
- * Copyright (c) 2011 Matthew Zipay <mattz@ninthtest.net>
+ * Copyright (c) 2011-2014 Matthew Zipay <mattz@ninthtest.net>
  * 
  * This file is part of the NinthTest JCA Provider.
- *
+ * 
  * The NinthTest JCA Provider is free software: you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or (at your
  * option) any later version.
- *
- * The NinthTest JCA Provider is distributed in the hope that it will be
- * useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * 
+ * The NinthTest JCA Provider is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
  * Public License for more details.
- *
+ * 
  * You should have received a copy of the GNU General Public License along with
  * the NinthTest JCA Provider. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -25,6 +25,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.nio.ByteBuffer;
 import java.security.AlgorithmParameters;
+import java.security.SecureRandom;
 import java.security.Security;
 
 import javax.crypto.Cipher;
@@ -50,9 +51,8 @@ public class HelixITCase {
     public static final String PLAINTEXT_STRING = "The quick brown fox jumps over the lazy dog.";
 
     /**
-     * Dynamically registers the &quot;NinthTest&quot; security provider if the
-     * &quot;ninthtest.provider.register&quot; system property is
-     * &quot;true&quot;.
+     * Dynamically registers the "NinthTest" security provider if the
+     * "ninthtest.provider.register" system property is <i>true</i>.
      */
     @BeforeClass
     public static void dynamicRegistration() {
@@ -66,7 +66,8 @@ public class HelixITCase {
      * Asserts that Helix encryption/decryption is successful with a
      * randomly-generated secret key and nonce.
      * 
-     * @throws Exception if the test fails
+     * @throws Exception
+     *             if the test fails
      */
     @Test
     public void usingRandomKeyAndRandomNonce() throws Exception {
@@ -96,10 +97,11 @@ public class HelixITCase {
     }
 
     /**
-     * Asserts that Helix encryption/decryption is successful with a
-     * specified secret key and a randomly-generated nonce.
+     * Asserts that Helix encryption/decryption is successful with a specified
+     * secret key and a randomly-generated nonce.
      * 
-     * @throws Exception if the test fails
+     * @throws Exception
+     *             if the test fails
      */
     @Test
     public void usingSpecifiedKeyAndRandomNonce() throws Exception {
@@ -133,7 +135,8 @@ public class HelixITCase {
      * Asserts that Helix encryption/decryption is successful with a
      * randomly-generated secret key and a specified nonce.
      * 
-     * @throws Exception if the test fails
+     * @throws Exception
+     *             if the test fails
      */
     @Test
     public void usingRandomKeyAndSpecifiedNonce() throws Exception {
@@ -164,10 +167,11 @@ public class HelixITCase {
     }
 
     /**
-     * Asserts that Helix encryption/decryption is successful with a
-     * specified secret key and nonce.
+     * Asserts that Helix encryption/decryption is successful with a specified
+     * secret key and nonce.
      * 
-     * @throws Exception if the test fails
+     * @throws Exception
+     *             if the test fails
      */
     @Test
     public void usingSpecifiedKeyAndSpecifiedNonce() throws Exception {
@@ -202,7 +206,8 @@ public class HelixITCase {
      * Asserts that Helix encryption/decryption is successful using byte
      * buffers.
      * 
-     * @throws Exception if the test fails
+     * @throws Exception
+     *             if the test fails
      */
     @Test
     public void usingByteBuffers() throws Exception {
@@ -249,7 +254,8 @@ public class HelixITCase {
      * more consistent with the JCE APIs, and is therefore supported.
      * </p>
      * 
-     * @throws Exception if the test fails
+     * @throws Exception
+     *             if the test fails
      */
     @Test
     public void usingStandaloneMacFunction() throws Exception {
@@ -270,5 +276,37 @@ public class HelixITCase {
         byte[] mac2 = macFunction.doFinal(plainTextBytes);
 
         assertArrayEquals(mac1, mac2);
+    }
+
+    /**
+     * Asserts that Helix can be used as a PRNG.
+     * 
+     * @throws Exception
+     *             if the test fails
+     */
+    @Test
+    public void generatingPseudoRandomNumbers() throws Exception {
+        SecureRandom prng = SecureRandom.getInstance("Helix", "NinthTest");
+        /*
+         * expected standard deviation of a discrete uniform distribution is
+         * SQRT((n**2 - 1) / 12)
+         */
+        final double expectedStdDev = Math.sqrt((Math.pow(10, 2) - 1) / 12);
+        /* actual standard deviation */
+        int[] numbers = new int[100000];
+        double sumNumbers = 0;
+        for (int i = 0; i < numbers.length; ++i) {
+            numbers[i] = prng.nextInt(10);
+            sumNumbers += numbers[i];
+        }
+        double mean = sumNumbers / numbers.length;
+        double sumDeviations = 0;
+        for (int i = 0; i < numbers.length; ++i) {
+            sumDeviations += Math.pow(mean - numbers[i], 2);
+        }
+        double actualStdDev = Math.sqrt(sumDeviations / (numbers.length - 1));
+
+        /* should be sufficient for integration testing purposes */
+        assertEquals(expectedStdDev, actualStdDev, 0.01);
     }
 }

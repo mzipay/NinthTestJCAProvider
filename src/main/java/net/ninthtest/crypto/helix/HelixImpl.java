@@ -1,18 +1,18 @@
 /*
- * Copyright (c) 2011 Matthew Zipay <mattz@ninthtest.net>
+ * Copyright (c) 2011-2014 Matthew Zipay <mattz@ninthtest.net>
  * 
  * This file is part of the NinthTest JCA Provider.
- *
+ * 
  * The NinthTest JCA Provider is free software: you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or (at your
  * option) any later version.
- *
- * The NinthTest JCA Provider is distributed in the hope that it will be
- * useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * 
+ * The NinthTest JCA Provider is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
  * Public License for more details.
- *
+ * 
  * You should have received a copy of the GNU General Public License along with
  * the NinthTest JCA Provider. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -29,14 +29,14 @@ import net.ninthtest.security.Messages;
  * 
  * <p>
  * This implementation is adapted from the Python reference implementation
- * presented in "Helix: Fast Encryption & Authentication." (Dr. Dobb's November
- * 2003.)
+ * presented in <a href="http://www.ddj.com/security/184405478">Helix: Fast
+ * Encryption &amp; Authentication</a> (Dr. Dobb's November 2003).
  * </p>
  * 
  * @author Matthew Zipay (mattz@ninthtest.net)
  * @version 1.0
- * @see "http://www.macfergus.com/helix/index.html"
- * @see "http://www.ddj.com/security/184405478"
+ * @see <a href="http://www.schneier.com/paper-helix.html">Helix: Fast
+ *      Encryption and Authentication in a Single Cryptographic Primitive</a>
  */
 abstract class HelixImpl implements HelixPrimitive {
     /* length of the Helix key in bytes */
@@ -62,8 +62,7 @@ abstract class HelixImpl implements HelixPrimitive {
     private int i8;
 
     /*
-     * the generated MAC (after a successful encryption or decryption
-     * operation)
+     * the generated MAC (after a successful encryption or decryption operation)
      */
     private byte[] T;
 
@@ -116,9 +115,9 @@ abstract class HelixImpl implements HelixPrimitive {
         }
 
         /*
-         * initialize Helix state for encryption or decryption
-         * (key mixing yields the "working key," used for unit testing with the
-         * official Helix test vectors)
+         * initialize Helix state for encryption or decryption (key mixing
+         * yields the "working key," used for unit testing with the official
+         * Helix test vectors)
          */
         workingKey = keyMixing();
         nonceMixing(N);
@@ -187,7 +186,12 @@ abstract class HelixImpl implements HelixPrimitive {
         }
     }
 
-    /* Converts an array of bytes into an array of 32-bit integers. */
+    /*
+     * Converts an array of bytes into an array of 32-bit integers.
+     * 
+     * The bytes array is a contiguous block of 4-byte sequences representing
+     * integers (least-significant bytes first).
+     */
     private int[] bytesToInts(final byte[] bytes) {
         int[] ints = new int[bytes.length / 4];
         bytesToInts(bytes, 0, bytes.length, ints, 0);
@@ -195,7 +199,12 @@ abstract class HelixImpl implements HelixPrimitive {
         return ints;
     }
 
-    /* Converts an array of bytes into an array of 32-bit integers. */
+    /*
+     * Converts an array of bytes into an array of 32-bit integers.
+     * 
+     * The bytes array is a contiguous block of 4-byte sequences representing
+     * integers (least-significant bytes first).
+     */
     private void bytesToInts(final byte[] bytes, int bx, final int by, final int[] ints, int ix) {
         int b = bx;
         int i = ix;
@@ -205,7 +214,12 @@ abstract class HelixImpl implements HelixPrimitive {
         }
     }
 
-    /* Converts an array of 32-bit integers into an array of bytes. */
+    /*
+     * Converts an array of 32-bit integers into an array of bytes.
+     * 
+     * The returned bytes array is a contiguous block of 4-byte sequences
+     * representing integers (least-significant bytes first).
+     */
     private byte[] intsToBytes(final int[] ints) {
         int ix = 0;
         int iy = ints.length;
@@ -229,7 +243,7 @@ abstract class HelixImpl implements HelixPrimitive {
      * 
      * At the end of the block function, the next word of key stream is in Z[0].
      */
-    private void blockFunction(final int X_i0, final int X_i1, final int P_i) {
+    private void blockFunction(final int X_i0, final int X_i1, final int W_i) {
         int z0 = Z[0];
         int z1 = Z[1];
         int z2 = Z[2];
@@ -258,7 +272,7 @@ abstract class HelixImpl implements HelixPrimitive {
         z4 ^= z2;
         z2 = (z2 << 5) | (z2 >>> -5);
 
-        z0 += (z3 ^ P_i);
+        z0 += (z3 ^ W_i);
         z3 = (z3 << 15) | (z3 >>> -15);
         z1 += z4;
         z4 = (z4 << 25) | (z4 >>> -25);
@@ -300,7 +314,8 @@ abstract class HelixImpl implements HelixPrimitive {
     /**
      * Applies a single Helix block to an input word.
      * 
-     * @param word a single word (32-bit integer) of plaintext or ciphertext
+     * @param word
+     *            a single word (32-bit integer) of plaintext or ciphertext
      */
     protected final void doBlock(int word) {
         int i = i8 % 8;
@@ -328,7 +343,8 @@ abstract class HelixImpl implements HelixPrimitive {
      * processed during this call.
      * </p>
      * 
-     * @param part the next sequence of bytes to be processed by this primitive
+     * @param part
+     *            the next sequence of bytes to be processed by this primitive
      * @return an array of bytes representing plaintext or ciphertext, depending
      *         on the operation mode of this primitive
      */
@@ -357,8 +373,8 @@ abstract class HelixImpl implements HelixPrimitive {
         totalLength += part.length;
 
         /*
-         * the text array will contain any previously-buffered bytes
-         * followed by the input bytes
+         * the text array will contain any previously-buffered bytes followed by
+         * the input bytes
          */
         byte[] text = null;
         if (buffer != null) {
@@ -367,8 +383,8 @@ abstract class HelixImpl implements HelixPrimitive {
             System.arraycopy(part, 0, text, buffer.length, part.length);
             /*
              * clear the buffer; it may be re-initialized later, if the number
-             * of text bytes does not equate to a whole number of words
-             * (32-bit ints)
+             * of text bytes does not equate to a whole number of words (32-bit
+             * ints)
              */
             buffer = null;
         } else {
@@ -414,9 +430,11 @@ abstract class HelixImpl implements HelixPrimitive {
     /**
      * Performs the main encryption/decryption loop.
      * 
-     * @param inputWords the plaintext words (encryption) or ciphertext words
+     * @param inputWords
+     *            the plaintext words (encryption) or ciphertext words
      *            (decryption)
-     * @param mask a 32-bit mask to apply to each output word (ignored during
+     * @param mask
+     *            a 32-bit mask to apply to each output word (ignored during
      *            encryption)
      * @return the output words (ciphertext words when encrypting, plaintext
      *         words when decrypting)
@@ -452,7 +470,8 @@ abstract class HelixImpl implements HelixPrimitive {
      * using the {@link HelixPrimitive#getGeneratedMac()} method.
      * </p>
      * 
-     * @param part the last input bytes to be fed
+     * @param part
+     *            the last input bytes to be fed
      * @return the ciphertext (encryption) or plaintext (decryption) bytes
      */
     @Override
@@ -466,7 +485,9 @@ abstract class HelixImpl implements HelixPrimitive {
             tempText = new byte[0];
         }
 
-        /* if unprocessed (buffered) bytes remain, process them now with padding */
+        /*
+         * if unprocessed (buffered) bytes remain, process them now with padding
+         */
         byte[] remainingText = null;
         if (buffer != null) {
             int pad = 4 - buffer.length;
@@ -552,8 +573,9 @@ abstract class HelixImpl implements HelixPrimitive {
      * {@inheritDoc}
      * 
      * @return the generated MAC bytes
-     * @throws IllegalStateException if the encryption/decryption operation has
-     *             not completed successfully
+     * @throws IllegalStateException
+     *             if the encryption/decryption operation has not completed
+     *             successfully
      */
     @Override
     public final byte[] getGeneratedMac() {

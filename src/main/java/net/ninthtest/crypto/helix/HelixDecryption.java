@@ -1,18 +1,18 @@
 /*
- * Copyright (c) 2011 Matthew Zipay <mattz@ninthtest.net>
+ * Copyright (c) 2011-2014 Matthew Zipay <mattz@ninthtest.net>
  * 
  * This file is part of the NinthTest JCA Provider.
- *
+ * 
  * The NinthTest JCA Provider is free software: you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or (at your
  * option) any later version.
- *
- * The NinthTest JCA Provider is distributed in the hope that it will be
- * useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * 
+ * The NinthTest JCA Provider is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
  * Public License for more details.
- *
+ * 
  * You should have received a copy of the GNU General Public License along with
  * the NinthTest JCA Provider. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -36,7 +36,7 @@ import net.ninthtest.security.Messages;
  * @version 1.0
  */
 public class HelixDecryption extends HelixImpl {
-    /**
+    /*
      * Holds the MAC that is expected to be generated after the decryption
      * operation completes successfully.
      */
@@ -49,12 +49,14 @@ public class HelixDecryption extends HelixImpl {
      * <p>
      * A <tt>HelixDecryption</tt> primitive constructed in this way will
      * <b>not</b> perform MAC verification. However, the generated MAC is still
-     * retrievable (via the <tt>#getGeneratedMac()</tt> method) after the
+     * retrievable (via the {@link #getGeneratedMac()} method) after the
      * successful completion of the decryption operation.
      * </p>
      * 
-     * @param key the Helix key, (cannot exceed 32 bytes in length)
-     * @param nonce the Helix nonce (must be exactly 16 bytes in length)
+     * @param key
+     *            the Helix key (cannot exceed 32 bytes in length)
+     * @param nonce
+     *            the Helix nonce (must be exactly 16 bytes in length)
      */
     public HelixDecryption(final byte[] key, final byte[] nonce) {
         this(key, nonce, null);
@@ -66,16 +68,19 @@ public class HelixDecryption extends HelixImpl {
      * 
      * <p>
      * A <tt>HelixDecryption</tt> primitive constructed in this way will verify
-     * the generated MAC against <tt>expectedMac</tt> on the successful
-     * completion of the decryption operation <b>if</b> <tt>expectedMac</tt> is
-     * not <tt>null</tt>.
+     * the generated MAC against <i>expectedMac</i> on the successful completion
+     * of the decryption operation <b>if</b> <i>expectedMac</i> is not
+     * <tt>null</tt>.
      * </p>
      * 
-     * @param key the Helix key, (cannot exceed 32 bytes in length)
-     * @param nonce the Helix nonce (must be exactly 16 bytes in length)
-     * @param expectedMac the Helix MAC that is expected to be generated after
-     *            the decryption operation completes successfully (or
-     *            <tt>null</tt> to bypass MAC verification)
+     * @param key
+     *            the Helix key (cannot exceed 32 bytes in length)
+     * @param nonce
+     *            the Helix nonce (must be exactly 16 bytes in length)
+     * @param expectedMac
+     *            the Helix MAC that is expected to be generated after the
+     *            decryption operation completes successfully (or <tt>null</tt>
+     *            to bypass MAC verification)
      */
     public HelixDecryption(final byte[] key, final byte[] nonce, final byte[] expectedMac) {
         super(key, nonce);
@@ -90,12 +95,12 @@ public class HelixDecryption extends HelixImpl {
     /**
      * {@inheritDoc}
      * 
-     * @param cipherTextBytes the final group of ciphertext bytes to be
-     *            decrypted
+     * @param cipherTextBytes
+     *            the final group of ciphertext bytes to be decrypted
      * @return the final group of decrypted (plaintext) bytes
-     * @throws MessageAuthenticationException if this primitive was been
-     *             constructed with an &quot;expected&quot; MAC <i>and</i> MAC
-     *             verification fails
+     * @throws MessageAuthenticationException
+     *             if this primitive was constructed with an expected MAC, and
+     *             MAC verification fails
      */
     @Override
     public byte[] finish(byte[] cipherTextBytes) {
@@ -116,8 +121,10 @@ public class HelixDecryption extends HelixImpl {
     /**
      * {@inheritDoc}
      * 
-     * @param cipherTextWords the next group of ciphertext words to be decrypted
-     * @param mask a 32-bit integer used to mask off extra bytes (if any) on the
+     * @param cipherTextWords
+     *            the next group of ciphertext words to be
+     * @param mask
+     *            a 32-bit integer used to mask off extra bytes (if any) on the
      *            last group of ciphertext words
      * @return the decrypted words (plaintext)
      */

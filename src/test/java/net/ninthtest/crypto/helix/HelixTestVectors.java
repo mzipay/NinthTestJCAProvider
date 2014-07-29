@@ -1,18 +1,18 @@
 /*
- * Copyright (c) 2011 Matthew Zipay <mattz@ninthtest.net>
+ * Copyright (c) 2011-2014 Matthew Zipay <mattz@ninthtest.net>
  * 
  * This file is part of the NinthTest JCA Provider.
- *
+ * 
  * The NinthTest JCA Provider is free software: you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or (at your
  * option) any later version.
- *
- * The NinthTest JCA Provider is distributed in the hope that it will be
- * useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * 
+ * The NinthTest JCA Provider is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
  * Public License for more details.
- *
+ * 
  * You should have received a copy of the GNU General Public License along with
  * the NinthTest JCA Provider. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -24,8 +24,8 @@ package net.ninthtest.crypto.helix;
  * test cases.
  * 
  * @author Matthew Zipay (mattz@ninthtest.net)
- * @version 1.0
- * @see "http://www.macfergus.com/helix/index.html"
+ * @version 1.1.0
+ * @see "http://www.schneier.com/paper-helix.html"
  */
 public interface HelixTestVectors {
     /** The index into a test vector where the secret key bytes can be found. */
@@ -49,13 +49,11 @@ public interface HelixTestVectors {
     /**
      * Helix test vector #1.
      * 
-     * @see "http://www.macfergus.com/helix/index.html"
+     * @see "http://www.schneier.com/paper-helix.html"
      */
     public static final byte[][] TEST_VECTOR_1 = new byte[][] {
             new byte[] {},
-            new byte[] {(byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00,
-                    (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00,
-                    (byte) 0x00, (byte) 0x00},
+            new byte[16],
             new byte[] {(byte) 0xa9, (byte) 0x3b, (byte) 0x6e, (byte) 0x32, (byte) 0xbc, (byte) 0x23, (byte) 0x4f,
                     (byte) 0x6c, (byte) 0x32, (byte) 0x6c, (byte) 0x0f, (byte) 0x82, (byte) 0x74, (byte) 0xff,
                     (byte) 0xa2, (byte) 0x41, (byte) 0xe3, (byte) 0xda, (byte) 0x57, (byte) 0x7d, (byte) 0xef,
@@ -72,7 +70,7 @@ public interface HelixTestVectors {
     /**
      * Helix test vector #2.
      * 
-     * @see "http://www.macfergus.com/helix/index.html"
+     * @see "http://www.schneier.com/paper-helix.html"
      */
     public static final byte[][] TEST_VECTOR_2 = new byte[][] {
             new byte[] {(byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x01, (byte) 0x00, (byte) 0x00,
@@ -105,7 +103,7 @@ public interface HelixTestVectors {
     /**
      * Helix test vector #3.
      * 
-     * @see "http://www.macfergus.com/helix/index.html"
+     * @see "http://www.schneier.com/paper-helix.html"
      */
     public static final byte[][] TEST_VECTOR_3 = new byte[][] {
             new byte[] {(byte) 0x48, (byte) 0x65, (byte) 0x6c, (byte) 0x69, (byte) 0x78},

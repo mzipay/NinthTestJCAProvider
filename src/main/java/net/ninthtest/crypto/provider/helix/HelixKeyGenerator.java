@@ -1,18 +1,18 @@
 /*
- * Copyright (c) 2011 Matthew Zipay <mattz@ninthtest.net>
+ * Copyright (c) 2011-2014 Matthew Zipay <mattz@ninthtest.net>
  * 
  * This file is part of the NinthTest JCA Provider.
- *
+ * 
  * The NinthTest JCA Provider is free software: you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or (at your
  * option) any later version.
- *
- * The NinthTest JCA Provider is distributed in the hope that it will be
- * useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * 
+ * The NinthTest JCA Provider is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
  * Public License for more details.
- *
+ * 
  * You should have received a copy of the GNU General Public License along with
  * the NinthTest JCA Provider. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -52,8 +52,8 @@ public final class HelixKeyGenerator extends KeyGeneratorSpi {
     private SecureRandom random;
 
     /**
-     * Creates a new <tt>HelixKeyGenerator</tt> using the default key size
-     * and the platform default {@link SecureRandom} implementation.
+     * Creates a new <tt>HelixKeyGenerator</tt> using the default key size and
+     * the platform default {@link SecureRandom} implementation.
      * 
      * <p>
      * This constructor also performs the provider self-integrity check.
@@ -69,12 +69,12 @@ public final class HelixKeyGenerator extends KeyGeneratorSpi {
     /**
      * Initializes the key generator.
      * 
-     * @param random the source of randomness for this generator
+     * @param random
+     *            the source of randomness for this generator
      * @see javax.crypto.KeyGeneratorSpi#engineInit(java.security.SecureRandom)
      */
     @Override
-    @SuppressWarnings("hiding")
-    protected void engineInit(SecureRandom random) {
+    protected void engineInit(@SuppressWarnings("hiding") SecureRandom random) {
         keySize = DEFAULT_KEY_SIZE;
         this.random = random;
     }
@@ -83,15 +83,16 @@ public final class HelixKeyGenerator extends KeyGeneratorSpi {
      * Initializes this key generator for a certain keysize, using the given
      * source of randomness.
      * 
-     * @param keySize the size of the keys that this generator should generate,
+     * @param keySize
+     *            the size of the keys that this generator should generate,
      *            specified in number of bits (must be a multiple of eight)
-     * @param random the source of randomness for this generator
+     * @param random
+     *            the source of randomness for this generator
      * @see javax.crypto.KeyGeneratorSpi#engineInit(int,
      *      java.security.SecureRandom)
      */
     @Override
-    @SuppressWarnings("hiding")
-    protected void engineInit(int keySize, SecureRandom random) {
+    protected void engineInit(@SuppressWarnings("hiding") int keySize, @SuppressWarnings("hiding") SecureRandom random) {
         if (keySize > MAXIMUM_KEY_SIZE) {
             throw new InvalidParameterException(Messages.getMessage("helix.error.max_key_size_exceeded"));
         } else if ((keySize % 8) != 0) {
@@ -111,16 +112,17 @@ public final class HelixKeyGenerator extends KeyGeneratorSpi {
      * will throw an exception.
      * </p>
      * 
-     * @param params the key generation parameters
-     * @param random the source of randomness for this generator
-     * @throws InvalidAlgorithmParameterException if <tt>params</tt> is
-     *             inappropriate for this key generator
+     * @param params
+     *            the key generation parameters
+     * @param random
+     *            the source of randomness for this generator
+     * @throws InvalidAlgorithmParameterException
+     *             if <tt>params</tt> is inappropriate for this key generator
      * @see javax.crypto.KeyGeneratorSpi#engineInit(java.security.spec.AlgorithmParameterSpec,
      *      java.security.SecureRandom)
      */
     @Override
-    @SuppressWarnings("hiding")
-    protected void engineInit(AlgorithmParameterSpec params, SecureRandom random)
+    protected void engineInit(AlgorithmParameterSpec params, @SuppressWarnings("hiding") SecureRandom random)
             throws InvalidAlgorithmParameterException {
         throw new InvalidAlgorithmParameterException(Messages.getMessage("helix.error.paramspec_not_appropriate"));
     }
