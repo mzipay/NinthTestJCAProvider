@@ -43,30 +43,11 @@ Downloading and installing the NinthTest JCA Provider
 
 * Download the signed NinthTest JCA Provider JAR
 
+ The signed provider JAR can be downloaded from
+ {{{https://sourceforge.net/projects/ninthtest-jca-provider/files/}SourceForge}}.
+
  This download is recommended for general use of the NinthTest JCA Provider.
- The current version is <<1.1.0>>.
-
-*--+--+--+--+
-|| Version || Filename || Description || MD5 |
-*--+--+--+--+
-| 1.1.0 | {{{./releases/ninthtest_provider-1.1.jar}ninthtest_provider-1.1.0}} | The signed NinthTest JCA Provider 1.1.0 JAR. | <<<19dda0a0c20824b6b8b04d558d1ff76b>>> |
-*--+--+--+--+
-| 1.0 | {{{./releases/ninthtest_provider-1.0.jar}ninthtest_provider-1.0}} | The signed NinthTest JCA Provider 1.0 JAR. | <<<062d4e4e903ae10d543dd170bfa8cd78>>> |
-*--+--+--+--+
-Signed JARs by version
-
-** Version 1.1.0
-
- This release adds support for a
- {{{http://www.schneier.com/paper-helix.html}Helix}} PRNG (<SecureRandom>
- service).
-
-** Version 1.0
-
- This release adds support for the
- {{{http://www.schneier.com/paper-helix.html}Helix combined stream cipher and
- MAC function}} (<Cipher>, <Mac>, <SecretKeyFactory>, <AlgorithmParameters>,
- and <KeyGenerator> services).
+ The current version is <<${project.version}>>.
 
 * Download the NinthTest JCA Provider source code
 
@@ -74,11 +55,16 @@ Signed JARs by version
  interested in examining the NinthTest JCA Provider source code for any other
  reason.
 
- Source code is available by cloning the
- {{{https://bitbucket.org/mzipay/ninthtest-jca-provider}NinthTest JCA Provider
- Mercurial repository}} from BitBucket. The source code is licensed under the
- {{{http://www.opensource.org/licenses/LGPL-3.0}GNU Lesser General Public
- License, version 3.0 (LGPL-3.0)}}.
+ Clone or fork the
+ {{{https://github.com/mzipay/NinthTestJCAProvider}mzipay/NinthTestJCAProvider}}
+ GitHub repository:
+
++--
+$ git clone https://github.com/mzipay/NinthTestJCAProvider.git
++--
+
+ Alternatively, download and extract a <.zip> or <.tar.gz> release archive from
+ {{{https://github.com/mzipay/NinthTestJCAProvider/releases}NinthTestJCAProvider/releases}}.
 
  <<Note:>> If you wish to create a derivative work, <even for personal
  (non-distribution) use>, you must obtain your own code-signing certificate
@@ -169,11 +155,6 @@ grant codeBase "file:/path/to/ninthtest_provider.jar" {
 };
 +--
 
-* Versioning
-
- The NinthTest JCA Provider follows the
- {{{http://semver.org/}Semantic Versioning Specification (SemVer)}}.
-
 * Redistributing
 
  Because the NinthTest JCA Provider deals with encryption, it is subject to
@@ -184,3 +165,4 @@ grant codeBase "file:/path/to/ninthtest_provider.jar" {
  Derivative works and/or redistribution may be subject to additional or
  alternate restrictions. Please visit {{http://www.bis.doc.gov/}} for more
  information.
+

@@ -10,14 +10,16 @@
         Because the services provided by the NinthTest JCA Provider are exploratory/provisional in nature, the NinthTest JCA Provider is not recommended for use in security-critical applications or environments.
 	</description>
 	<inceptionYear>2010</inceptionYear>
-	<url>http://www.ninthtest.net/java-security-provider</url>
+	<url>http://ninthtest.net/java-security-provider/</url>
 	<scm>
-		<tag>NinthTest JCA Provider 1.1.0</tag>
-		<url>https://bitbucket.org/mzipay/ninthtest-jca-provider</url>
+		<url>https://github.com/mzipay/NinthTestJCAProvider</url>
 	</scm>
+	<issueManagement>
+		<url>https://github.com/mzipay/NinthTestJCAProvider/issues</url>
+	</issueManagement>
 	<organization>
 		<name>Matthew Zipay</name>
-		<url>http://www.ninthtest.net/</url>
+		<url>http://ninthtest.net/</url>
 	</organization>
 	<developers>
 		<developer>
@@ -28,7 +30,7 @@
 	<licenses>
 		<license>
 			<name>GNU Lesser General Public License, version 3.0 (LGPL-3.0)</name>
-			<url>http://www.ninthtest.net/java-security-provider/COPYING.LESSER.txt</url>
+			<url>https://raw.githubusercontent.com/mzipay/NinthTestJCAProvider/master/LICENSE.txt</url>
 			<distribution>manual</distribution>
 		</license>
 	</licenses>
