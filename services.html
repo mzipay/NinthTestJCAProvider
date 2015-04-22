@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>NinthTest JCA Provider - Introduction to the NinthTest JCA Provider</title>
+    <title>NinthTest JCA Provider - Security services provided by the NinthTest JCA Provider</title>
     <style type="text/css" media="all">
       @import url("./css/maven-base.css");
       @import url("./css/maven-theme.css");
@@ -46,11 +46,11 @@
                                 <h5>Overview</h5>
                   <ul>
                   <li class="none">
-            <strong>Introduction</strong>
-          </li>
-                  <li class="none">
-                          <a href="services.html" title="Security Services">Security Services</a>
+                          <a href="index.html" title="Introduction">Introduction</a>
             </li>
+                  <li class="none">
+            <strong>Security Services</strong>
+          </li>
                   <li class="none">
                           <a href="download.html" title="Download & Installation">Download & Installation</a>
             </li>
@@ -77,55 +77,50 @@
     <div id="bodyColumn">
       <div id="contentBox">
         <!-- Copyright (c) 2011-2014 Matthew Zipay <mattz@ninthtest.net> --><!--  --><!-- This file is part of the NinthTest JCA Provider. --><!--  --><!-- The NinthTest JCA Provider is free software: you can redistribute it and/or --><!-- modify it under the terms of the GNU General Public License as published by --><!-- the Free Software Foundation, either version 3 of the License, or (at your --><!-- option) any later version. --><!--  --><!-- The NinthTest JCA Provider is distributed in the hope that it will be --><!-- useful, but WITHOUT ANY WARRANTY; without even the implied warranty of --><!-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General --><!-- Public License for more details. --><!--  --><!-- You should have received a copy of the GNU General Public License along with --><!-- the NinthTest JCA Provider. If not, see <http://www.gnu.org/licenses/>. --><div class="section">
-<h2>About the NinthTest JCA Provider<a name="About_the_NinthTest_JCA_Provider"></a></h2>
-<p>The NinthTest JCA Provider is a security provider for the <a class="externalLink" href="http://docs.oracle.com/javase/6/docs/technotes/guides/security/crypto/CryptoSpec.html"> Java&#x2122; Cryptography Architecture</a>, focused on supporting candidate, reference, academic, and experimental cryptographic algorithms and security services.</p>
-<p><b>Because the services provided by the NinthTest JCA Provider are exploratory/provisional in nature, the NinthTest JCA Provider is not recommended for use in security-critical applications or environments.</b></p>
-<p>The NinthTest JCA Provider is licensed under the <a class="externalLink" href="http://www.opensource.org/licenses/LGPL-3.0">GNU Lesser General Public License, version 3.0 (LGPL-3.0)</a>.</p>
-<p>The table below shows the algorithms and services that are currently supported. Please refer to <a href="./services.html">Security services provided by the NinthTest JCA provider</a> for more information.</p>
+<h2>Security services provided by the NinthTest JCA Provider<a name="Security_services_provided_by_the_NinthTest_JCA_Provider"></a></h2>
+<p>The following sections list the algorithms and associated services that are supported by the NinthTest JCA Provider.</p>
+<p>For usage scenarios and code examples that exercise these algorithms and services, please refer to <a href="./usage.html">Using the NinthTest JCA Provider</a>.</p>
+<div class="section">
+<h3>Helix<a name="Helix"></a></h3>
+<p><a class="externalLink" href="http://www.schneier.com/paper-helix.html">Helix</a> is a <a class="externalLink" href="http://en.wikipedia.org/wiki/Stream_cipher">stream cipher</a> with a built-in <a class="externalLink" href="http://en.wikipedia.org/wiki/Message_authentication_code">MAC</a> function.</p>
 <table border="1" class="bodyTable"><caption>
-  <i>Algorithms and services supported by the NinthTest JCA Provider</i>
+  <i>Helix services provided by the NinthTest JCA Provider</i>
 </caption>
 <tr class="a">
-<th align="left">Algorithm</th>
-<th align="left">Service</th></tr>
+<th align="left">Version</th>
+<th align="left">Service</th>
+<th align="left">JCA engine class</th>
+<th align="left">Description</th></tr>
 <tr class="b">
-<td align="left"><b>Helix</b></td>
-<td align="left">Cipher</td></tr>
+<td align="left">1.0</td>
+<td align="left">Cipher</td>
+<td align="left"><tt><a class="externalLink" href="http://docs.oracle.com/javase/6/docs/api/javax/crypto/Cipher.html">javax.crypto.Cipher</a></tt></td>
+<td align="left">Supports encryption, decryption, and key wrapping/unwrapping operation modes.&#xa0;<br />Supports the Helix built-in MAC function for all operation modes.&#xa0;<br />Generated MACs can be retrieved from algorithm parameters following an encryption or key-wrapping operation.&#xa0;<br />Expected MACs for decryption or key-unwrapping operations can be provided as algorithm parameters when initializing the cipher.&#xa0;<br />Supports the use of Helix as a pure stream cipher (i.e. without MAC function).</td></tr>
 <tr class="a">
-<td align="left"></td>
-<td align="left">Mac</td></tr>
+<td align="left">1.0</td>
+<td align="left">Mac</td>
+<td align="left"><tt><a class="externalLink" href="http://docs.oracle.com/javase/6/docs/api/javax/crypto/Mac.html">javax.crypto.Mac</a></tt></td>
+<td align="left">Supports the use of Helix as a pure MAC function.</td></tr>
 <tr class="b">
-<td align="left"></td>
-<td align="left">KeyGenerator</td></tr>
+<td align="left">1.0</td>
+<td align="left">KeyGenerator</td>
+<td align="left"><tt><a class="externalLink" href="http://docs.oracle.com/javase/6/docs/api/javax/crypto/KeyGenerator.html">javax.crypto.KeyGenerator</a></tt></td>
+<td align="left">Generates random Helix keys.&#xa0;<br />Allows key sizes up to a maximum of 256 bits, in multiples of eight (256 bits is recommended, and is the default).</td></tr>
 <tr class="a">
-<td align="left"></td>
-<td align="left">SecretKeyFactory</td></tr>
+<td align="left">1.0</td>
+<td align="left">SecretKeyFactory</td>
+<td align="left"><tt><a class="externalLink" href="http://docs.oracle.com/javase/6/docs/api/javax/crypto/SecretKeyFactory.html">javax.crypto.SecretKeyFactory</a></tt></td>
+<td align="left">Creates Helix secret keys from Helix key specifications (i.e. representations of raw key bytes), and vice-versa.</td></tr>
 <tr class="b">
-<td align="left"></td>
-<td align="left">AlgorithmParameters</td></tr>
+<td align="left">1.0</td>
+<td align="left">AlgorithmParameters</td>
+<td align="left"><tt><a class="externalLink" href="http://docs.oracle.com/javase/6/docs/api/java/security/AlgorithmParameters.html">java.security.AlgorithmParameters</a></tt></td>
+<td align="left">Manages Helix parameters (nonce and MAC).&#xa0;<br />Following an encryption or key-wrapping operation, the generated MAC can be retrieved from the <tt>AlgorithmParameters</tt> returned by the <tt>Cipher</tt>.</td></tr>
 <tr class="a">
-<td align="left"></td>
-<td align="left">SecureRandom</td></tr></table>
-<p>Many services are also available independent of the JCA API. Please refer to <a href="./usage.html">Using the NinthTest JCA Provider</a> for examples.</p>
-<div class="section">
-<h3>Download<a name="Download"></a></h3>
-<p>The current version is <b>1.1.0</b>.</p>
-<p>The NinthTest JCA Provider is available for download in binary (JAR) and source form. Due to a JCA code-signing requirement, the binary form is recommended unless you intend to contribute or create a derivative work.</p>
-<p>Please refer to <a href="./download.html">Downloading and installing the NinthTest JCA Provider</a>.</p></div>
-<div class="section">
-<h3>Roadmap<a name="Roadmap"></a></h3>
-<p>This section is a summary of planned changes for upcoming releases. This roadmap is subject to change at any time, and without notice.</p>
-<div class="section">
-<h4>Planned<a name="Planned"></a></h4>
-<ul>
-<li>support for the <a class="externalLink" href="http://www.skein-hash.info/">Skein hash function</a> (including the <a class="externalLink" href="http://www.schneier.com/threefish.html">Threefish block cipher</a>)</li>
-<li>support for the <a class="externalLink" href="http://crypto.cs.uiuc.edu/wiki/index.php/Elgamal_encryption_scheme">ElGamal</a> encryption system (asymmetric key encryption, digital signature)</li></ul></div>
-<div class="section">
-<h4>Under consideration<a name="Under_consideration"></a></h4>
-<ul>
-<li>support for <a class="externalLink" href="http://www.schneier.com/paper-phelix.html">Phelix</a> (the successor to Helix)</li>
-<li>support for the HC-128, HC-256, and Rabbit stream ciphers from the <a class="externalLink" href="http://www.ecrypt.eu.org/stream/">eSTREAM</a> project </li>
-<li>support for a TRNG service based on the <a class="externalLink" href="http://www.random.org/"> RANDOM.ORG True Random Number Service</a>.</li></ul></div></div></div>
+<td align="left">1.1.0</td>
+<td align="left">SecureRandom</td>
+<td align="left"><tt><a class="externalLink" href="http://docs.oracle.com/javase/6/docs/api/java/security/SecureRandom.html">java.security.SecureRandom</a></tt></td>
+<td align="left">Supports the use of Helix as a PRNG.</td></tr></table></div></div>
       </div>
     </div>
     <div class="clear">

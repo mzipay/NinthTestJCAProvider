@@ -1,0 +1,778 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>Coverage Report</title>
+<link title="Style" type="text/css" rel="stylesheet" href="css/main.css"/>
+<script type="text/javascript" src="js/popup.js"></script>
+</head>
+<body>
+<h5>Coverage Report - net.ninthtest.security.provider.NinthTestProvider</h5>
+<div class="separator">&nbsp;</div>
+<table class="report">
+<thead><tr>  <td class="heading">Classes in this File</td>  <td class="heading"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">Line Coverage</a></td>  <td class="heading"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">Branch Coverage</a></td>  <td class="heading"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">Complexity</a></td></tr></thead>
+  <tr><td><a href="net.ninthtest.security.provider.NinthTestProvider.html">NinthTestProvider</a></td><td><table cellpadding="0px" cellspacing="0px" class="percentgraph"><tr class="percentgraph"><td align="right" class="percentgraph" width="40">100%</td><td class="percentgraph"><div class="percentgraph"><div class="greenbar" style="width:100px"><span class="text">10/10</span></div></div></td></tr></table></td><td><table cellpadding="0px" cellspacing="0px" class="percentgraph"><tr class="percentgraph"><td align="right" class="percentgraph" width="40"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">N/A</a></td><td class="percentgraph"><div class="percentgraph"><div class="na" style="width:100px"><span class="text"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">N/A</a></span></div></div></td></tr></table></td><td class="value"><span class="hidden">3.7142857142857144;</span>3.714</td></tr>
+
+</table>
+<div class="separator">&nbsp;</div>
+<table cellspacing="0" cellpadding="0" class="src">
+<tr>  <td class="numLine">&nbsp;1</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">/*</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;2</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * Copyright (c) 2011-2014 Matthew Zipay &lt;mattz@ninthtest.net&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;3</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * </span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;4</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * This file is part of the NinthTest JCA Provider.</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;5</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * </span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;6</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * The NinthTest JCA Provider is free software: you can redistribute it and/or</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;7</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * modify it under the terms of the GNU General Public License as published by</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;8</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * the Free Software Foundation, either version 3 of the License, or (at your</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;9</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * option) any later version.</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;10</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * </span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;11</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * The NinthTest JCA Provider is distributed in the hope that it will be useful,</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;12</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * but WITHOUT ANY WARRANTY; without even the implied warranty of</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;13</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;14</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * Public License for more details.</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;15</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * </span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;16</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * You should have received a copy of the GNU General Public License along with</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;17</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * the NinthTest JCA Provider. If not, see &lt;http://www.gnu.org/licenses/&gt;.</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;18</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> */</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;19</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;20</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">package</span> net.ninthtest.security.provider;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;21</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;22</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.io.ByteArrayInputStream;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;23</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.io.IOException;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;24</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.net.URL;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;25</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.security.AccessController;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;26</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.security.CodeSigner;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;27</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.security.CodeSource;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;28</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.security.PrivilegedActionException;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;29</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.security.PrivilegedExceptionAction;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;30</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.security.Provider;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;31</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.security.cert.CertificateException;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;32</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.security.cert.CertificateFactory;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;33</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.security.cert.X509Certificate;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;34</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.util.jar.JarEntry;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;35</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.util.jar.JarInputStream;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;36</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;37</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> net.ninthtest.crypto.provider.helix.HelixAlgorithmParameters;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;38</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> net.ninthtest.crypto.provider.helix.HelixCipher;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;39</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> net.ninthtest.crypto.provider.helix.HelixKeyGenerator;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;40</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> net.ninthtest.crypto.provider.helix.HelixMac;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;41</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> net.ninthtest.crypto.provider.helix.HelixSecretKeyFactory;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;42</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> net.ninthtest.crypto.provider.helix.HelixSecureRandom;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;43</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> net.ninthtest.security.Messages;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;44</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;45</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">/**</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;46</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * The NinthTest JCA Provider is a security service provider for the &lt;a href=</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;47</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * "http://download.oracle.com/javase/6/docs/technotes/guides/security/crypto/CryptoSpec.html"</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;48</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &gt;Java Cryptography Architecture&lt;/a&gt;.</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;49</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * </span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;50</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;p&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;51</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * The NinthTest JCA Provider focuses on supporting candidate, reference,</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;52</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * academic, and experimental cryptographic algorithms and security services.</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;53</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;/p&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;54</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * </span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;55</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;p style="color:red;font-weight:bold;"&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;56</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * Because the services provided by the NinthTest JCA Provider are</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;57</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * exploratory/provisional in nature, the NinthTest JCA Provider is not</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;58</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * recommended for use in security-critical applications or environments.</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;59</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * &lt;/p&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;60</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * </span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;61</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * @author Matthew Zipay (mattz@ninthtest.net)</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;62</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * @version 1.0</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;63</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * @see &lt;a href="http://www.ninthtest.net/java-security-provider"&gt;About the</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;64</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> *      NinthTest JCA Provider&lt;/a&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;65</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> */</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;66</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">class</span> NinthTestProvider <span class="keyword">extends</span> Provider {</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;67</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/** The provider name. */</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;68</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String NAME = <span class="string">"NinthTest"</span>;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;69</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;70</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;71</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * The algorithm name for the Helix combined stream cipher and MAC function.</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;72</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;73</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String HELIX = <span class="string">"Helix"</span>;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;74</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;75</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/** The provider version. */</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;76</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">double</span> VERSION = 1.1;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;77</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;78</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/** A short description of the provider. */</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;79</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String INFO = <span class="string">"NinthTest provider v1.1 (Helix stream cipher with MAC function)"</span>;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;80</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;81</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/* the universal serialization version ID for NinthTestProvider */</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;82</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = 7121082131684638199L;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;83</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;84</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;85</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Verifies that the JAR containing this provider has not been tampered</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;86</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * with.</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;87</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * </span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;88</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * &lt;p&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;89</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * This method performs the following checks:</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;90</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * &lt;/p&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;91</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * </span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;92</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * &lt;ol&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;93</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * &lt;li&gt;The provider JAR has been signed.&lt;/li&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;94</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * &lt;li&gt;Each entry in the provider JAR is signed by a trusted signer.&lt;/li&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;95</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * &lt;li&gt;The signature for each entry in the provider JAR was generated by the</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;96</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * same entity as the one that developed this provider.&lt;/li&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;97</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * &lt;/ol&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;98</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * </span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;99</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * &lt;p&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;100</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * If the self-integrity check fails for any reason, the runtime exception</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;101</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * {@link SecurityException} is thrown.</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;102</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * &lt;/p&gt;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;103</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;104</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> doSelfIntegrityCheck() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;105</td>  <td class="nbHitsCovered">&nbsp;429</td>  <td class="src"><pre class="src">&nbsp;        ProviderIntegrity.verify();</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;106</td>  <td class="nbHitsCovered">&nbsp;429</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;107</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;108</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;109</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Creates a new &lt;tt&gt;NinthTestProvider&lt;/tt&gt; and initializes the set of</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;110</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * services provided.</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;111</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;112</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> NinthTestProvider() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;113</td>  <td class="nbHitsCovered">&nbsp;242</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">super</span>(NAME, VERSION, INFO);</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;114</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;115</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="comment">/* Helix combined stream cipher and MAC function */</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;116</td>  <td class="nbHitsCovered">&nbsp;242</td>  <td class="src"><pre class="src">&nbsp;        putService(<span class="keyword">new</span> Provider.Service(<span class="keyword">this</span>, <span class="string">"Cipher"</span>, HELIX, HelixCipher.<span class="keyword">class</span>.getName(), <span class="keyword">null</span>, <span class="keyword">null</span>));</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;117</td>  <td class="nbHitsCovered">&nbsp;242</td>  <td class="src"><pre class="src">&nbsp;        putService(<span class="keyword">new</span> Provider.Service(<span class="keyword">this</span>, <span class="string">"Mac"</span>, HELIX, HelixMac.<span class="keyword">class</span>.getName(), <span class="keyword">null</span>, <span class="keyword">null</span>));</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;118</td>  <td class="nbHitsCovered">&nbsp;242</td>  <td class="src"><pre class="src">&nbsp;        putService(<span class="keyword">new</span> Provider.Service(<span class="keyword">this</span>, <span class="string">"SecureRandom"</span>, HELIX, HelixSecureRandom.<span class="keyword">class</span>.getName(), <span class="keyword">null</span>, <span class="keyword">null</span>));</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;119</td>  <td class="nbHitsCovered">&nbsp;242</td>  <td class="src"><pre class="src">&nbsp;        putService(<span class="keyword">new</span> Provider.Service(<span class="keyword">this</span>, <span class="string">"SecretKeyFactory"</span>, HELIX, HelixSecretKeyFactory.<span class="keyword">class</span>.getName(), <span class="keyword">null</span>,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;120</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">null</span>));</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;121</td>  <td class="nbHitsCovered">&nbsp;242</td>  <td class="src"><pre class="src">&nbsp;        putService(<span class="keyword">new</span> Provider.Service(<span class="keyword">this</span>, <span class="string">"AlgorithmParameters"</span>, HELIX, HelixAlgorithmParameters.<span class="keyword">class</span>.getName(),</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;122</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">null</span>, <span class="keyword">null</span>));</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;123</td>  <td class="nbHitsCovered">&nbsp;242</td>  <td class="src"><pre class="src">&nbsp;        putService(<span class="keyword">new</span> Provider.Service(<span class="keyword">this</span>, <span class="string">"KeyGenerator"</span>, HELIX, HelixKeyGenerator.<span class="keyword">class</span>.getName(), <span class="keyword">null</span>, <span class="keyword">null</span>));</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;124</td>  <td class="nbHitsCovered">&nbsp;242</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;125</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;}</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;126</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;127</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">/* Verifies the integrity of the signed provider JAR. */</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;128</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">final</span> <span class="keyword">class</span> ProviderIntegrity {</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;129</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/* raw bytes of the provider signing certificate */</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;130</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">byte</span>[] PROVIDER_CERTIFICATE_BYTES = <span class="keyword">new</span> <span class="keyword">byte</span>[] {(<span class="keyword">byte</span>) 0x30, (<span class="keyword">byte</span>) 0x82, (<span class="keyword">byte</span>) 0x03,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;131</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0xad, (<span class="keyword">byte</span>) 0x30, (<span class="keyword">byte</span>) 0x82, (<span class="keyword">byte</span>) 0x03, (<span class="keyword">byte</span>) 0x6b, (<span class="keyword">byte</span>) 0xa0, (<span class="keyword">byte</span>) 0x03, (<span class="keyword">byte</span>) 0x02,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;132</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x01, (<span class="keyword">byte</span>) 0x02, (<span class="keyword">byte</span>) 0x02, (<span class="keyword">byte</span>) 0x02, (<span class="keyword">byte</span>) 0x03, (<span class="keyword">byte</span>) 0x34, (<span class="keyword">byte</span>) 0x30, (<span class="keyword">byte</span>) 0x0b,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;133</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x06, (<span class="keyword">byte</span>) 0x07, (<span class="keyword">byte</span>) 0x2a, (<span class="keyword">byte</span>) 0x86, (<span class="keyword">byte</span>) 0x48, (<span class="keyword">byte</span>) 0xce, (<span class="keyword">byte</span>) 0x38, (<span class="keyword">byte</span>) 0x04,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;134</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x03, (<span class="keyword">byte</span>) 0x05, (<span class="keyword">byte</span>) 0x00, (<span class="keyword">byte</span>) 0x30, (<span class="keyword">byte</span>) 0x81, (<span class="keyword">byte</span>) 0x90, (<span class="keyword">byte</span>) 0x31, (<span class="keyword">byte</span>) 0x0b,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;135</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x30, (<span class="keyword">byte</span>) 0x09, (<span class="keyword">byte</span>) 0x06, (<span class="keyword">byte</span>) 0x03, (<span class="keyword">byte</span>) 0x55, (<span class="keyword">byte</span>) 0x04, (<span class="keyword">byte</span>) 0x06, (<span class="keyword">byte</span>) 0x13,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;136</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x02, (<span class="keyword">byte</span>) 0x55, (<span class="keyword">byte</span>) 0x53, (<span class="keyword">byte</span>) 0x31, (<span class="keyword">byte</span>) 0x0b, (<span class="keyword">byte</span>) 0x30, (<span class="keyword">byte</span>) 0x09, (<span class="keyword">byte</span>) 0x06,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;137</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x03, (<span class="keyword">byte</span>) 0x55, (<span class="keyword">byte</span>) 0x04, (<span class="keyword">byte</span>) 0x08, (<span class="keyword">byte</span>) 0x13, (<span class="keyword">byte</span>) 0x02, (<span class="keyword">byte</span>) 0x43, (<span class="keyword">byte</span>) 0x41,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;138</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x31, (<span class="keyword">byte</span>) 0x12, (<span class="keyword">byte</span>) 0x30, (<span class="keyword">byte</span>) 0x10, (<span class="keyword">byte</span>) 0x06, (<span class="keyword">byte</span>) 0x03, (<span class="keyword">byte</span>) 0x55, (<span class="keyword">byte</span>) 0x04,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;139</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x07, (<span class="keyword">byte</span>) 0x13, (<span class="keyword">byte</span>) 0x09, (<span class="keyword">byte</span>) 0x50, (<span class="keyword">byte</span>) 0x61, (<span class="keyword">byte</span>) 0x6c, (<span class="keyword">byte</span>) 0x6f, (<span class="keyword">byte</span>) 0x20,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;140</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x41, (<span class="keyword">byte</span>) 0x6c, (<span class="keyword">byte</span>) 0x74, (<span class="keyword">byte</span>) 0x6f, (<span class="keyword">byte</span>) 0x31, (<span class="keyword">byte</span>) 0x1d, (<span class="keyword">byte</span>) 0x30, (<span class="keyword">byte</span>) 0x1b,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;141</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x06, (<span class="keyword">byte</span>) 0x03, (<span class="keyword">byte</span>) 0x55, (<span class="keyword">byte</span>) 0x04, (<span class="keyword">byte</span>) 0x0a, (<span class="keyword">byte</span>) 0x13, (<span class="keyword">byte</span>) 0x14, (<span class="keyword">byte</span>) 0x53,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;142</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x75, (<span class="keyword">byte</span>) 0x6e, (<span class="keyword">byte</span>) 0x20, (<span class="keyword">byte</span>) 0x4d, (<span class="keyword">byte</span>) 0x69, (<span class="keyword">byte</span>) 0x63, (<span class="keyword">byte</span>) 0x72, (<span class="keyword">byte</span>) 0x6f,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;143</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x73, (<span class="keyword">byte</span>) 0x79, (<span class="keyword">byte</span>) 0x73, (<span class="keyword">byte</span>) 0x74, (<span class="keyword">byte</span>) 0x65, (<span class="keyword">byte</span>) 0x6d, (<span class="keyword">byte</span>) 0x73, (<span class="keyword">byte</span>) 0x20,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;144</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x49, (<span class="keyword">byte</span>) 0x6e, (<span class="keyword">byte</span>) 0x63, (<span class="keyword">byte</span>) 0x31, (<span class="keyword">byte</span>) 0x23, (<span class="keyword">byte</span>) 0x30, (<span class="keyword">byte</span>) 0x21, (<span class="keyword">byte</span>) 0x06,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;145</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x03, (<span class="keyword">byte</span>) 0x55, (<span class="keyword">byte</span>) 0x04, (<span class="keyword">byte</span>) 0x0b, (<span class="keyword">byte</span>) 0x13, (<span class="keyword">byte</span>) 0x1a, (<span class="keyword">byte</span>) 0x4a, (<span class="keyword">byte</span>) 0x61,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;146</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x76, (<span class="keyword">byte</span>) 0x61, (<span class="keyword">byte</span>) 0x20, (<span class="keyword">byte</span>) 0x53, (<span class="keyword">byte</span>) 0x6f, (<span class="keyword">byte</span>) 0x66, (<span class="keyword">byte</span>) 0x74, (<span class="keyword">byte</span>) 0x77,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;147</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x61, (<span class="keyword">byte</span>) 0x72, (<span class="keyword">byte</span>) 0x65, (<span class="keyword">byte</span>) 0x20, (<span class="keyword">byte</span>) 0x43, (<span class="keyword">byte</span>) 0x6f, (<span class="keyword">byte</span>) 0x64, (<span class="keyword">byte</span>) 0x65,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;148</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x20, (<span class="keyword">byte</span>) 0x53, (<span class="keyword">byte</span>) 0x69, (<span class="keyword">byte</span>) 0x67, (<span class="keyword">byte</span>) 0x6e, (<span class="keyword">byte</span>) 0x69, (<span class="keyword">byte</span>) 0x6e, (<span class="keyword">byte</span>) 0x67,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;149</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x31, (<span class="keyword">byte</span>) 0x1c, (<span class="keyword">byte</span>) 0x30, (<span class="keyword">byte</span>) 0x1a, (<span class="keyword">byte</span>) 0x06, (<span class="keyword">byte</span>) 0x03, (<span class="keyword">byte</span>) 0x55, (<span class="keyword">byte</span>) 0x04,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;150</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x03, (<span class="keyword">byte</span>) 0x13, (<span class="keyword">byte</span>) 0x13, (<span class="keyword">byte</span>) 0x4a, (<span class="keyword">byte</span>) 0x43, (<span class="keyword">byte</span>) 0x45, (<span class="keyword">byte</span>) 0x20, (<span class="keyword">byte</span>) 0x43,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;151</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x6f, (<span class="keyword">byte</span>) 0x64, (<span class="keyword">byte</span>) 0x65, (<span class="keyword">byte</span>) 0x20, (<span class="keyword">byte</span>) 0x53, (<span class="keyword">byte</span>) 0x69, (<span class="keyword">byte</span>) 0x67, (<span class="keyword">byte</span>) 0x6e,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;152</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x69, (<span class="keyword">byte</span>) 0x6e, (<span class="keyword">byte</span>) 0x67, (<span class="keyword">byte</span>) 0x20, (<span class="keyword">byte</span>) 0x43, (<span class="keyword">byte</span>) 0x41, (<span class="keyword">byte</span>) 0x30, (<span class="keyword">byte</span>) 0x1e,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;153</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x17, (<span class="keyword">byte</span>) 0x0d, (<span class="keyword">byte</span>) 0x31, (<span class="keyword">byte</span>) 0x31, (<span class="keyword">byte</span>) 0x30, (<span class="keyword">byte</span>) 0x31, (<span class="keyword">byte</span>) 0x31, (<span class="keyword">byte</span>) 0x38,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;154</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x32, (<span class="keyword">byte</span>) 0x33, (<span class="keyword">byte</span>) 0x35, (<span class="keyword">byte</span>) 0x35, (<span class="keyword">byte</span>) 0x31, (<span class="keyword">byte</span>) 0x39, (<span class="keyword">byte</span>) 0x5a, (<span class="keyword">byte</span>) 0x17,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;155</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x0d, (<span class="keyword">byte</span>) 0x31, (<span class="keyword">byte</span>) 0x36, (<span class="keyword">byte</span>) 0x30, (<span class="keyword">byte</span>) 0x31, (<span class="keyword">byte</span>) 0x32, (<span class="keyword">byte</span>) 0x32, (<span class="keyword">byte</span>) 0x32,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;156</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x33, (<span class="keyword">byte</span>) 0x35, (<span class="keyword">byte</span>) 0x35, (<span class="keyword">byte</span>) 0x31, (<span class="keyword">byte</span>) 0x39, (<span class="keyword">byte</span>) 0x5a, (<span class="keyword">byte</span>) 0x30, (<span class="keyword">byte</span>) 0x5c,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;157</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x31, (<span class="keyword">byte</span>) 0x1d, (<span class="keyword">byte</span>) 0x30, (<span class="keyword">byte</span>) 0x1b, (<span class="keyword">byte</span>) 0x06, (<span class="keyword">byte</span>) 0x03, (<span class="keyword">byte</span>) 0x55, (<span class="keyword">byte</span>) 0x04,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;158</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x0a, (<span class="keyword">byte</span>) 0x13, (<span class="keyword">byte</span>) 0x14, (<span class="keyword">byte</span>) 0x53, (<span class="keyword">byte</span>) 0x75, (<span class="keyword">byte</span>) 0x6e, (<span class="keyword">byte</span>) 0x20, (<span class="keyword">byte</span>) 0x4d,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;159</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x69, (<span class="keyword">byte</span>) 0x63, (<span class="keyword">byte</span>) 0x72, (<span class="keyword">byte</span>) 0x6f, (<span class="keyword">byte</span>) 0x73, (<span class="keyword">byte</span>) 0x79, (<span class="keyword">byte</span>) 0x73, (<span class="keyword">byte</span>) 0x74,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;160</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x65, (<span class="keyword">byte</span>) 0x6d, (<span class="keyword">byte</span>) 0x73, (<span class="keyword">byte</span>) 0x20, (<span class="keyword">byte</span>) 0x49, (<span class="keyword">byte</span>) 0x6e, (<span class="keyword">byte</span>) 0x63, (<span class="keyword">byte</span>) 0x31,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;161</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x23, (<span class="keyword">byte</span>) 0x30, (<span class="keyword">byte</span>) 0x21, (<span class="keyword">byte</span>) 0x06, (<span class="keyword">byte</span>) 0x03, (<span class="keyword">byte</span>) 0x55, (<span class="keyword">byte</span>) 0x04, (<span class="keyword">byte</span>) 0x0b,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;162</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x13, (<span class="keyword">byte</span>) 0x1a, (<span class="keyword">byte</span>) 0x4a, (<span class="keyword">byte</span>) 0x61, (<span class="keyword">byte</span>) 0x76, (<span class="keyword">byte</span>) 0x61, (<span class="keyword">byte</span>) 0x20, (<span class="keyword">byte</span>) 0x53,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;163</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x6f, (<span class="keyword">byte</span>) 0x66, (<span class="keyword">byte</span>) 0x74, (<span class="keyword">byte</span>) 0x77, (<span class="keyword">byte</span>) 0x61, (<span class="keyword">byte</span>) 0x72, (<span class="keyword">byte</span>) 0x65, (<span class="keyword">byte</span>) 0x20,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;164</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x43, (<span class="keyword">byte</span>) 0x6f, (<span class="keyword">byte</span>) 0x64, (<span class="keyword">byte</span>) 0x65, (<span class="keyword">byte</span>) 0x20, (<span class="keyword">byte</span>) 0x53, (<span class="keyword">byte</span>) 0x69, (<span class="keyword">byte</span>) 0x67,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;165</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x6e, (<span class="keyword">byte</span>) 0x69, (<span class="keyword">byte</span>) 0x6e, (<span class="keyword">byte</span>) 0x67, (<span class="keyword">byte</span>) 0x31, (<span class="keyword">byte</span>) 0x16, (<span class="keyword">byte</span>) 0x30, (<span class="keyword">byte</span>) 0x14,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;166</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x06, (<span class="keyword">byte</span>) 0x03, (<span class="keyword">byte</span>) 0x55, (<span class="keyword">byte</span>) 0x04, (<span class="keyword">byte</span>) 0x03, (<span class="keyword">byte</span>) 0x13, (<span class="keyword">byte</span>) 0x0d, (<span class="keyword">byte</span>) 0x4e,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;167</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x69, (<span class="keyword">byte</span>) 0x6e, (<span class="keyword">byte</span>) 0x74, (<span class="keyword">byte</span>) 0x68, (<span class="keyword">byte</span>) 0x54, (<span class="keyword">byte</span>) 0x65, (<span class="keyword">byte</span>) 0x73, (<span class="keyword">byte</span>) 0x74,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;168</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x2e, (<span class="keyword">byte</span>) 0x6e, (<span class="keyword">byte</span>) 0x65, (<span class="keyword">byte</span>) 0x74, (<span class="keyword">byte</span>) 0x30, (<span class="keyword">byte</span>) 0x82, (<span class="keyword">byte</span>) 0x01, (<span class="keyword">byte</span>) 0xb7,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;169</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x30, (<span class="keyword">byte</span>) 0x82, (<span class="keyword">byte</span>) 0x01, (<span class="keyword">byte</span>) 0x2c, (<span class="keyword">byte</span>) 0x06, (<span class="keyword">byte</span>) 0x07, (<span class="keyword">byte</span>) 0x2a, (<span class="keyword">byte</span>) 0x86,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;170</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x48, (<span class="keyword">byte</span>) 0xce, (<span class="keyword">byte</span>) 0x38, (<span class="keyword">byte</span>) 0x04, (<span class="keyword">byte</span>) 0x01, (<span class="keyword">byte</span>) 0x30, (<span class="keyword">byte</span>) 0x82, (<span class="keyword">byte</span>) 0x01,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;171</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x1f, (<span class="keyword">byte</span>) 0x02, (<span class="keyword">byte</span>) 0x81, (<span class="keyword">byte</span>) 0x81, (<span class="keyword">byte</span>) 0x00, (<span class="keyword">byte</span>) 0xfd, (<span class="keyword">byte</span>) 0x7f, (<span class="keyword">byte</span>) 0x53,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;172</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x81, (<span class="keyword">byte</span>) 0x1d, (<span class="keyword">byte</span>) 0x75, (<span class="keyword">byte</span>) 0x12, (<span class="keyword">byte</span>) 0x29, (<span class="keyword">byte</span>) 0x52, (<span class="keyword">byte</span>) 0xdf, (<span class="keyword">byte</span>) 0x4a,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;173</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x9c, (<span class="keyword">byte</span>) 0x2e, (<span class="keyword">byte</span>) 0xec, (<span class="keyword">byte</span>) 0xe4, (<span class="keyword">byte</span>) 0xe7, (<span class="keyword">byte</span>) 0xf6, (<span class="keyword">byte</span>) 0x11, (<span class="keyword">byte</span>) 0xb7,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;174</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x52, (<span class="keyword">byte</span>) 0x3c, (<span class="keyword">byte</span>) 0xef, (<span class="keyword">byte</span>) 0x44, (<span class="keyword">byte</span>) 0x00, (<span class="keyword">byte</span>) 0xc3, (<span class="keyword">byte</span>) 0x1e, (<span class="keyword">byte</span>) 0x3f,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;175</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x80, (<span class="keyword">byte</span>) 0xb6, (<span class="keyword">byte</span>) 0x51, (<span class="keyword">byte</span>) 0x26, (<span class="keyword">byte</span>) 0x69, (<span class="keyword">byte</span>) 0x45, (<span class="keyword">byte</span>) 0x5d, (<span class="keyword">byte</span>) 0x40,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;176</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x22, (<span class="keyword">byte</span>) 0x51, (<span class="keyword">byte</span>) 0xfb, (<span class="keyword">byte</span>) 0x59, (<span class="keyword">byte</span>) 0x3d, (<span class="keyword">byte</span>) 0x8d, (<span class="keyword">byte</span>) 0x58, (<span class="keyword">byte</span>) 0xfa,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;177</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0xbf, (<span class="keyword">byte</span>) 0xc5, (<span class="keyword">byte</span>) 0xf5, (<span class="keyword">byte</span>) 0xba, (<span class="keyword">byte</span>) 0x30, (<span class="keyword">byte</span>) 0xf6, (<span class="keyword">byte</span>) 0xcb, (<span class="keyword">byte</span>) 0x9b,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;178</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x55, (<span class="keyword">byte</span>) 0x6c, (<span class="keyword">byte</span>) 0xd7, (<span class="keyword">byte</span>) 0x81, (<span class="keyword">byte</span>) 0x3b, (<span class="keyword">byte</span>) 0x80, (<span class="keyword">byte</span>) 0x1d, (<span class="keyword">byte</span>) 0x34,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;179</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x6f, (<span class="keyword">byte</span>) 0xf2, (<span class="keyword">byte</span>) 0x66, (<span class="keyword">byte</span>) 0x60, (<span class="keyword">byte</span>) 0xb7, (<span class="keyword">byte</span>) 0x6b, (<span class="keyword">byte</span>) 0x99, (<span class="keyword">byte</span>) 0x50,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;180</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0xa5, (<span class="keyword">byte</span>) 0xa4, (<span class="keyword">byte</span>) 0x9f, (<span class="keyword">byte</span>) 0x9f, (<span class="keyword">byte</span>) 0xe8, (<span class="keyword">byte</span>) 0x04, (<span class="keyword">byte</span>) 0x7b, (<span class="keyword">byte</span>) 0x10,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;181</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x22, (<span class="keyword">byte</span>) 0xc2, (<span class="keyword">byte</span>) 0x4f, (<span class="keyword">byte</span>) 0xbb, (<span class="keyword">byte</span>) 0xa9, (<span class="keyword">byte</span>) 0xd7, (<span class="keyword">byte</span>) 0xfe, (<span class="keyword">byte</span>) 0xb7,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;182</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0xc6, (<span class="keyword">byte</span>) 0x1b, (<span class="keyword">byte</span>) 0xf8, (<span class="keyword">byte</span>) 0x3b, (<span class="keyword">byte</span>) 0x57, (<span class="keyword">byte</span>) 0xe7, (<span class="keyword">byte</span>) 0xc6, (<span class="keyword">byte</span>) 0xa8,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;183</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0xa6, (<span class="keyword">byte</span>) 0x15, (<span class="keyword">byte</span>) 0x0f, (<span class="keyword">byte</span>) 0x04, (<span class="keyword">byte</span>) 0xfb, (<span class="keyword">byte</span>) 0x83, (<span class="keyword">byte</span>) 0xf6, (<span class="keyword">byte</span>) 0xd3,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;184</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0xc5, (<span class="keyword">byte</span>) 0x1e, (<span class="keyword">byte</span>) 0xc3, (<span class="keyword">byte</span>) 0x02, (<span class="keyword">byte</span>) 0x35, (<span class="keyword">byte</span>) 0x54, (<span class="keyword">byte</span>) 0x13, (<span class="keyword">byte</span>) 0x5a,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;185</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x16, (<span class="keyword">byte</span>) 0x91, (<span class="keyword">byte</span>) 0x32, (<span class="keyword">byte</span>) 0xf6, (<span class="keyword">byte</span>) 0x75, (<span class="keyword">byte</span>) 0xf3, (<span class="keyword">byte</span>) 0xae, (<span class="keyword">byte</span>) 0x2b,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;186</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x61, (<span class="keyword">byte</span>) 0xd7, (<span class="keyword">byte</span>) 0x2a, (<span class="keyword">byte</span>) 0xef, (<span class="keyword">byte</span>) 0xf2, (<span class="keyword">byte</span>) 0x22, (<span class="keyword">byte</span>) 0x03, (<span class="keyword">byte</span>) 0x19,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;187</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x9d, (<span class="keyword">byte</span>) 0xd1, (<span class="keyword">byte</span>) 0x48, (<span class="keyword">byte</span>) 0x01, (<span class="keyword">byte</span>) 0xc7, (<span class="keyword">byte</span>) 0x02, (<span class="keyword">byte</span>) 0x15, (<span class="keyword">byte</span>) 0x00,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;188</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x97, (<span class="keyword">byte</span>) 0x60, (<span class="keyword">byte</span>) 0x50, (<span class="keyword">byte</span>) 0x8f, (<span class="keyword">byte</span>) 0x15, (<span class="keyword">byte</span>) 0x23, (<span class="keyword">byte</span>) 0x0b, (<span class="keyword">byte</span>) 0xcc,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;189</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0xb2, (<span class="keyword">byte</span>) 0x92, (<span class="keyword">byte</span>) 0xb9, (<span class="keyword">byte</span>) 0x82, (<span class="keyword">byte</span>) 0xa2, (<span class="keyword">byte</span>) 0xeb, (<span class="keyword">byte</span>) 0x84, (<span class="keyword">byte</span>) 0x0b,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;190</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0xf0, (<span class="keyword">byte</span>) 0x58, (<span class="keyword">byte</span>) 0x1c, (<span class="keyword">byte</span>) 0xf5, (<span class="keyword">byte</span>) 0x02, (<span class="keyword">byte</span>) 0x81, (<span class="keyword">byte</span>) 0x81, (<span class="keyword">byte</span>) 0x00,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;191</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0xf7, (<span class="keyword">byte</span>) 0xe1, (<span class="keyword">byte</span>) 0xa0, (<span class="keyword">byte</span>) 0x85, (<span class="keyword">byte</span>) 0xd6, (<span class="keyword">byte</span>) 0x9b, (<span class="keyword">byte</span>) 0x3d, (<span class="keyword">byte</span>) 0xde,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;192</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0xcb, (<span class="keyword">byte</span>) 0xbc, (<span class="keyword">byte</span>) 0xab, (<span class="keyword">byte</span>) 0x5c, (<span class="keyword">byte</span>) 0x36, (<span class="keyword">byte</span>) 0xb8, (<span class="keyword">byte</span>) 0x57, (<span class="keyword">byte</span>) 0xb9,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;193</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x79, (<span class="keyword">byte</span>) 0x94, (<span class="keyword">byte</span>) 0xaf, (<span class="keyword">byte</span>) 0xbb, (<span class="keyword">byte</span>) 0xfa, (<span class="keyword">byte</span>) 0x3a, (<span class="keyword">byte</span>) 0xea, (<span class="keyword">byte</span>) 0x82,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;194</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0xf9, (<span class="keyword">byte</span>) 0x57, (<span class="keyword">byte</span>) 0x4c, (<span class="keyword">byte</span>) 0x0b, (<span class="keyword">byte</span>) 0x3d, (<span class="keyword">byte</span>) 0x07, (<span class="keyword">byte</span>) 0x82, (<span class="keyword">byte</span>) 0x67,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;195</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x51, (<span class="keyword">byte</span>) 0x59, (<span class="keyword">byte</span>) 0x57, (<span class="keyword">byte</span>) 0x8e, (<span class="keyword">byte</span>) 0xba, (<span class="keyword">byte</span>) 0xd4, (<span class="keyword">byte</span>) 0x59, (<span class="keyword">byte</span>) 0x4f,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;196</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0xe6, (<span class="keyword">byte</span>) 0x71, (<span class="keyword">byte</span>) 0x07, (<span class="keyword">byte</span>) 0x10, (<span class="keyword">byte</span>) 0x81, (<span class="keyword">byte</span>) 0x80, (<span class="keyword">byte</span>) 0xb4, (<span class="keyword">byte</span>) 0x49,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;197</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x16, (<span class="keyword">byte</span>) 0x71, (<span class="keyword">byte</span>) 0x23, (<span class="keyword">byte</span>) 0xe8, (<span class="keyword">byte</span>) 0x4c, (<span class="keyword">byte</span>) 0x28, (<span class="keyword">byte</span>) 0x16, (<span class="keyword">byte</span>) 0x13,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;198</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0xb7, (<span class="keyword">byte</span>) 0xcf, (<span class="keyword">byte</span>) 0x09, (<span class="keyword">byte</span>) 0x32, (<span class="keyword">byte</span>) 0x8c, (<span class="keyword">byte</span>) 0xc8, (<span class="keyword">byte</span>) 0xa6, (<span class="keyword">byte</span>) 0xe1,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;199</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x3c, (<span class="keyword">byte</span>) 0x16, (<span class="keyword">byte</span>) 0x7a, (<span class="keyword">byte</span>) 0x8b, (<span class="keyword">byte</span>) 0x54, (<span class="keyword">byte</span>) 0x7c, (<span class="keyword">byte</span>) 0x8d, (<span class="keyword">byte</span>) 0x28,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;200</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0xe0, (<span class="keyword">byte</span>) 0xa3, (<span class="keyword">byte</span>) 0xae, (<span class="keyword">byte</span>) 0x1e, (<span class="keyword">byte</span>) 0x2b, (<span class="keyword">byte</span>) 0xb3, (<span class="keyword">byte</span>) 0xa6, (<span class="keyword">byte</span>) 0x75,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;201</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x91, (<span class="keyword">byte</span>) 0x6e, (<span class="keyword">byte</span>) 0xa3, (<span class="keyword">byte</span>) 0x7f, (<span class="keyword">byte</span>) 0x0b, (<span class="keyword">byte</span>) 0xfa, (<span class="keyword">byte</span>) 0x21, (<span class="keyword">byte</span>) 0x35,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;202</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x62, (<span class="keyword">byte</span>) 0xf1, (<span class="keyword">byte</span>) 0xfb, (<span class="keyword">byte</span>) 0x62, (<span class="keyword">byte</span>) 0x7a, (<span class="keyword">byte</span>) 0x01, (<span class="keyword">byte</span>) 0x24, (<span class="keyword">byte</span>) 0x3b,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;203</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0xcc, (<span class="keyword">byte</span>) 0xa4, (<span class="keyword">byte</span>) 0xf1, (<span class="keyword">byte</span>) 0xbe, (<span class="keyword">byte</span>) 0xa8, (<span class="keyword">byte</span>) 0x51, (<span class="keyword">byte</span>) 0x90, (<span class="keyword">byte</span>) 0x89,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;204</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0xa8, (<span class="keyword">byte</span>) 0x83, (<span class="keyword">byte</span>) 0xdf, (<span class="keyword">byte</span>) 0xe1, (<span class="keyword">byte</span>) 0x5a, (<span class="keyword">byte</span>) 0xe5, (<span class="keyword">byte</span>) 0x9f, (<span class="keyword">byte</span>) 0x06,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;205</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x92, (<span class="keyword">byte</span>) 0x8b, (<span class="keyword">byte</span>) 0x66, (<span class="keyword">byte</span>) 0x5e, (<span class="keyword">byte</span>) 0x80, (<span class="keyword">byte</span>) 0x7b, (<span class="keyword">byte</span>) 0x55, (<span class="keyword">byte</span>) 0x25,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;206</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x64, (<span class="keyword">byte</span>) 0x01, (<span class="keyword">byte</span>) 0x4c, (<span class="keyword">byte</span>) 0x3b, (<span class="keyword">byte</span>) 0xfe, (<span class="keyword">byte</span>) 0xcf, (<span class="keyword">byte</span>) 0x49, (<span class="keyword">byte</span>) 0x2a,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;207</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x03, (<span class="keyword">byte</span>) 0x81, (<span class="keyword">byte</span>) 0x84, (<span class="keyword">byte</span>) 0x00, (<span class="keyword">byte</span>) 0x02, (<span class="keyword">byte</span>) 0x81, (<span class="keyword">byte</span>) 0x80, (<span class="keyword">byte</span>) 0x67,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;208</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0xaa, (<span class="keyword">byte</span>) 0xea, (<span class="keyword">byte</span>) 0xa7, (<span class="keyword">byte</span>) 0x8f, (<span class="keyword">byte</span>) 0xa5, (<span class="keyword">byte</span>) 0x6b, (<span class="keyword">byte</span>) 0xe6, (<span class="keyword">byte</span>) 0xb8,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;209</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x0f, (<span class="keyword">byte</span>) 0x9b, (<span class="keyword">byte</span>) 0xf6, (<span class="keyword">byte</span>) 0x2f, (<span class="keyword">byte</span>) 0xa3, (<span class="keyword">byte</span>) 0xe4, (<span class="keyword">byte</span>) 0x40, (<span class="keyword">byte</span>) 0xc9,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;210</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x6d, (<span class="keyword">byte</span>) 0x0c, (<span class="keyword">byte</span>) 0xf8, (<span class="keyword">byte</span>) 0xd9, (<span class="keyword">byte</span>) 0x84, (<span class="keyword">byte</span>) 0xa9, (<span class="keyword">byte</span>) 0xe0, (<span class="keyword">byte</span>) 0x62,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;211</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0xba, (<span class="keyword">byte</span>) 0x3a, (<span class="keyword">byte</span>) 0xf0, (<span class="keyword">byte</span>) 0xff, (<span class="keyword">byte</span>) 0x33, (<span class="keyword">byte</span>) 0x7b, (<span class="keyword">byte</span>) 0xfd, (<span class="keyword">byte</span>) 0x5e,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;212</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0xfd, (<span class="keyword">byte</span>) 0xfa, (<span class="keyword">byte</span>) 0x73, (<span class="keyword">byte</span>) 0xf3, (<span class="keyword">byte</span>) 0x92, (<span class="keyword">byte</span>) 0xb2, (<span class="keyword">byte</span>) 0xf6, (<span class="keyword">byte</span>) 0x80,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;213</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x8c, (<span class="keyword">byte</span>) 0xf0, (<span class="keyword">byte</span>) 0xdf, (<span class="keyword">byte</span>) 0xde, (<span class="keyword">byte</span>) 0x50, (<span class="keyword">byte</span>) 0x18, (<span class="keyword">byte</span>) 0xd4, (<span class="keyword">byte</span>) 0x79,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;214</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x2f, (<span class="keyword">byte</span>) 0x13, (<span class="keyword">byte</span>) 0xae, (<span class="keyword">byte</span>) 0x1f, (<span class="keyword">byte</span>) 0xcf, (<span class="keyword">byte</span>) 0x24, (<span class="keyword">byte</span>) 0x7c, (<span class="keyword">byte</span>) 0x03,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;215</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x82, (<span class="keyword">byte</span>) 0x3b, (<span class="keyword">byte</span>) 0xe7, (<span class="keyword">byte</span>) 0xfd, (<span class="keyword">byte</span>) 0xdb, (<span class="keyword">byte</span>) 0x01, (<span class="keyword">byte</span>) 0xba, (<span class="keyword">byte</span>) 0x9a,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;216</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x82, (<span class="keyword">byte</span>) 0xcc, (<span class="keyword">byte</span>) 0x74, (<span class="keyword">byte</span>) 0xa5, (<span class="keyword">byte</span>) 0xe2, (<span class="keyword">byte</span>) 0xae, (<span class="keyword">byte</span>) 0xa0, (<span class="keyword">byte</span>) 0xbe,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;217</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0xfa, (<span class="keyword">byte</span>) 0x0f, (<span class="keyword">byte</span>) 0xd1, (<span class="keyword">byte</span>) 0x17, (<span class="keyword">byte</span>) 0xd4, (<span class="keyword">byte</span>) 0x14, (<span class="keyword">byte</span>) 0xae, (<span class="keyword">byte</span>) 0x18,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;218</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x24, (<span class="keyword">byte</span>) 0x8a, (<span class="keyword">byte</span>) 0xf9, (<span class="keyword">byte</span>) 0xfe, (<span class="keyword">byte</span>) 0x5b, (<span class="keyword">byte</span>) 0x7c, (<span class="keyword">byte</span>) 0x04, (<span class="keyword">byte</span>) 0x7b,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;219</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x61, (<span class="keyword">byte</span>) 0xf2, (<span class="keyword">byte</span>) 0x85, (<span class="keyword">byte</span>) 0x0b, (<span class="keyword">byte</span>) 0x1f, (<span class="keyword">byte</span>) 0xdb, (<span class="keyword">byte</span>) 0x33, (<span class="keyword">byte</span>) 0xcb,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;220</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0xf5, (<span class="keyword">byte</span>) 0x4d, (<span class="keyword">byte</span>) 0xdd, (<span class="keyword">byte</span>) 0xd4, (<span class="keyword">byte</span>) 0xd6, (<span class="keyword">byte</span>) 0x27, (<span class="keyword">byte</span>) 0x50, (<span class="keyword">byte</span>) 0xbf,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;221</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x81, (<span class="keyword">byte</span>) 0x31, (<span class="keyword">byte</span>) 0xad, (<span class="keyword">byte</span>) 0x76, (<span class="keyword">byte</span>) 0x77, (<span class="keyword">byte</span>) 0x59, (<span class="keyword">byte</span>) 0x20, (<span class="keyword">byte</span>) 0x4b,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;222</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x30, (<span class="keyword">byte</span>) 0xb8, (<span class="keyword">byte</span>) 0x89, (<span class="keyword">byte</span>) 0x36, (<span class="keyword">byte</span>) 0x19, (<span class="keyword">byte</span>) 0x6f, (<span class="keyword">byte</span>) 0x55, (<span class="keyword">byte</span>) 0xf2,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;223</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x17, (<span class="keyword">byte</span>) 0x23, (<span class="keyword">byte</span>) 0x4e, (<span class="keyword">byte</span>) 0x6a, (<span class="keyword">byte</span>) 0xf2, (<span class="keyword">byte</span>) 0xbb, (<span class="keyword">byte</span>) 0x04, (<span class="keyword">byte</span>) 0xa3,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;224</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x81, (<span class="keyword">byte</span>) 0x86, (<span class="keyword">byte</span>) 0x30, (<span class="keyword">byte</span>) 0x81, (<span class="keyword">byte</span>) 0x83, (<span class="keyword">byte</span>) 0x30, (<span class="keyword">byte</span>) 0x11, (<span class="keyword">byte</span>) 0x06,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;225</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x09, (<span class="keyword">byte</span>) 0x60, (<span class="keyword">byte</span>) 0x86, (<span class="keyword">byte</span>) 0x48, (<span class="keyword">byte</span>) 0x01, (<span class="keyword">byte</span>) 0x86, (<span class="keyword">byte</span>) 0xf8, (<span class="keyword">byte</span>) 0x42,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;226</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x01, (<span class="keyword">byte</span>) 0x01, (<span class="keyword">byte</span>) 0x04, (<span class="keyword">byte</span>) 0x04, (<span class="keyword">byte</span>) 0x03, (<span class="keyword">byte</span>) 0x02, (<span class="keyword">byte</span>) 0x04, (<span class="keyword">byte</span>) 0x10,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;227</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x30, (<span class="keyword">byte</span>) 0x0e, (<span class="keyword">byte</span>) 0x06, (<span class="keyword">byte</span>) 0x03, (<span class="keyword">byte</span>) 0x55, (<span class="keyword">byte</span>) 0x1d, (<span class="keyword">byte</span>) 0x0f, (<span class="keyword">byte</span>) 0x01,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;228</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x01, (<span class="keyword">byte</span>) 0xff, (<span class="keyword">byte</span>) 0x04, (<span class="keyword">byte</span>) 0x04, (<span class="keyword">byte</span>) 0x03, (<span class="keyword">byte</span>) 0x02, (<span class="keyword">byte</span>) 0x05, (<span class="keyword">byte</span>) 0xe0,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;229</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x30, (<span class="keyword">byte</span>) 0x1d, (<span class="keyword">byte</span>) 0x06, (<span class="keyword">byte</span>) 0x03, (<span class="keyword">byte</span>) 0x55, (<span class="keyword">byte</span>) 0x1d, (<span class="keyword">byte</span>) 0x0e, (<span class="keyword">byte</span>) 0x04,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;230</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x16, (<span class="keyword">byte</span>) 0x04, (<span class="keyword">byte</span>) 0x14, (<span class="keyword">byte</span>) 0x78, (<span class="keyword">byte</span>) 0x40, (<span class="keyword">byte</span>) 0x8f, (<span class="keyword">byte</span>) 0xf0, (<span class="keyword">byte</span>) 0xe5,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;231</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0xa4, (<span class="keyword">byte</span>) 0xf3, (<span class="keyword">byte</span>) 0x42, (<span class="keyword">byte</span>) 0x8e, (<span class="keyword">byte</span>) 0x0b, (<span class="keyword">byte</span>) 0x6b, (<span class="keyword">byte</span>) 0xa0, (<span class="keyword">byte</span>) 0xbc,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;232</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x38, (<span class="keyword">byte</span>) 0x3e, (<span class="keyword">byte</span>) 0x8b, (<span class="keyword">byte</span>) 0xed, (<span class="keyword">byte</span>) 0xb3, (<span class="keyword">byte</span>) 0x49, (<span class="keyword">byte</span>) 0x6b, (<span class="keyword">byte</span>) 0x30,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;233</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x1f, (<span class="keyword">byte</span>) 0x06, (<span class="keyword">byte</span>) 0x03, (<span class="keyword">byte</span>) 0x55, (<span class="keyword">byte</span>) 0x1d, (<span class="keyword">byte</span>) 0x23, (<span class="keyword">byte</span>) 0x04, (<span class="keyword">byte</span>) 0x18,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;234</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x30, (<span class="keyword">byte</span>) 0x16, (<span class="keyword">byte</span>) 0x80, (<span class="keyword">byte</span>) 0x14, (<span class="keyword">byte</span>) 0x65, (<span class="keyword">byte</span>) 0xe2, (<span class="keyword">byte</span>) 0xf4, (<span class="keyword">byte</span>) 0x86,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;235</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0xc9, (<span class="keyword">byte</span>) 0xd3, (<span class="keyword">byte</span>) 0x4e, (<span class="keyword">byte</span>) 0xf0, (<span class="keyword">byte</span>) 0x91, (<span class="keyword">byte</span>) 0x4e, (<span class="keyword">byte</span>) 0x58, (<span class="keyword">byte</span>) 0xa2,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;236</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x6a, (<span class="keyword">byte</span>) 0xf5, (<span class="keyword">byte</span>) 0xd8, (<span class="keyword">byte</span>) 0x78, (<span class="keyword">byte</span>) 0x5a, (<span class="keyword">byte</span>) 0x9a, (<span class="keyword">byte</span>) 0xc1, (<span class="keyword">byte</span>) 0xa6,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;237</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x30, (<span class="keyword">byte</span>) 0x1e, (<span class="keyword">byte</span>) 0x06, (<span class="keyword">byte</span>) 0x03, (<span class="keyword">byte</span>) 0x55, (<span class="keyword">byte</span>) 0x1d, (<span class="keyword">byte</span>) 0x11, (<span class="keyword">byte</span>) 0x04,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;238</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x17, (<span class="keyword">byte</span>) 0x30, (<span class="keyword">byte</span>) 0x15, (<span class="keyword">byte</span>) 0x81, (<span class="keyword">byte</span>) 0x13, (<span class="keyword">byte</span>) 0x6d, (<span class="keyword">byte</span>) 0x61, (<span class="keyword">byte</span>) 0x74,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;239</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x74, (<span class="keyword">byte</span>) 0x7a, (<span class="keyword">byte</span>) 0x40, (<span class="keyword">byte</span>) 0x6e, (<span class="keyword">byte</span>) 0x69, (<span class="keyword">byte</span>) 0x6e, (<span class="keyword">byte</span>) 0x74, (<span class="keyword">byte</span>) 0x68,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;240</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x74, (<span class="keyword">byte</span>) 0x65, (<span class="keyword">byte</span>) 0x73, (<span class="keyword">byte</span>) 0x74, (<span class="keyword">byte</span>) 0x2e, (<span class="keyword">byte</span>) 0x6e, (<span class="keyword">byte</span>) 0x65, (<span class="keyword">byte</span>) 0x74,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;241</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x30, (<span class="keyword">byte</span>) 0x0b, (<span class="keyword">byte</span>) 0x06, (<span class="keyword">byte</span>) 0x07, (<span class="keyword">byte</span>) 0x2a, (<span class="keyword">byte</span>) 0x86, (<span class="keyword">byte</span>) 0x48, (<span class="keyword">byte</span>) 0xce,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;242</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x38, (<span class="keyword">byte</span>) 0x04, (<span class="keyword">byte</span>) 0x03, (<span class="keyword">byte</span>) 0x05, (<span class="keyword">byte</span>) 0x00, (<span class="keyword">byte</span>) 0x03, (<span class="keyword">byte</span>) 0x2f, (<span class="keyword">byte</span>) 0x00,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;243</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x30, (<span class="keyword">byte</span>) 0x2c, (<span class="keyword">byte</span>) 0x02, (<span class="keyword">byte</span>) 0x14, (<span class="keyword">byte</span>) 0x64, (<span class="keyword">byte</span>) 0xf7, (<span class="keyword">byte</span>) 0x4e, (<span class="keyword">byte</span>) 0x3e,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;244</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x1e, (<span class="keyword">byte</span>) 0x4e, (<span class="keyword">byte</span>) 0xd9, (<span class="keyword">byte</span>) 0xa3, (<span class="keyword">byte</span>) 0x8d, (<span class="keyword">byte</span>) 0xac, (<span class="keyword">byte</span>) 0x67, (<span class="keyword">byte</span>) 0xc4,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;245</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x6b, (<span class="keyword">byte</span>) 0xee, (<span class="keyword">byte</span>) 0x19, (<span class="keyword">byte</span>) 0xa2, (<span class="keyword">byte</span>) 0xc7, (<span class="keyword">byte</span>) 0xc2, (<span class="keyword">byte</span>) 0x01, (<span class="keyword">byte</span>) 0x31,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;246</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x02, (<span class="keyword">byte</span>) 0x14, (<span class="keyword">byte</span>) 0x21, (<span class="keyword">byte</span>) 0x09, (<span class="keyword">byte</span>) 0xe0, (<span class="keyword">byte</span>) 0x68, (<span class="keyword">byte</span>) 0xa6, (<span class="keyword">byte</span>) 0x58,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;247</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x6e, (<span class="keyword">byte</span>) 0x13, (<span class="keyword">byte</span>) 0xe4, (<span class="keyword">byte</span>) 0x81, (<span class="keyword">byte</span>) 0xd0, (<span class="keyword">byte</span>) 0x66, (<span class="keyword">byte</span>) 0x76, (<span class="keyword">byte</span>) 0x7b,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;248</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            (<span class="keyword">byte</span>) 0x9b, (<span class="keyword">byte</span>) 0x8d, (<span class="keyword">byte</span>) 0x4b, (<span class="keyword">byte</span>) 0x96, (<span class="keyword">byte</span>) 0x94, (<span class="keyword">byte</span>) 0x6c};</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;249</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;250</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/* created from PROVIDER_CERTIFICATE_BYTES */</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;251</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> <span class="keyword">static</span> X509Certificate providerCertificate;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;252</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;253</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/*</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;254</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * indicates whether or not the self-integrity check has passed</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;255</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * </span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;256</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * doSelfIntegrityCheck() will set this flag to true if the self-integrity</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;257</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * check passes (avoids redundant checks)</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;258</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;259</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">// UNITTESTING: Set to true for unit testing.</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;260</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> selfIntegrityVerified = <span class="keyword">true</span>;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;261</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;262</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/*</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;263</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Verifies that the JAR containing this provider has not been tampered</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;264</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * with.</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;265</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * </span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;266</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * 1. The provider JAR has been signed. 2. Each entry in the provider JAR is</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;267</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * signed by a trusted signer. 3. The signature for each entry in the</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;268</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * provider JAR was generated by the same entity as the one that developed</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;269</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * this provider.</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;270</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * </span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;271</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * If the self-integrity check fails for any reason, SecurityException is</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;272</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * thrown.</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;273</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;274</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> verify() {</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;275</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="comment">/* avoid redundant self-integrity checks */</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;276</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">if</span> (selfIntegrityVerified) {</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;277</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">return</span>;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;278</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;279</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;280</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        JarInputStream providerJar = <span class="keyword">null</span>;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;281</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">try</span> {</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;282</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            providerJar = getProviderJarInputStream();</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;283</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="comment">/*</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;284</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">             * "early warning" - this will fail if ANY part of the signed JAR</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;285</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">             * has been tampered with; however, it will pass silently if the JAR</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;286</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">             * is NOT signed, so further checking is necessary</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;287</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">             */</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;288</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">if</span> (providerJar.getManifest() == <span class="keyword">null</span>) {</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;289</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">throw</span> <span class="keyword">new</span> SecurityException(Messages.getMessage(<span class="string">"error.not_signed"</span>));</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;290</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;291</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;292</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="comment">/* verify each JAR entry */</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;293</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">if</span> (providerCertificate == <span class="keyword">null</span>) {</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;294</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                providerCertificate = getProviderCert();</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;295</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;296</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            JarEntry entry = <span class="keyword">null</span>;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;297</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[8192];</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;298</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">boolean</span> signedByProviderCert = <span class="keyword">false</span>;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;299</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">while</span> ((entry = providerJar.getNextJarEntry()) != <span class="keyword">null</span>) {</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;300</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">if</span> (entry.isDirectory() || entry.getName().startsWith(<span class="string">"META-INF/"</span>)) {</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;301</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                    <span class="keyword">continue</span>;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;302</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;303</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;304</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="comment">/*</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;305</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">                 * reading each entry will perform signature &amp; digest</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;306</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">                 * verification</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;307</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">                 */</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;308</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">while</span> (providerJar.read(buffer) != -1) {</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;309</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                    <span class="comment">// do nothing - only need to read the bytes</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;310</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;311</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;312</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="comment">/*</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;313</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">                 * also need to ensure that each entry was signed by the</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;314</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">                 * provider signing certificate; getCodeSigners() can only be</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;315</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">                 * called once the entry has been completely verified by reading</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;316</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">                 * from the entry input stream!</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;317</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">                 */</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;318</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                signedByProviderCert = <span class="keyword">false</span>;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;319</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">for</span> (CodeSigner signer : entry.getCodeSigners()) {</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;320</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                    <span class="keyword">if</span> (signedByProviderCert =</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;321</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                            providerCertificate.equals(signer.getSignerCertPath().getCertificates().get(0))) {</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;322</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                        <span class="keyword">break</span>;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;323</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;324</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;325</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;326</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">if</span> (!signedByProviderCert) {</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;327</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                    <span class="keyword">throw</span> <span class="keyword">new</span> SecurityException(Messages.getMessage(<span class="string">"error.not_signed_by_trusted"</span>));</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;328</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;329</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;330</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        } <span class="keyword">catch</span> (Exception ex) {</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;331</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">throw</span> <span class="keyword">new</span> SecurityException(Messages.getMessage(<span class="string">"error.integrity_not_verified"</span>), ex);</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;332</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        } <span class="keyword">finally</span> {</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;333</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">if</span> (providerJar != <span class="keyword">null</span>) {</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;334</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">try</span> {</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;335</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                    providerJar.close();</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;336</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                } <span class="keyword">catch</span> (IOException ex) {</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;337</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                    ex.printStackTrace();</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;338</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;339</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;340</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;341</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;342</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="comment">/* avoid redundant integrity checking */</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;343</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        selfIntegrityVerified = <span class="keyword">true</span>;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;344</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;345</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;346</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/*</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;347</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Returns an input stream to read the contents of the provider JAR.</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;348</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * </span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;349</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * The caller is responsible for closing this input stream!</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;350</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;351</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> <span class="keyword">static</span> JarInputStream getProviderJarInputStream() <span class="keyword">throws</span> PrivilegedActionException {</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;352</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        JarInputStream jarInputStream = AccessController.doPrivileged(<span class="keyword">new</span> PrivilegedExceptionAction&lt;JarInputStream&gt;() {</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;353</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            @Override</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;354</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            <span class="keyword">public</span> JarInputStream run() <span class="keyword">throws</span> Exception {</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;355</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                CodeSource codeSource = NinthTestProvider.<span class="keyword">class</span>.getProtectionDomain().getCodeSource();</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;356</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                URL location = codeSource.getLocation();</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;357</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">if</span> (location == <span class="keyword">null</span>) {</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;358</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                    <span class="keyword">return</span> <span class="keyword">null</span>;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;359</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;360</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;361</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="keyword">return</span> <span class="keyword">new</span> JarInputStream(location.openStream(), <span class="keyword">true</span>);</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;362</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;363</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        });</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;364</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;365</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> jarInputStream;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;366</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;367</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;368</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/*</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;369</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Generates the provider signing certificate.</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;370</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;371</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> <span class="keyword">static</span> X509Certificate getProviderCert() <span class="keyword">throws</span> CertificateException, IOException {</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;372</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        CertificateFactory cf = CertificateFactory.getInstance(<span class="string">"X.509"</span>);</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;373</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        ByteArrayInputStream byteStream = <span class="keyword">new</span> ByteArrayInputStream(PROVIDER_CERTIFICATE_BYTES);</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;374</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        X509Certificate x509 = (X509Certificate) cf.generateCertificate(byteStream);</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;375</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        byteStream.close();</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;376</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> x509;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;377</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;378</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;379</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> ProviderIntegrity() {</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;380</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="comment">/* never instantiated */</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;381</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;382</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;}</pre></td></tr>
+</table>
+
+<div class="footer">Report generated by <a href="http://cobertura.sourceforge.net/" target="_top">Cobertura</a> 1.9.4.1 on 4/22/15 2:38 PM.</div>
+</body>
+</html>
